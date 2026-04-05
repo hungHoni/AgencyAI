@@ -101,16 +101,16 @@ The approved wireframe follows the `design-taste-frontend` skill rules:
 
 ### Tech Stack (Recommended)
 
-- **Framework:** Next.js (App Router) or Astro for static generation
-- **Styling:** Tailwind CSS v3.4 (v4 has config model changes that add friction with Next.js App Router; fall back to v3.4 for reliable setup)
-- **Chatbot:** Voiceflow or Botpress for embedded demo. **Note:** Botpress free tier caps at ~2,000 messages/month. If outreach drives significant traffic, plan for paid tier (~$50/month) or implement a static fallback demo mode that shows a scripted conversation without hitting the API.
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS v4.2
+- **Chatbot:** Custom-built with Claude Haiku API (`claude-haiku-4-5`). Streaming responses, full branding control, no third-party watermarks. Cost: ~$0.0005 per conversation. Hero preview becomes the real chatbot. Floating bubble in bottom-right + inline in hero.
 - **Hosting:** Vercel (free tier)
-- **Contact form:** Make.com or n8n webhook → founder's email + Slack DM. Fields: name (required), business name (required), email (required), message (optional textarea). Success state: inline "Thanks! We'll be in touch within 24 hours." Error state: inline red text below submit button.
+- **Contact form:** Next.js API route + Resend (email API). Fields: name (required), business name (required), email (required), message (optional textarea). Success state: inline "Thanks! We'll be in touch within 24 hours." Error state: inline red text below submit button.
 - **Domain:** Custom domain (Namecheap/Cloudflare, ~$12/year)
 
 ## Open Questions
 
-1. **Chatbot platform:** Voiceflow vs Botpress vs custom? Needs evaluation based on embeddability, free tier limits, and customization options.
+1. **Chatbot platform:** RESOLVED. Custom-built with Claude Haiku API. Full branding control, cheaper than third-party (~$0.0005/conversation vs $50/month), hero preview becomes the real chatbot.
 2. **Pricing model:** Per-project, monthly retainer, or hybrid? Deferred until after 3-5 client conversations.
 3. **Business name:** "AgencyAI" is a placeholder. Needs a real brand name before launch (the taste-skill bans generic startup names like this).
 4. **Demo scenarios:** How many industry-specific demos? Recommended: start with 1 (salon — already in wireframe), add dental and restaurant after first client conversations reveal which verticals respond best.
@@ -147,7 +147,7 @@ The chatbot on the agency website is NOT a static mockup. It must be a real, int
 - Can collect visitor name + email + business type as lead capture
 - Graceful fallback: "Great question! Let me connect you with the team directly" → surfaces the contact form
 
-**Implementation:** Use an embeddable chatbot platform (Botpress, Voiceflow, or Chatbase) with a custom knowledge base. The widget floats in the bottom-right corner and also appears inline in the hero section preview.
+**Implementation:** Custom-built using Claude Haiku API (`claude-haiku-4-5`). The chatbot is a React client component (`ChatWidget.tsx`) that calls a Next.js API route (`app/api/chat/route.ts`). The API route builds a system prompt with agency info and streams Claude's response back to the browser. The widget appears in two modes: inline in the hero section (the chat preview IS the real chatbot) and as a floating bubble in the bottom-right corner. No third-party dependencies, no watermarks, full design control. Cost: ~$0.0005 per conversation.
 
 ---
 
@@ -173,21 +173,25 @@ The chatbot on the agency website is NOT a static mockup. It must be a real, int
 - [ ] Build CTA banner — dark section with "Ready to stop missing customers?"
 - [ ] Build Contact section — asymmetric split (info left, form right)
 
-### Phase 3: Live Chatbot (Day 3-4)
-- [ ] Choose chatbot platform (Botpress, Voiceflow, or Chatbase)
-- [ ] Create chatbot knowledge base with agency info (services, process, pricing guidance, FAQs)
-- [ ] Configure chatbot conversation flows and lead capture
-- [ ] Train chatbot on agency-specific data
-- [ ] Embed chatbot widget on site (bottom-right floating button)
-- [ ] Connect "See It In Action" CTA to open the chatbot
-- [ ] Test chatbot across 10+ real conversation scenarios
-- [ ] Set up lead notifications (chatbot captures → email/Slack)
-
-### Phase 4: Contact Form & Lead Pipeline (Day 4)
-- [ ] Wire contact form to Make.com or n8n webhook
-- [ ] Set up lead routing: form submission → founder's email + Slack DM
+### Phase 3: Contact Form Backend (Day 3)
+- [ ] Install `resend` package
+- [ ] Create `app/api/contact/route.ts` — validate, sanitize, send email via Resend
+- [ ] Wire `ContactForm.tsx` to POST to `/api/contact`
 - [ ] Implement form validation (required fields, email format)
 - [ ] Build success state: inline "Thanks! We'll be in touch within 24 hours."
+
+### Phase 4: Custom AI Chatbot (Day 3-4)
+- [ ] Install `@anthropic-ai/sdk`
+- [ ] Add `ANTHROPIC_API_KEY` to `.env.local` and Vercel env vars
+- [ ] Create `app/api/chat/route.ts` — system prompt + Claude Haiku streaming + rate limit
+- [ ] Create `components/ChatWidget.tsx` — hero mode + floating bubble, streaming text, lead capture
+- [ ] Write system prompt (agency info, services, process, pricing, FAQs)
+- [ ] Wire "See It In Action" CTA to scroll to hero and focus chat input
+- [ ] Error fallback: "Our AI is taking a break. Use the contact form below."
+- [ ] Test 10+ conversation scenarios
+- [ ] Lead notification: when chatbot collects name+email, POST to /api/contact
+
+### Phase 5: Polish & Launch Prep (Day 5)
 - [ ] Build error state: inline red text below submit button
 - [ ] Test end-to-end: submit form → receive notification
 

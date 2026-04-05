@@ -1,4 +1,11 @@
 import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
+import Metrics from "@/components/Metrics";
+import Capabilities from "@/components/Capabilities";
+import Services from "@/components/Services";
+import HowItWorks from "@/components/HowItWorks";
+import CtaBanner from "@/components/CtaBanner";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -6,10 +13,13 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        {/* Phase 2 sections will be added here */}
-        <div className="min-h-[80dvh] flex items-center justify-center">
-          <p className="text-zinc-400 text-lg">Sections coming in Phase 2</p>
-        </div>
+        <Hero />
+        <Metrics />
+        <Capabilities />
+        <Services />
+        <HowItWorks />
+        <CtaBanner />
+        <ContactForm />
       </main>
       <Footer />
     </>

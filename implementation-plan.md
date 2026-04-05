@@ -12,10 +12,9 @@ Visual reference: `wireframe-v2.html` (approved, follows taste-skill rules)
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
 | Framework | Next.js App Router | Founder preference, familiar ecosystem |
-| Styling | Tailwind CSS v3.4 | Reliable setup with Next.js |
+| Styling | Tailwind CSS v4.2 | Ships with create-next-app@16, CSS-based `@theme inline` config |
 | Font | Outfit via `next/font` | Self-hosted, no layout shift |
-| Chatbot v1 | Third-party embed (Botpress/Voiceflow) | Ship fast, watermark accepted for v1 |
-| Chatbot v2 | API-based custom UI (deferred) | Full branding control, hero preview becomes real |
+| Chatbot | Custom-built with Claude Haiku API | Full branding, no watermarks, cheaper than third-party (~$0.0005/conversation), hero preview becomes the real chatbot |
 | Contact form | Next.js API route + Resend | Self-contained, no external automation tool |
 | Hosting | Vercel (free tier) | Zero-config Next.js deployment |
 | Analytics | Vercel Analytics | Free, zero-config, Web Vitals + page views |
@@ -29,10 +28,12 @@ app/
   layout.tsx            ← html, body, Outfit font, metadata, analytics
   api/contact/
     route.ts            ← POST handler: validate → send email via Resend
+  api/chat/
+    route.ts            ← POST handler: system prompt + Claude Haiku → streaming response
 components/
   Nav.tsx               ← sticky, blur backdrop, mobile hamburger
   Hero.tsx              ← 5fr/4fr grid, headline, CTAs
-  ChatPreview.tsx       ← static chat mockup in hero (dark card)
+  ChatWidget.tsx        ← 'use client' — real AI chatbot (hero preview + floating bubble)
   Metrics.tsx           ← 24/7, ~80%, Zero, No code
   Capabilities.tsx      ← 2-col grid, icon+text, hover cards
   Services.tsx          ← 2fr/1fr grid, dark hero card spans 2 rows
@@ -42,7 +43,10 @@ components/
   Footer.tsx            ← links, copyright
 ```
 
-Only `ContactForm.tsx` is a Client Component. Everything else is Server Component (zero JS shipped).
+Two Client Components: `ContactForm.tsx` (form state) and `ChatWidget.tsx` (chat state + streaming). Everything else is Server Component (zero JS shipped).
+
+**Tech stack (actual, post-Phase 1):** Next.js 16.2.2, React 19.2.4, Tailwind CSS 4.2.2, TypeScript 5.x, @vercel/analytics 2.x.
+**GitHub:** https://github.com/hungHoni/AgencyAI (branch: `main`)
 
 ## Data Flow
 
@@ -67,33 +71,48 @@ CONTACT FORM FLOW
   Show error msg ←────────── (validation or API error)
 
 
-CHATBOT EMBED FLOW (v1)
+CUSTOM CHATBOT FLOW
 ═══════════════════════════════════════════════
-  page loads → <Script> tag injects widget JS
-  → floating bubble appears (bottom-right)
-  → user clicks bubble → chat UI opens
-  → conversations handled by Botpress/Voiceflow servers
-  → lead capture → platform sends to founder's email
+  Browser (ChatWidget.tsx)     Server                     Claude API
+  ────────────────────         ──────                     ──────────
+  User types message
+  ↓
+  POST /api/chat ───────────→  app/api/chat/route.ts
+    { message, history }        ├── build system prompt
+                                │   (agency info, services,
+                                │    pricing, FAQs)
+                                ├── call Claude Haiku ────→ stream response
+                                │                          (claude-haiku-4-5)
+                                ├── stream back ←───────── tokens
+  Render streaming text ←────── │
+  Append to history             │
+                                ├── if lead detected
+  ↓                             │   (name+email in convo)
+  Lead capture prompt           └── email via Resend
+  (inline name/email form)
+
+  Cost: ~$0.0005 per conversation (2,000 tokens avg)
 ```
 
 ## Implementation Phases (Revised)
 
-### Phase 0: DNS & Accounts (Day 1, first thing)
+### Phase 0: DNS & Accounts (Day 1, first thing) — SKIPPED
 - [ ] Register custom domain (Namecheap/Cloudflare)
 - [ ] Point domain to Vercel (DNS records)
 - [ ] Create Resend account, add domain, start DNS verification (MX/TXT records)
-- [ ] Create Botpress or Voiceflow account
+- [ ] Create Anthropic account, get API key for Claude Haiku
 - [ ] Create Vercel account, link GitHub repo
 
-### Phase 1: Foundation (Day 1)
-- [ ] `npx create-next-app@latest` with App Router + Tailwind CSS
-- [ ] Configure Outfit font via `next/font/google` in `layout.tsx`
-- [ ] Set up color system in `tailwind.config.ts` (Zinc neutrals + Emerald accent from wireframe)
-- [ ] Build `Nav.tsx` (sticky, backdrop-blur, mobile hamburger menu)
-- [ ] Build `Footer.tsx`
-- [ ] Deploy to Vercel (get live URL early)
-- [ ] Install `@vercel/analytics`, add `<Analytics />` to `layout.tsx`
-- [ ] Add metadata in `layout.tsx` (title, description, OG image)
+### Phase 1: Foundation (Day 1) — DONE (2026-04-05)
+- [x] `npx create-next-app@latest` with App Router + Tailwind CSS v4 + TypeScript
+- [x] Configure Outfit font via `next/font/google` in `layout.tsx` (weights 400-800)
+- [x] Set up design system tokens in `app/globals.css` via `@theme inline` (Tailwind v4 format)
+- [x] Build `Nav.tsx` (sticky, backdrop-blur, responsive link hiding, CTA button)
+- [x] Build `Footer.tsx` (responsive column stacking)
+- [x] Install `@vercel/analytics`, add `<Analytics />` to `layout.tsx`
+- [x] Add metadata in `layout.tsx` (title, description, OG tags)
+- [x] Push to GitHub: https://github.com/hungHoni/AgencyAI
+- [ ] Deploy to Vercel (connect GitHub repo via dashboard)
 
 ### Phase 2: Page Sections (Day 2-3)
 - [ ] Build `Hero.tsx` — `grid-template-columns: 5fr 4fr`, headline, description, CTA buttons
@@ -114,14 +133,26 @@ CHATBOT EMBED FLOW (v1)
 - [ ] Wire `ContactForm.tsx` to POST to `/api/contact`
 - [ ] Test end-to-end: submit → receive email
 
-### Phase 4: Chatbot Integration (Day 4)
-- [ ] Choose platform (evaluate Botpress vs Voiceflow vs Chatbase for: free tier limits, embeddability, branding)
-- [ ] Create chatbot knowledge base (services, process, pricing guidance, FAQs, turnaround times)
-- [ ] Configure conversation flows and lead capture
-- [ ] Add embed `<Script>` tag to `layout.tsx` or `page.tsx`
-- [ ] Wire "See It In Action" CTA to open the chatbot widget
-- [ ] Test 10+ conversation scenarios
-- [ ] Set up lead notifications (chatbot → founder email)
+### Phase 4: Custom AI Chatbot (Day 4)
+- [ ] Install `@anthropic-ai/sdk`
+- [ ] Add `ANTHROPIC_API_KEY` to `.env.local` and Vercel env vars
+- [ ] Create `app/api/chat/route.ts`:
+  - Accept `{ message, history }` POST body
+  - Build system prompt with agency info (services, pricing, process, FAQs)
+  - Call Claude Haiku (`claude-haiku-4-5`) with streaming
+  - Return `ReadableStream` for real-time token rendering
+  - Rate limit: max 20 messages per session (prevent abuse)
+- [ ] Create `components/ChatWidget.tsx` ('use client'):
+  - Hero mode: embedded in hero section, replaces static mockup with real AI chat
+  - Floating mode: bubble bottom-right, expands to chat panel on click
+  - Streaming text rendering (tokens appear as they arrive)
+  - Message history in React state
+  - Lead capture: after 3+ messages, prompt for name + email
+  - Error fallback: "Our AI is taking a break. Use the contact form below."
+- [ ] Write system prompt (agency services, process, pricing guidance, turnaround)
+- [ ] Wire "See It In Action" CTA to scroll to hero and focus chat input
+- [ ] Test 10+ conversation scenarios (services, pricing, edge cases, abuse)
+- [ ] Lead notification: when chatbot collects name+email, POST to /api/contact
 
 ### Phase 5: Tests & Polish (Day 5)
 - [ ] Install Vitest + testing-library
@@ -159,7 +190,21 @@ CODE PATH COVERAGE
     ├── Nav links scroll to sections
     └── Contact form submission end-to-end
 
-COVERAGE: 12 cases across 3 files
+[+] app/api/chat/route.ts
+    ├── POST valid message + history → streams response
+    ├── POST empty message → returns 400
+    ├── POST exceeds 20 message limit → returns 429 + limit message
+    ├── Claude API failure → returns 500 + fallback message
+    └── Claude API timeout → returns 504 + timeout message
+
+[+] components/ChatWidget.tsx
+    ├── Renders chat input and send button
+    ├── Send message → shows streaming response
+    ├── API error → shows fallback message
+    ├── 20 message limit → shows limit message
+    └── Lead capture prompt appears after 3+ messages
+
+COVERAGE: 22 cases across 5 files
 ```
 
 ## Failure Modes
@@ -168,13 +213,16 @@ COVERAGE: 12 cases across 3 files
 |---------|-------|----------------|-------------|
 | Resend API down | YES | 500 response → error msg | User sees "Something went wrong, try again" |
 | Invalid email format | YES | 400 response → inline error | User sees "Please enter a valid email" |
-| Chatbot widget fails to load | NO (manual) | None (3rd party) | No chatbot bubble appears. User can still use contact form. |
+| Claude API down/slow | YES | Error fallback msg | User sees "Our AI is taking a break. Use the contact form below." |
+| Claude API rate limited | YES | 429 handling | User sees "Lots of people chatting! Try again in a moment." |
+| Malformed API response | YES | Try/catch | Graceful fallback to contact form |
+| Session abuse (spam) | YES | 20 msg limit | User sees "You've reached the message limit. Book a free call for more." |
 | DNS not propagated at launch | NO | None | Site not reachable on custom domain. Vercel subdomain works as fallback. |
 
 ## NOT in scope (v1)
 
 - Dashboard / internal tooling (deferred until 3-5 clients)
-- API-based custom chatbot UI (v2 TODO)
+- Multi-industry chatbot personalities (dental, restaurant, salon variants)
 - Multiple industry demo scenarios (start with 1, add based on customer feedback)
 - Pricing page (using "Book a Free Call" CTA until pricing validated)
 - Blog / content section
@@ -184,9 +232,15 @@ COVERAGE: 12 cases across 3 files
 
 ## What already exists
 
-- `wireframe-v2.html` — fully styled HTML/CSS reference for all sections. Can be used as a pixel-perfect guide. Contains the exact color values, spacing, typography, and layout specifications.
+- `wireframe-v2.html` — fully styled HTML/CSS reference for all sections. Pixel-perfect guide with exact color values, spacing, typography, and layout specifications.
 - `design-doc.md` — approved design document with all constraints, premises, and requirements.
-- `.claude/skills/taste-skill/SKILL.md` — design rules to enforce during implementation.
+- `DESIGN.md` — extracted design system tokens (colors, typography, spacing, radius, shadows, motion, anti-slop rules).
+- `app/globals.css` — Tailwind v4 `@theme inline` with all design tokens. Custom tokens: `accent`, `accent-muted`, `accent-bg`, `accent-border`, `rounded-card`, `rounded-btn`, `shadow-card`, `shadow-elevated`, `ease-smooth`, `duration-400`, `max-w-site`.
+- `app/layout.tsx` — Root layout with Outfit font, SEO metadata, OG tags, Vercel Analytics.
+- `components/Nav.tsx` — Sticky nav, backdrop-blur, logo, 4 links (hidden <1024px), CTA button.
+- `components/Footer.tsx` — Logo + 3 links, responsive column stacking.
+- `app/page.tsx` — Page shell importing Nav + Footer, placeholder for Phase 2 sections.
+- `.agents/plans/phase-1-foundation.md` — Detailed Phase 1 execution plan (completed).
 
 ## Worktree Parallelization
 
@@ -195,7 +249,7 @@ COVERAGE: 12 cases across 3 files
 | Phase 1: Foundation | app/, config files | — |
 | Phase 2: Sections | components/ | Phase 1 |
 | Phase 3: Form backend | app/api/, components/ContactForm | Phase 1 |
-| Phase 4: Chatbot | app/layout or page | Phase 1 |
+| Phase 4: Chatbot | app/api/chat/, components/ChatWidget | Phase 1 |
 | Phase 5: Tests | __tests__/, e2e/ | Phases 2-4 |
 
 **Parallel lanes:**
