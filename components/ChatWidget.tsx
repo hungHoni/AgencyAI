@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useState, useRef, useEffect, useCallback, type FormEvent } from "react";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -10,10 +10,23 @@ const GREETING: Message = {
     "Hi! I'm the AgencyAI assistant. Ask me anything about our AI chatbot services, pricing, or process. How can I help?",
 };
 
+function TypingIndicator() {
+  return (
+    <div className="bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] max-w-[85%] shrink-0 animate-chat-bubble">
+      <div className="flex gap-1.5 items-center h-[18px]">
+        <span className="typing-dot w-[6px] h-[6px] bg-zinc-500 rounded-full" />
+        <span className="typing-dot w-[6px] h-[6px] bg-zinc-500 rounded-full" />
+        <span className="typing-dot w-[6px] h-[6px] bg-zinc-500 rounded-full" />
+      </div>
+    </div>
+  );
+}
+
 export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
+  const [showTyping, setShowTyping] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showLeadCapture, setShowLeadCapture] = useState(false);
   const [leadCaptured, setLeadCaptured] = useState(false);
@@ -24,12 +37,14 @@ export default function ChatWidget() {
     "idle"
   );
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const heroInputRef = useRef<HTMLInputElement>(null);
+  const floatingInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, showTyping]);
 
-  async function sendMessage() {
+  const sendMessage = useCallback(async () => {
     if (!input.trim() || isStreaming) return;
     const userMessage = input.trim();
     setInput("");
@@ -43,6 +58,13 @@ export default function ChatWidget() {
     ];
     setMessages(newMessages);
     setIsStreaming(true);
+    setShowTyping(true);
+
+    // Re-focus input after clearing
+    requestAnimationFrame(() => {
+      heroInputRef.current?.focus();
+      floatingInputRef.current?.focus();
+    });
 
     try {
       const res = await fetch("/api/chat", {
@@ -62,6 +84,8 @@ export default function ChatWidget() {
       const decoder = new TextDecoder();
       let assistantMessage = "";
 
+      // Replace typing indicator with empty bot message
+      setShowTyping(false);
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
       while (true) {
@@ -84,6 +108,7 @@ export default function ChatWidget() {
         setShowLeadCapture(true);
       }
     } catch (err) {
+      setShowTyping(false);
       setError(
         err instanceof Error
           ? err.message
@@ -91,8 +116,14 @@ export default function ChatWidget() {
       );
     } finally {
       setIsStreaming(false);
+      setShowTyping(false);
+      // Re-focus input after streaming completes
+      requestAnimationFrame(() => {
+        heroInputRef.current?.focus();
+        floatingInputRef.current?.focus();
+      });
     }
-  }
+  }, [input, isStreaming, messages, leadCaptured]);
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -130,17 +161,23 @@ export default function ChatWidget() {
   }
 
   // ─── Shared Chat UI ───────────────────────────────────────
-  function ChatUI({ compact = false }: { compact?: boolean }) {
+  function ChatUI({
+    compact = false,
+    inputRef,
+  }: {
+    compact?: boolean;
+    inputRef?: React.RefObject<HTMLInputElement | null>;
+  }) {
     return (
       <div
         className={`bg-zinc-900 text-zinc-300 relative flex flex-col ${
           compact
-            ? "rounded-2xl h-[520px] w-[380px]"
-            : "rounded-[calc(var(--radius)+4px)] shadow-elevated"
+            ? "rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-48px)] max-sm:h-[70vh] animate-chat-panel"
+            : "rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px]"
         }`}
       >
         {/* Inner border refraction */}
-        <div className="absolute top-3 left-3 right-3 bottom-3 border border-white/[0.04] rounded-card pointer-events-none" />
+        <div className="absolute top-3 left-3 right-3 bottom-3 border border-white/[0.04] rounded-card pointer-events-none z-0" />
 
         {/* Header */}
         <div
@@ -186,18 +223,19 @@ export default function ChatWidget() {
 
         {/* Messages */}
         <div
-          className={`flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 ${
+          className={`flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 ${
             compact ? "px-5 py-4" : "px-6 py-5"
           }`}
         >
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={
+              className={`break-words overflow-wrap-anywhere animate-chat-bubble ${
                 msg.role === "assistant"
-                  ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%]"
-                  : "bg-emerald-500 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto"
-              }
+                  ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0"
+                  : "bg-emerald-500 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"
+              }`}
+              style={{ animationDelay: i === 0 ? "0.15s" : "0s" }}
             >
               {msg.content || (
                 <span className="inline-block w-1.5 h-4 bg-zinc-500 animate-pulse" />
@@ -205,8 +243,10 @@ export default function ChatWidget() {
             </div>
           ))}
 
+          {showTyping && <TypingIndicator />}
+
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 px-4 py-3 rounded-[14px_14px_14px_4px] text-[13px] text-red-400 leading-[1.65] max-w-[85%]">
+            <div className="bg-red-500/10 border border-red-500/20 px-4 py-3 rounded-[14px_14px_14px_4px] text-[13px] text-red-400 leading-[1.65] max-w-[85%] shrink-0 break-words animate-chat-bubble">
               {error}{" "}
               <a href="#contact" className="underline hover:text-red-300">
                 Use the contact form
@@ -216,7 +256,7 @@ export default function ChatWidget() {
 
           {/* Lead capture */}
           {showLeadCapture && leadStatus !== "sent" && (
-            <div className="bg-white/5 border border-emerald-500/20 px-4 py-4 rounded-[14px] max-w-[85%]">
+            <div className="bg-white/5 border border-emerald-500/20 px-4 py-4 rounded-[14px] max-w-[85%] shrink-0 animate-chat-bubble">
               <p className="text-[12px] text-zinc-400 mb-3">
                 Enjoying the chat? Leave your info and we&apos;ll follow up with
                 a custom demo.
@@ -227,14 +267,14 @@ export default function ChatWidget() {
                   placeholder="Your name"
                   value={leadName}
                   onChange={(e) => setLeadName(e.target.value)}
-                  className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600"
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth"
                 />
                 <input
                   type="email"
                   placeholder="Your email"
                   value={leadEmail}
                   onChange={(e) => setLeadEmail(e.target.value)}
-                  className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600"
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth"
                 />
                 <div className="flex gap-2">
                   <button
@@ -256,7 +296,7 @@ export default function ChatWidget() {
             </div>
           )}
           {showLeadCapture && leadStatus === "sent" && (
-            <div className="bg-emerald-500/10 border border-emerald-500/20 px-4 py-3 rounded-[14px] text-[12px] text-emerald-400 max-w-[85%]">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 px-4 py-3 rounded-[14px] text-[12px] text-emerald-400 max-w-[85%] shrink-0 animate-chat-bubble">
               Thanks! We&apos;ll be in touch soon.
             </div>
           )}
@@ -271,19 +311,20 @@ export default function ChatWidget() {
           }`}
         >
           <input
-            id="chat-input"
+            ref={inputRef}
+            id={compact ? undefined : "chat-input"}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask anything about our services..."
             disabled={isStreaming}
-            className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-btn py-3 px-3.5 text-[13px] text-zinc-100 outline-none transition-all duration-400 ease-smooth focus:border-emerald-500/30 placeholder:text-zinc-600 disabled:opacity-50"
+            className="flex-1 min-w-0 bg-white/[0.04] border border-white/[0.08] rounded-btn py-3 px-3.5 text-[13px] text-zinc-100 outline-none transition-all duration-400 ease-smooth focus:border-emerald-500/30 placeholder:text-zinc-600 disabled:opacity-50"
           />
           <button
             onClick={sendMessage}
             disabled={isStreaming || !input.trim()}
-            className="bg-emerald-500 border-none rounded-btn px-3.5 py-3 flex items-center hover:bg-emerald-600 transition-all duration-400 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-emerald-500 border-none rounded-btn px-3.5 py-3 flex items-center justify-center shrink-0 hover:bg-emerald-600 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <svg
               viewBox="0 0 24 24"
@@ -303,18 +344,18 @@ export default function ChatWidget() {
   return (
     <>
       {/* Hero mode — inline in hero section */}
-      <ChatUI />
+      <ChatUI inputRef={heroInputRef} />
 
       {/* Floating bubble + panel */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 max-sm:bottom-4 max-sm:right-4">
         {floatingOpen ? (
-          <div className="shadow-elevated animate-in">
-            <ChatUI compact />
+          <div className="shadow-elevated">
+            <ChatUI compact inputRef={floatingInputRef} />
           </div>
         ) : (
           <button
             onClick={() => setFloatingOpen(true)}
-            className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-elevated hover:bg-emerald-600 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-400 ease-smooth"
+            className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-elevated hover:bg-emerald-600 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth"
           >
             <svg
               viewBox="0 0 24 24"

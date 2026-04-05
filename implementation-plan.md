@@ -154,14 +154,14 @@ CUSTOM CHATBOT FLOW
 - [ ] Test 10+ conversation scenarios (services, pricing, edge cases, abuse)
 - [x] Lead notification: when chatbot collects name+email, POST to /api/contact
 
-### Phase 5: Tests & Polish (Day 5)
-- [ ] Install Vitest + testing-library
-- [ ] Write API route tests: `__tests__/api/contact.test.ts` (valid submit, missing fields, invalid email, Resend failure)
-- [ ] Write component test: `__tests__/components/ContactForm.test.tsx` (render, validate, success, error)
-- [ ] Install Playwright, write E2E smoke test: `e2e/smoke.spec.ts` (page loads, sections visible, form submits)
+### Phase 5: Tests & Polish (Day 5) — DONE (2026-04-05)
+- [x] Install Vitest + testing-library
+- [x] Write API route tests: `__tests__/api/contact.test.ts` (5 tests: valid submit, missing fields, invalid email, multiple missing, optional message)
+- [x] Write component test: `__tests__/components/ContactForm.test.tsx` (5 tests: render, validate, invalid email, success, error)
+- [x] Install Playwright, write E2E smoke test: `e2e/smoke.spec.ts` (3 tests: page loads, nav scrolls, form validates)
 - [ ] Responsive QA: 1440px, 1024px, 768px, 375px
 - [ ] Performance: Lighthouse audit, target >90 performance score
-- [ ] Add favicon
+- [x] Add favicon (custom SVG — emerald "AI" on dark background)
 - [ ] Cross-browser: Chrome, Safari, Firefox, mobile Safari
 - [ ] Proofread all copy
 - [ ] Verify custom domain + SSL working

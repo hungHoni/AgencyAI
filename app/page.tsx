@@ -7,6 +7,7 @@ import HowItWorks from "@/components/HowItWorks";
 import CtaBanner from "@/components/CtaBanner";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function Home() {
   return (
@@ -14,12 +15,24 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Metrics />
-        <Capabilities />
-        <Services />
-        <HowItWorks />
-        <CtaBanner />
-        <ContactForm />
+        <AnimateOnScroll>
+          <Metrics />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <Capabilities />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <Services />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <HowItWorks />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <CtaBanner />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <ContactForm />
+        </AnimateOnScroll>
       </main>
       <Footer />
     </>
