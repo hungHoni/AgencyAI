@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ChatPreview from "@/components/ChatPreview";
+import ChatWidget from "@/components/ChatWidget";
 
 export default function Hero() {
   return (
@@ -23,7 +23,7 @@ export default function Hero() {
 
         <div className="flex gap-3 items-center">
           <Link
-            href="#capabilities"
+            href="#chat-input"
             className="bg-zinc-900 text-[#fafaf9] px-7 py-3.5 rounded-btn text-[15px] font-semibold tracking-[-0.2px] hover:bg-zinc-700 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth"
           >
             See It In Action
@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
 
       <div>
-        <ChatPreview />
+        <ChatWidget />
       </div>
     </section>
   );

@@ -125,13 +125,13 @@ CUSTOM CHATBOT FLOW
 - [x] Build `ContactForm.tsx` — 'use client', split layout (info left, form right), validation, success/error states
 - [x] Write real copy for all sections (not placeholder text)
 
-### Phase 3: Contact Form Backend (Day 3)
-- [ ] Install `resend` package
-- [ ] Create `app/api/contact/route.ts`
-- [ ] Implement: validate required fields (name, business, email), sanitize, call Resend API
-- [ ] Return appropriate status codes (200 success, 400 validation error, 500 API error)
-- [ ] Wire `ContactForm.tsx` to POST to `/api/contact`
-- [ ] Test end-to-end: submit → receive email
+### Phase 3: Contact Form Backend (Day 3) — DONE (2026-04-05)
+- [x] Install `resend` package (v6.10.0)
+- [x] Create `app/api/contact/route.ts`
+- [x] Implement: validate required fields (name, business, email), sanitize, call Resend API
+- [x] Return appropriate status codes (200 success, 400 validation error, 500 API error)
+- [x] Wire `ContactForm.tsx` to POST to `/api/contact` (already wired in Phase 2)
+- [ ] Test end-to-end: submit → receive email (requires valid Resend API key + domain verification)
 
 ### Phase 4: Custom AI Chatbot (Day 4)
 - [ ] Install `@anthropic-ai/sdk`
