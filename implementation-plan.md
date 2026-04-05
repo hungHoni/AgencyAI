@@ -112,18 +112,18 @@ CUSTOM CHATBOT FLOW
 - [x] Install `@vercel/analytics`, add `<Analytics />` to `layout.tsx`
 - [x] Add metadata in `layout.tsx` (title, description, OG tags)
 - [x] Push to GitHub: https://github.com/hungHoni/AgencyAI
-- [ ] Deploy to Vercel (connect GitHub repo via dashboard)
+- [x] Deploy to Vercel (connect GitHub repo via dashboard)
 
-### Phase 2: Page Sections (Day 2-3)
-- [ ] Build `Hero.tsx` — `grid-template-columns: 5fr 4fr`, headline, description, CTA buttons
-- [ ] Build `ChatPreview.tsx` — static chat mockup (dark card, conversation bubbles, breathing dot)
-- [ ] Build `Metrics.tsx` — 4 stats, left-aligned, no cards
-- [ ] Build `Capabilities.tsx` — 2-col grid, icon+text rows, hover card effect
-- [ ] Build `Services.tsx` — `2fr/1fr` grid, AI Chatbot dark card spans rows 1-2
-- [ ] Build `HowItWorks.tsx` — 3 steps with connecting line
-- [ ] Build `CtaBanner.tsx` — dark section with subtle radial gradient
-- [ ] Build `ContactForm.tsx` — 'use client', split layout (info left, form right), validation, success/error states
-- [ ] Write real copy for all sections (not placeholder text)
+### Phase 2: Page Sections (Day 2-3) — DONE (2026-04-05)
+- [x] Build `Hero.tsx` — `grid-template-columns: 5fr 4fr`, headline, description, CTA buttons
+- [x] Build `ChatPreview.tsx` — static chat mockup (dark card, conversation bubbles, breathing dot)
+- [x] Build `Metrics.tsx` — 4 stats, left-aligned, no cards
+- [x] Build `Capabilities.tsx` — 2-col grid, icon+text rows, hover card effect
+- [x] Build `Services.tsx` — `2fr/1fr` grid, AI Chatbot dark card spans rows 1-2
+- [x] Build `HowItWorks.tsx` — 3 steps with connecting line
+- [x] Build `CtaBanner.tsx` — dark section with subtle radial gradient
+- [x] Build `ContactForm.tsx` — 'use client', split layout (info left, form right), validation, success/error states
+- [x] Write real copy for all sections (not placeholder text)
 
 ### Phase 3: Contact Form Backend (Day 3)
 - [ ] Install `resend` package
