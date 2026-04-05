@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgencyAI — AI Chatbots for Local Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --bg-card: #ffffff;
+    --bg-dark: #18181b;
+    --bg-dark-card: #27272a;
+    --border: rgba(0,0,0,0.06);
+    --border-strong: rgba(0,0,0,0.10);
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
+    --accent: #10b981;
+    --accent-muted: #059669;
+    --accent-bg: rgba(16,185,129,0.06);
+    --accent-border: rgba(16,185,129,0.15);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+    --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.04);
+    --radius: 1.25rem;
+    --radius-sm: 0.625rem;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ═══ NAV ═══ */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 48px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,249,0.85);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+  .logo-mark { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta {
+    background: var(--bg-dark);
+    color: #fafaf9;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: -0.2px;
+  }
+  .nav-cta:hover { background: #3f3f46; transform: translateY(-1px); }
+
+  /* ═══ HERO — Asymmetric Split ═══ */
+  .hero {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+    padding: 96px 48px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    min-height: 85dvh;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .hero-tag .status-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: breathe 2.4s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: clamp(2.75rem, 5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.04;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    letter-spacing: -1.8px;
+    max-width: 560px;
+  }
+  .hero .desc {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 480px;
+    line-height: 1.7;
+    letter-spacing: -0.1px;
+  }
+  .hero-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-primary {
+    background: var(--bg-dark);
+    color: #fafaf9;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: -0.2px;
+  }
+  .btn-primary:hover { background: #3f3f46; transform: translateY(-2px); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 14px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: -0.2px;
+  }
+  .btn-ghost:hover { border-color: var(--text-muted); color: var(--text-primary); transform: translateY(-2px); }
+
+  /* ═══ CHATBOT PREVIEW ═══ */
+  .chatbot-preview {
+    background: var(--bg-dark);
+    border-radius: calc(var(--radius) + 4px);
+    padding: 24px;
+    box-shadow: var(--shadow-elevated);
+    color: #e4e4e7;
+    position: relative;
+  }
+  .chatbot-preview::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: var(--radius);
+    pointer-events: none;
+  }
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .chat-avatar {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .chat-avatar svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
+  .chat-info { flex: 1; }
+  .chat-name { font-size: 14px; font-weight: 600; color: #f4f4f5; letter-spacing: -0.2px; }
+  .chat-status { font-size: 11px; color: var(--accent); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  .chat-status .status-dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: breathe 2.4s ease-in-out infinite; }
+
+  .chat-bubble { margin-bottom: 12px; max-width: 85%; }
+  .chat-bubble.bot {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 13px 16px;
+    border-radius: 14px 14px 14px 4px;
+    font-size: 13px;
+    color: #a1a1aa;
+    line-height: 1.65;
+  }
+  .chat-bubble.user {
+    background: var(--accent);
+    padding: 13px 16px;
+    border-radius: 14px 14px 4px 14px;
+    font-size: 13px;
+    color: #fff;
+    margin-left: auto;
+    line-height: 1.65;
+  }
+  .chat-compose {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .chat-compose input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #f4f4f5;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: var(--transition);
+  }
+  .chat-compose input::placeholder { color: #52525b; }
+  .chat-compose input:focus { border-color: rgba(16,185,129,0.3); }
+  .chat-compose button {
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+  }
+  .chat-compose button:hover { background: var(--accent-muted); }
+  .chat-compose button svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+
+  /* ═══ METRICS BAR ═══ */
+  .metrics {
+    display: flex;
+    justify-content: flex-start;
+    gap: 64px;
+    padding: 56px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+  .metric { text-align: left; }
+  .metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -1px;
+  }
+  .metric-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* ═══ CAPABILITIES — 2-Column Zig-Zag ═══ */
+  .capabilities {
+    padding: 96px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-muted);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -1.2px;
+    margin-bottom: 16px;
+    max-width: 520px;
+    line-height: 1.08;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+  .cap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cap-item {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+    padding: 28px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    transition: var(--transition);
+    align-items: start;
+  }
+  .cap-item:hover {
+    background: var(--bg-card);
+    border-color: var(--border);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+  .cap-icon {
+    width: 52px; height: 52px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cap-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .cap-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .cap-item p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 65ch;
+  }
+
+  /* ═══ SERVICES — Asymmetric 2fr/1fr Grid ═══ */
+  .services {
+    padding: 96px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+  }
+  .service-card.hero-card {
+    grid-row: 1 / 3;
+    background: var(--bg-dark);
+    color: #e4e4e7;
+    border-color: transparent;
+  }
+  .service-card.hero-card:hover { border-color: rgba(255,255,255,0.08); }
+  .service-card.hero-card .service-tag { background: var(--accent); color: #fff; }
+  .service-card.hero-card h3 { color: #f4f4f5; }
+  .service-card.hero-card > p { color: #a1a1aa; }
+  .service-card.hero-card .feature-list li { color: #a1a1aa; border-top-color: rgba(255,255,255,0.06); }
+
+  .service-tag {
+    display: inline-block;
+    background: var(--accent-bg);
+    color: var(--accent-muted);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .service-icon-box {
+    width: 44px; height: 44px;
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .service-card.hero-card .service-icon-box { background: rgba(16,185,129,0.15); }
+  .service-icon-box svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .service-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.4px;
+  }
+  .service-card > p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    max-width: 65ch;
+  }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    border-top: 1px solid var(--border);
+  }
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2310b981'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center;
+  }
+
+  /* ═══ HOW IT WORKS ═══ */
+  .how-it-works {
+    padding: 96px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-top: 56px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: var(--border-strong);
+  }
+  .step { text-align: left; position: relative; }
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.5px;
+  }
+  .step h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  /* ═══ CTA BANNER ═══ */
+  .cta-banner {
+    margin: 48px 48px 0;
+    max-width: 1304px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--bg-dark);
+    border-radius: var(--radius);
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(16,185,129,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-banner h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: #f4f4f5;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .cta-banner p {
+    font-size: 15px;
+    color: #71717a;
+    max-width: 420px;
+    line-height: 1.6;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-accent:hover { background: var(--accent-muted); transform: translateY(-2px); }
+  .btn-accent:active { transform: translateY(0) scale(0.98); }
+
+  /* ═══ CONTACT ═══ */
+  .contact {
+    padding: 96px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-info {}
+  .contact-info .section-title { max-width: 400px; }
+  .contact-detail {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-detail-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-detail-item h5 { font-size: 14px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.2px; }
+  .contact-detail-item p { font-size: 13px; color: var(--text-secondary); margin-top: 1px; }
+
+  .contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow-card);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.1px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 13px 14px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: var(--transition);
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .form-submit {
+    background: var(--bg-dark);
+    color: #fafaf9;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 4px;
+    letter-spacing: -0.2px;
+  }
+  .form-submit:hover { background: #3f3f46; transform: translateY(-1px); }
+  .form-submit:active { transform: translateY(0) scale(0.98); }
+
+  /* ═══ FOOTER ═══ */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footer-left { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: var(--transition); }
+  .footer-links a:hover { color: var(--text-primary); }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; min-height: auto; padding: 64px 32px; }
+    .cap-grid { grid-template-columns: 1fr; }
+    .service-grid { grid-template-columns: 1fr; }
+    .service-card.hero-card { grid-row: auto; }
+    .contact { grid-template-columns: 1fr; gap: 48px; }
+    .cta-banner { grid-template-columns: 1fr; text-align: center; padding: 48px 32px; }
+    .cta-banner p { margin: 0 auto; }
+    .steps::before { display: none; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 20px; }
+    .capabilities, .services, .how-it-works, .contact { padding: 64px 20px; }
+    .cta-banner { margin: 32px 20px 0; padding: 40px 24px; }
+    .metrics { padding: 40px 20px; gap: 32px; flex-wrap: wrap; }
+    .steps { grid-template-columns: 1fr; gap: 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">agency<span class="logo-mark">AI</span></div>
+  <div class="nav-links">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#services">Services</a>
+    <a href="#how-it-works">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta">Book a Free Call</button>
+</nav>
+
+<!-- HERO — Left-aligned, asymmetric split -->
+<section class="hero">
+  <div>
+    <div class="hero-tag">
+      <span class="status-dot"></span>
+      AI-Powered for Local Businesses
+    </div>
+    <h1>An AI employee that never&nbsp;sleeps.</h1>
+    <p class="desc">Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support around the clock. Built for businesses that can't afford to miss a single customer.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">See It In Action</button>
+      <button class="btn-ghost">Book a Free Call</button>
+    </div>
+  </div>
+  <div>
+    <div class="chatbot-preview">
+      <div class="chat-header">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="chat-info">
+          <div class="chat-name">Rosewood Hair Studio</div>
+          <div class="chat-status"><span class="status-dot"></span> Online now</div>
+        </div>
+      </div>
+      <div class="chat-bubble bot">Hi there! Welcome to Rosewood. I can answer questions about our services, help you book an appointment, or check pricing. How can I help?</div>
+      <div class="chat-bubble user">Do you do balayage? How much is it?</div>
+      <div class="chat-bubble bot">Absolutely. Balayage starts at $165 for medium-length hair, including consultation, color, and blowout. Our colorist Priya specializes in balayage and has openings this week. Want to book, or any other questions?</div>
+      <div class="chat-bubble user">What's the difference between balayage and highlights?</div>
+      <div class="chat-bubble bot">Balayage is hand-painted for a natural, sun-kissed gradient. Highlights use foils for more defined streaks. Balayage grows out more naturally, so fewer touch-ups. Most clients prefer it for low-maintenance color.</div>
+      <div class="chat-compose">
+        <input type="text" placeholder="Ask anything about our services...">
+        <button><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS — Left-aligned, no cards -->
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-value">24/7</div>
+    <div class="metric-label">Always available</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">~80%</div>
+    <div class="metric-label">Questions handled instantly</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">Zero</div>
+    <div class="metric-label">Missed customer inquiries</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">No code</div>
+    <div class="metric-label">Required to get started</div>
+  </div>
+</div>
+
+<!-- CAPABILITIES — 2-Column Grid, no cards unless hovered -->
+<section class="capabilities" id="capabilities">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Everything your customers need, instantly.</h2>
+  <p class="section-desc">Your chatbot is trained on your business. It knows your services, prices, hours, and policies. No scripts, no decision trees.</p>
+  <div class="cap-grid">
+    <div class="cap-item">
+      <div class="cap-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <h4>Answer questions</h4>
+        <p>Services, pricing, hours, policies, directions. Anything a customer would normally call about.</p>
+      </div>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <h4>Book appointments</h4>
+        <p>Checks availability, books slots, sends confirmations. Syncs directly with your calendar.</p>
+      </div>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <h4>Capture leads</h4>
+        <p>Collects name, email, phone from interested visitors. Sends them to you the moment they come in.</p>
+      </div>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>Handle support</h4>
+        <p>Returns, complaints, status checks. Resolves simple issues on the spot, escalates when needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — Asymmetric 2fr/1fr, hero card spans 2 rows -->
+<section class="services" id="services">
+  <div class="section-label">Services</div>
+  <h2 class="section-title">How we help you grow.</h2>
+  <p class="section-desc">Start with a chatbot. Add a website or automations when you're ready.</p>
+  <div class="service-grid">
+    <div class="service-card hero-card">
+      <div class="service-tag">Most requested</div>
+      <div class="service-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <h3>AI Chatbot</h3>
+      <p>A custom AI assistant embedded on your website. Trained specifically on your business. Handles everything from answering questions to booking appointments to capturing leads after hours.</p>
+      <ul class="feature-list">
+        <li>Custom trained on your business data</li>
+        <li>Answers any customer question accurately</li>
+        <li>Books appointments directly</li>
+        <li>Captures leads around the clock</li>
+        <li>Works on any existing website</li>
+        <li>Learns and improves over time</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-box">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Website Design</h3>
+      <p>Professional sites that turn visitors into customers. Fast, mobile-first, built for local search.</p>
+      <ul class="feature-list">
+        <li>Custom design</li>
+        <li>Mobile responsive</li>
+        <li>SEO optimized</li>
+        <li>Google Business ready</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-box">
+        <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+      </div>
+      <h3>Automation Flows</h3>
+      <p>Connect your tools. Automate follow-ups, reminders, review requests, and reporting.</p>
+      <ul class="feature-list">
+        <li>Appointment reminders</li>
+        <li>Review requests</li>
+        <li>Email sequences</li>
+        <li>Custom workflows</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-label">Process</div>
+  <h2 class="section-title">Three steps. That's it.</h2>
+  <p class="section-desc">No technical knowledge required. We handle everything from start to finish.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Book a free call</h4>
+      <p>Tell us about your business, your customers, and what you need help with.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>We build it</h4>
+      <p>Custom chatbot trained on your business data, ready in days, not weeks.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Go live</h4>
+      <p>One line of code on your site. We handle deployment, monitoring, and updates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div>
+    <h2>Ready to stop missing customers?</h2>
+    <p>Book a free 15-minute call. We'll show you exactly what your AI chatbot could do for your business.</p>
+  </div>
+  <button class="btn-accent">Book a Free Call</button>
+</div>
+
+<!-- CONTACT — Asymmetric split -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Tell us about your business.</h2>
+    <p class="section-desc">We'll show you exactly what your AI chatbot could handle, with a custom demo for your industry.</p>
+    <div class="contact-detail">
+      <div class="contact-detail-item">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h5>Quick response</h5>
+          <p>We respond within 2 hours during business days</p>
+        </div>
+      </div>
+      <div class="contact-detail-item">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h5>Free consultation</h5>
+          <p>15-minute call to understand your needs</p>
+        </div>
+      </div>
+      <div class="contact-detail-item">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h5>No commitment</h5>
+          <p>No contracts, no obligations. See the value first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Priya Ramirez">
+      </div>
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" placeholder="Rosewood Hair Studio">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="priya@rosewoodhair.com">
+    </div>
+    <div class="form-group">
+      <label>What would you want your AI chatbot to do?</label>
+      <textarea placeholder="Answer questions about services, book appointments, handle after-hours inquiries..."></textarea>
+    </div>
+    <button class="form-submit">Send Message</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">agencyAI</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fafaf9;
+  --bg-card: #ffffff;
+  --bg-dark: #18181b;
+  --bg-dark-card: #27272a;
+  --border: rgba(0,0,0,0.06);
+  --border-strong: rgba(0,0,0,0.10);
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --accent: #10b981;
+  --accent-muted: #059669;
+  --accent-bg: rgba(16,185,129,0.06);
+  --accent-border: rgba(16,185,129,0.15);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.04);
+  --radius: 1.25rem;
+  --radius-sm: 0.625rem;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-outfit: var(--font-outfit);
+  --color-accent: #10b981;
+  --color-accent-muted: #059669;
+  --color-accent-bg: rgba(16,185,129,0.06);
+  --color-accent-border: rgba(16,185,129,0.15);
+  --radius-card: 1.25rem;
+  --radius-btn: 0.625rem;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.04);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --max-width-site: 1400px;
+  --duration-400: 400ms;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
