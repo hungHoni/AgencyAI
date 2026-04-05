@@ -133,26 +133,26 @@ CUSTOM CHATBOT FLOW
 - [x] Wire `ContactForm.tsx` to POST to `/api/contact` (already wired in Phase 2)
 - [ ] Test end-to-end: submit → receive email (requires valid Resend API key + domain verification)
 
-### Phase 4: Custom AI Chatbot (Day 4)
-- [ ] Install `@anthropic-ai/sdk`
-- [ ] Add `ANTHROPIC_API_KEY` to `.env.local` and Vercel env vars
-- [ ] Create `app/api/chat/route.ts`:
+### Phase 4: Custom AI Chatbot (Day 4) — DONE (2026-04-05)
+- [x] Install `@anthropic-ai/sdk`
+- [x] Add `ANTHROPIC_API_KEY` to `.env.local` and Vercel env vars
+- [x] Create `app/api/chat/route.ts`:
   - Accept `{ message, history }` POST body
   - Build system prompt with agency info (services, pricing, process, FAQs)
   - Call Claude Haiku (`claude-haiku-4-5`) with streaming
   - Return `ReadableStream` for real-time token rendering
   - Rate limit: max 20 messages per session (prevent abuse)
-- [ ] Create `components/ChatWidget.tsx` ('use client'):
+- [x] Create `components/ChatWidget.tsx` ('use client'):
   - Hero mode: embedded in hero section, replaces static mockup with real AI chat
   - Floating mode: bubble bottom-right, expands to chat panel on click
   - Streaming text rendering (tokens appear as they arrive)
   - Message history in React state
   - Lead capture: after 3+ messages, prompt for name + email
   - Error fallback: "Our AI is taking a break. Use the contact form below."
-- [ ] Write system prompt (agency services, process, pricing guidance, turnaround)
-- [ ] Wire "See It In Action" CTA to scroll to hero and focus chat input
+- [x] Write system prompt (agency services, process, pricing guidance, turnaround)
+- [x] Wire "See It In Action" CTA to scroll to hero and focus chat input
 - [ ] Test 10+ conversation scenarios (services, pricing, edge cases, abuse)
-- [ ] Lead notification: when chatbot collects name+email, POST to /api/contact
+- [x] Lead notification: when chatbot collects name+email, POST to /api/contact
 
 ### Phase 5: Tests & Polish (Day 5)
 - [ ] Install Vitest + testing-library
