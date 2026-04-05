@@ -111,14 +111,19 @@ export default function ChatWidget() {
   const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "sent">(
     "idle"
   );
-  const heroMessagesEndRef = useRef<HTMLDivElement>(null);
-  const floatingMessagesEndRef = useRef<HTMLDivElement>(null);
+  const heroScrollRef = useRef<HTMLDivElement>(null);
+  const floatingScrollRef = useRef<HTMLDivElement>(null);
   const heroInputRef = useRef<HTMLInputElement>(null);
   const floatingInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    heroMessagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    floatingMessagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll chat containers to bottom without moving the page
+    if (heroScrollRef.current) {
+      heroScrollRef.current.scrollTop = heroScrollRef.current.scrollHeight;
+    }
+    if (floatingScrollRef.current) {
+      floatingScrollRef.current.scrollTop = floatingScrollRef.current.scrollHeight;
+    }
   }, [messages, showTyping]);
 
   const sendMessage = useCallback(async () => {
@@ -219,9 +224,10 @@ export default function ChatWidget() {
   }
 
   // ─── Shared messages + compose (rendered inline, NOT as a sub-component) ───
-  function renderMessages(messagesEndRef: React.RefObject<HTMLDivElement | null>, compact: boolean) {
+  function renderMessages(scrollRef: React.RefObject<HTMLDivElement | null>, compact: boolean) {
     return (
       <div
+        ref={scrollRef}
         className={`flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 ${
           compact ? "px-5 py-4" : "px-6 py-5"
         }`}
@@ -301,7 +307,6 @@ export default function ChatWidget() {
           </div>
         )}
 
-        <div ref={messagesEndRef} />
       </div>
     );
   }
@@ -346,7 +351,7 @@ export default function ChatWidget() {
     <>
       {/* Hero mode — inline in hero section */}
       <ChatShell compact={false}>
-        {renderMessages(heroMessagesEndRef, false)}
+        {renderMessages(heroScrollRef, false)}
         {renderCompose(heroInputRef, false)}
       </ChatShell>
 
@@ -355,7 +360,7 @@ export default function ChatWidget() {
         {floatingOpen ? (
           <div className="shadow-elevated">
             <ChatShell compact onClose={() => setFloatingOpen(false)}>
-              {renderMessages(floatingMessagesEndRef, true)}
+              {renderMessages(floatingScrollRef, true)}
               {renderCompose(floatingInputRef, true)}
             </ChatShell>
           </div>
