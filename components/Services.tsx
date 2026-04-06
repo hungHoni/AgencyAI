@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
+
 function CheckIcon() {
   return (
     <svg
@@ -79,27 +83,59 @@ const services = [
 ];
 
 export default function Services() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="services" className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
-      <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
-        Services
+    <section id="services" ref={ref} className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(24px)",
+          transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
+          Services
+        </div>
+        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px] text-wrap-balance">
+          How we help you grow.
+        </h2>
+        <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mb-14">
+          Start with a chatbot. Add a website or automations when you&apos;re ready.
+        </p>
       </div>
-      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px] text-wrap-balance">
-        How we help you grow.
-      </h2>
-      <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mb-14">
-        Start with a chatbot. Add a website or automations when you&apos;re ready.
-      </p>
 
       <div className="grid grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-4 max-lg:grid-cols-1">
-        {services.map((service) => (
+        {services.map((service, i) => (
           <div
             key={service.title}
-            className={`rounded-card p-10 px-9 relative transition-all duration-400 ease-smooth flex flex-col ${
+            className={`group rounded-card p-10 px-9 relative flex flex-col ${
               service.isHero
                 ? "row-span-2 bg-zinc-900 text-zinc-300 border border-transparent hover:border-white/[0.08] max-lg:row-span-1"
                 : "bg-white border border-black/[0.06] hover:shadow-elevated hover:-translate-y-[3px] hover:border-black/10"
             }`}
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.98)",
+              transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.15 + i * 0.12}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.15 + i * 0.12}s, box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
+            }}
           >
             {service.tag && (
               <div
@@ -115,7 +151,7 @@ export default function Services() {
             {!service.tag && <div className="mb-6" />}
 
             <div
-              className={`w-11 h-11 rounded-btn flex items-center justify-center mb-5 ${
+              className={`w-11 h-11 rounded-btn flex items-center justify-center mb-5 transition-transform duration-400 ease-smooth group-hover:scale-110 ${
                 service.isHero
                   ? "bg-[rgba(16,185,129,0.15)]"
                   : "bg-[rgba(16,185,129,0.06)]"

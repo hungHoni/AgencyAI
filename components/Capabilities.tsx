@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
+
 const capabilities = [
   {
     title: "Answer questions",
@@ -47,11 +51,37 @@ const capabilities = [
 ];
 
 export default function Capabilities() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="capabilities" className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
-      {/* Side-by-side: header left, grid right — breaks the stacked rhythm */}
+    <section id="capabilities" ref={ref} className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
+      {/* Side-by-side: header left, grid right */}
       <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
-        <div className="max-lg:max-w-[520px]">
+        <div
+          className="max-lg:max-w-[520px]"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(24px)",
+            transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
           <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
             Capabilities
           </div>
@@ -65,12 +95,17 @@ export default function Capabilities() {
         </div>
 
         <div className="grid grid-cols-1 gap-3">
-          {capabilities.map((cap) => (
+          {capabilities.map((cap, i) => (
             <div
               key={cap.title}
-              className="grid grid-cols-[44px_1fr] gap-4 p-5 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-white hover:border-black/[0.06] hover:shadow-card hover:-translate-y-0.5"
+              className="group grid grid-cols-[44px_1fr] gap-4 p-5 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-white hover:border-black/[0.06] hover:shadow-card hover:-translate-y-0.5"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateX(0)" : "translateX(24px)",
+                transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.1}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.1}s, background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
+              }}
             >
-              <div className="w-11 h-11 bg-[rgba(16,185,129,0.06)] rounded-btn flex items-center justify-center">
+              <div className="w-11 h-11 bg-[rgba(16,185,129,0.06)] rounded-btn flex items-center justify-center transition-transform duration-400 ease-smooth group-hover:scale-110">
                 {cap.icon}
               </div>
               <div>

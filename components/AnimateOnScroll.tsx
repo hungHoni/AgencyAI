@@ -6,10 +6,12 @@ export default function AnimateOnScroll({
   children,
   className = "",
   delay = 0,
+  stagger = false,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  stagger?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -25,7 +27,7 @@ export default function AnimateOnScroll({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
@@ -35,7 +37,7 @@ export default function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={className}
+      className={`${className} ${stagger && visible ? "stagger-children" : ""}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(32px)",

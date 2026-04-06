@@ -7,32 +7,21 @@ import HowItWorks from "@/components/HowItWorks";
 import CtaBanner from "@/components/CtaBanner";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
     <>
+      <ScrollToTop />
       <Nav />
       <main id="main-content">
         <Hero />
-        <AnimateOnScroll>
-          <Metrics />
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <Capabilities />
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <Services />
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <HowItWorks />
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <CtaBanner />
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <ContactForm />
-        </AnimateOnScroll>
+        <Metrics />
+        <Capabilities />
+        <Services />
+        <HowItWorks />
+        <CtaBanner />
+        <ContactForm />
       </main>
       <Footer />
     </>

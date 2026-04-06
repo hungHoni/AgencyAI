@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -11,6 +11,24 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   function validate() {
     const newErrors: Record<string, string> = {};
@@ -47,10 +65,17 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
+      ref={sectionRef}
       className="max-w-site mx-auto px-12 py-24 grid grid-cols-2 gap-20 items-start max-lg:grid-cols-1 max-lg:gap-12 max-sm:px-5 max-sm:py-16"
     >
       {/* Left column — info & trust signals */}
-      <div>
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(24px)",
+          transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
         <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
           Contact
         </div>
@@ -115,7 +140,14 @@ export default function ContactForm() {
       </div>
 
       {/* Right column — form card */}
-      <div className="bg-white border border-black/[0.06] rounded-card p-10 shadow-card">
+      <div
+        className="bg-white border border-black/[0.06] rounded-card p-10 shadow-card"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(24px)",
+          transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s",
+        }}
+      >
         {status === "success" ? (
           <div className="text-center py-12">
             <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">

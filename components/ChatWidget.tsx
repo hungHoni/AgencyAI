@@ -367,7 +367,7 @@ export default function ChatWidget() {
         ) : (
           <button
             onClick={() => setFloatingOpen(true)}
-            className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-elevated hover:bg-emerald-600 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth"
+            className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-elevated hover:bg-emerald-600 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth animate-[bubble-in_0.5s_cubic-bezier(0.16,1,0.3,1)_1.5s_both]"
           >
             <svg
               viewBox="0 0 24 24"
