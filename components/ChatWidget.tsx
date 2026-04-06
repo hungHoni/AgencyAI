@@ -43,19 +43,19 @@ function ChatShell({
     <div
       className={`text-zinc-300 relative flex flex-col ${
         compact
-          ? "bg-zinc-900 rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-48px)] max-sm:h-[70vh] animate-chat-panel"
+          ? "bg-zinc-900/85 backdrop-blur-xl rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-48px)] max-sm:h-[70vh] animate-chat-panel"
           : "bg-zinc-900/80 backdrop-blur-xl rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px]"
       }`}
     >
       <div className="absolute top-3 left-3 right-3 bottom-3 border border-white/[0.04] rounded-card pointer-events-none z-0" />
       <div className={`flex items-center gap-3 border-b border-white/[0.06] shrink-0 relative z-10 ${compact ? "px-5 py-4" : "px-6 pb-[18px] pt-6"}`}>
-        <div className="w-9 h-9 bg-emerald-500 rounded-btn flex items-center justify-center shrink-0">
+        <div className="w-9 h-9 bg-blue-400 rounded-btn flex items-center justify-center shrink-0">
           <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-white fill-none" strokeWidth={2}><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
         </div>
         <div className="flex-1">
           <div className="text-sm font-semibold text-zinc-100 tracking-[-0.2px]">{title || "AgencyAI"}</div>
-          <div className="text-[11px] text-emerald-500 flex items-center gap-[5px] mt-px">
-            <span className="w-[5px] h-[5px] bg-emerald-500 rounded-full animate-[breathe_2.4s_ease-in-out_infinite]" />
+          <div className="text-[11px] text-blue-400 flex items-center gap-[5px] mt-px">
+            <span className="w-[5px] h-[5px] bg-blue-400 rounded-full animate-[breathe_2.4s_ease-in-out_infinite]" />
             {onlineText}
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function ChatWidget() {
     return (
       <div ref={demoScrollRef} className="flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 px-6 py-5">
         {demoMessages.map((msg, i) => (
-          <div key={`demo-${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-emerald-500 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
+          <div key={`demo-${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
             {msg.content || <span className="inline-block w-1.5 h-4 bg-zinc-500 animate-pulse" />}
           </div>
         ))}
@@ -259,7 +259,7 @@ export default function ChatWidget() {
         {demoStep >= demoConversation.length && !demoTyping && (
           <div className="text-center py-3 animate-chat-bubble">
             <p className="text-[11px] text-zinc-600 mb-2">{t("chat.demoPrompt")}</p>
-            <button onClick={() => { setDemoActive(false); setTimeout(() => heroInputRef.current?.focus(), 100); }} className="text-[12px] text-emerald-500 font-semibold hover:text-emerald-400 transition-all duration-400 ease-smooth">
+            <button onClick={() => { setDemoActive(false); setTimeout(() => heroInputRef.current?.focus(), 100); }} className="text-[12px] text-blue-400 font-semibold hover:text-blue-300 transition-all duration-400 ease-smooth">
               {t("chat.demoCta")}
             </button>
           </div>
@@ -272,7 +272,7 @@ export default function ChatWidget() {
     return (
       <div ref={scrollRef} className={`flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 ${compact ? "px-5 py-4" : "px-6 py-5"}`}>
         {messages.map((msg, i) => (
-          <div key={`${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-emerald-500 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
+          <div key={`${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
             {msg.content || <span className="inline-block w-1.5 h-4 bg-zinc-500 animate-pulse" />}
           </div>
         ))}
@@ -283,13 +283,13 @@ export default function ChatWidget() {
           </div>
         )}
         {showLeadCapture && leadStatus !== "sent" && (
-          <div className="bg-white/5 border border-emerald-500/20 px-4 py-4 rounded-[14px] max-w-[85%] shrink-0 animate-chat-bubble">
+          <div className="bg-white/5 border border-blue-400/20 px-4 py-4 rounded-[14px] max-w-[85%] shrink-0 animate-chat-bubble">
             <p className="text-[12px] text-zinc-400 mb-3">{t("chat.leadPrompt")}</p>
             <form onSubmit={handleLeadSubmit} className="flex flex-col gap-2">
-              <input type="text" placeholder={t("chat.leadNamePlaceholder")} value={leadName} onChange={(e) => setLeadName(e.target.value)} className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth" />
-              <input type="email" placeholder={t("chat.leadEmailPlaceholder")} value={leadEmail} onChange={(e) => setLeadEmail(e.target.value)} className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-emerald-500/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth" />
+              <input type="text" placeholder={t("chat.leadNamePlaceholder")} value={leadName} onChange={(e) => setLeadName(e.target.value)} className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-blue-400/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth" />
+              <input type="email" placeholder={t("chat.leadEmailPlaceholder")} value={leadEmail} onChange={(e) => setLeadEmail(e.target.value)} className="bg-white/[0.04] border border-white/[0.08] rounded-btn py-2 px-3 text-[12px] text-zinc-100 outline-none focus:border-blue-400/30 placeholder:text-zinc-600 transition-all duration-400 ease-smooth" />
               <div className="flex gap-2">
-                <button type="submit" disabled={leadStatus === "sending"} className="bg-emerald-500 text-white text-[12px] font-semibold px-4 py-2 rounded-btn hover:bg-emerald-600 transition-all duration-400 ease-smooth disabled:opacity-60">
+                <button type="submit" disabled={leadStatus === "sending"} className="bg-blue-400 text-white text-[12px] font-semibold px-4 py-2 rounded-btn hover:bg-blue-500 transition-all duration-400 ease-smooth disabled:opacity-60">
                   {leadStatus === "sending" ? t("chat.leadSending") : t("chat.leadSend")}
                 </button>
                 <button type="button" onClick={() => { setShowLeadCapture(false); setLeadCaptured(true); }} className="text-[12px] text-zinc-500 hover:text-zinc-300 transition-all duration-400 ease-smooth">{t("chat.leadNoThanks")}</button>
@@ -298,7 +298,7 @@ export default function ChatWidget() {
           </div>
         )}
         {showLeadCapture && leadStatus === "sent" && (
-          <div className="bg-emerald-500/10 border border-emerald-500/20 px-4 py-3 rounded-[14px] text-[12px] text-emerald-400 max-w-[85%] shrink-0 animate-chat-bubble">{t("chat.leadSuccess")}</div>
+          <div className="bg-blue-400/10 border border-blue-400/20 px-4 py-3 rounded-[14px] text-[12px] text-blue-300 max-w-[85%] shrink-0 animate-chat-bubble">{t("chat.leadSuccess")}</div>
         )}
       </div>
     );
@@ -307,8 +307,8 @@ export default function ChatWidget() {
   function renderCompose(inputRef: React.RefObject<HTMLInputElement | null>, compact: boolean) {
     return (
       <div className={`flex gap-2 border-t border-white/[0.06] shrink-0 relative z-10 ${compact ? "px-5 py-4" : "px-6 py-5"}`}>
-        <input ref={inputRef} type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown} placeholder={t("chat.inputPlaceholder")} disabled={isStreaming} className="flex-1 min-w-0 bg-white/[0.04] border border-white/[0.08] rounded-btn py-3 px-3.5 text-[13px] text-zinc-100 outline-none transition-all duration-400 ease-smooth focus:border-emerald-500/30 placeholder:text-zinc-600 disabled:opacity-50" />
-        <button onClick={sendMessage} disabled={isStreaming || !input.trim()} className="bg-emerald-500 border-none rounded-btn px-3.5 py-3 flex items-center justify-center shrink-0 hover:bg-emerald-600 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+        <input ref={inputRef} type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown} placeholder={t("chat.inputPlaceholder")} disabled={isStreaming} className="flex-1 min-w-0 bg-white/[0.04] border border-white/[0.08] rounded-btn py-3 px-3.5 text-[13px] text-zinc-100 outline-none transition-all duration-400 ease-smooth focus:border-blue-400/30 placeholder:text-zinc-600 disabled:opacity-50" />
+        <button onClick={sendMessage} disabled={isStreaming || !input.trim()} className="bg-blue-400 border-none rounded-btn px-3.5 py-3 flex items-center justify-center shrink-0 hover:bg-blue-500 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
           <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none" strokeWidth={2}><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
         </button>
       </div>
@@ -326,7 +326,7 @@ export default function ChatWidget() {
             <div className="flex-1 min-w-0 bg-white/[0.04] border border-white/[0.08] rounded-btn py-3 px-3.5 text-[13px] text-zinc-600 cursor-pointer hover:border-white/[0.12] transition-all duration-400 ease-smooth" onClick={() => { setDemoActive(false); setTimeout(() => heroInputRef.current?.focus(), 100); }}>
               {t("chat.tryAsking")}
             </div>
-            <div className="bg-emerald-500/50 rounded-btn px-3.5 py-3 flex items-center justify-center shrink-0">
+            <div className="bg-blue-400/50 rounded-btn px-3.5 py-3 flex items-center justify-center shrink-0">
               <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white/50 fill-none" strokeWidth={2}><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
             </div>
           </div>
@@ -349,7 +349,7 @@ export default function ChatWidget() {
                 </ChatShell>
               </div>
             ) : (
-              <button onClick={() => setFloatingOpen(true)} className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-elevated hover:bg-emerald-600 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth animate-[bubble-in_0.5s_cubic-bezier(0.16,1,0.3,1)_1.5s_both]">
+              <button onClick={() => setFloatingOpen(true)} className="w-14 h-14 bg-blue-400 rounded-full flex items-center justify-center shadow-elevated hover:bg-blue-500 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-400 ease-smooth animate-[bubble-in_0.5s_cubic-bezier(0.16,1,0.3,1)_1.5s_both]">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 stroke-white fill-none" strokeWidth={2}><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
               </button>
             )}

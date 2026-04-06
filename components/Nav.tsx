@@ -68,7 +68,7 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-12 py-4 bg-[#fafaf9]/85 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-black/[0.06] max-sm:py-3.5 max-sm:px-5">
       <div className="text-xl font-bold tracking-tight text-zinc-900">
-        agency<span className="text-emerald-500">AI</span>
+        agency<span className="text-blue-400">AI</span>
       </div>
 
       {/* Desktop nav links */}
@@ -85,7 +85,7 @@ export default function Nav() {
           >
             {t(link.key)}
             {activeSection === link.href.slice(1) && (
-              <span className="block h-[2px] bg-emerald-500 rounded-full mt-0.5 animate-[fade-in_0.2s_ease-smooth]" />
+              <span className="block h-[2px] bg-blue-400 rounded-full mt-0.5 animate-[fade-in_0.2s_ease-smooth]" />
             )}
           </Link>
         ))}

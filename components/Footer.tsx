@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="flex items-center justify-between py-10 max-sm:flex-col max-sm:gap-6 max-sm:py-8">
         <div>
           <div className="text-base font-bold tracking-tight text-zinc-900 mb-1">
-            agency<span className="text-emerald-500">AI</span>
+            agency<span className="text-blue-400">AI</span>
           </div>
           <p className="text-[13px] text-zinc-400">{t("footer.tagline")}</p>
         </div>

@@ -5,7 +5,7 @@ import { useTranslation, useTranslationData } from "@/lib/i18n/context";
 
 function CheckIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#10b981" className="w-3.5 h-3.5 shrink-0 mt-0.5">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#60a5fa" className="w-3.5 h-3.5 shrink-0 mt-0.5">
       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
     </svg>
   );
@@ -42,7 +42,7 @@ export default function Services() {
           transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
-        <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
+        <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">{t("services.headline")}</h2>
         <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
       </div>
@@ -52,7 +52,7 @@ export default function Services() {
 
         {/* Card 1: AI Chatbot — spans 3 columns, top-left */}
         <div
-          className="group sm:col-span-3 max-lg:col-span-1 bg-zinc-900 overflow-hidden rounded-tl-[20px] max-lg:rounded-card relative"
+          className="group sm:col-span-3 max-lg:col-span-1 bg-zinc-900/80 backdrop-blur-xl overflow-hidden rounded-tl-[20px] max-lg:rounded-card relative"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -61,7 +61,7 @@ export default function Services() {
         >
           <div className="p-8 pb-0 max-sm:p-6 max-sm:pb-0">
             {items[0].tag && (
-              <span className="text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.5px] uppercase bg-emerald-500 text-white mb-4 inline-block">
+              <span className="text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.5px] uppercase bg-blue-400 text-white mb-4 inline-block">
                 {items[0].tag}
               </span>
             )}
@@ -80,13 +80,13 @@ export default function Services() {
               <rect x="0" y="0" width="420" height="44" rx="16" className="fill-zinc-800" />
               <rect x="0" y="28" width="420" height="16" className="fill-zinc-800" />
               <line x1="0" y1="44" x2="420" y2="44" className="stroke-white/[0.06]" strokeWidth="1" />
-              <circle cx="28" cy="22" r="12" className="fill-emerald-500" />
+              <circle cx="28" cy="22" r="12" className="fill-blue-400" />
               <path d="M24 22a1 1 0 011-1h6l-3 4V21a1 1 0 01-1-1H25a1 1 0 01-1 1z" className="fill-white" transform="translate(0, 1) scale(0.7)" style={{ transformOrigin: "28px 22px" }} />
               <text x="48" y="19" className="fill-zinc-200 text-[11px] font-semibold">AgencyAI</text>
-              <circle cx="48" cy="28" r="2.5" className="fill-emerald-500">
+              <circle cx="48" cy="28" r="2.5" className="fill-blue-400">
                 <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite" />
               </circle>
-              <text x="56" y="31" className="fill-emerald-500 text-[8px]">Online</text>
+              <text x="56" y="31" className="fill-blue-400 text-[8px]">Online</text>
 
               {/* Assistant bubble 1 */}
               <rect x="16" y="56" width="240" height="42" rx="12" className="fill-white/[0.05] stroke-white/[0.06]" strokeWidth="1">
@@ -96,7 +96,7 @@ export default function Services() {
               <text x="28" y="88" className="fill-zinc-500 text-[9px]">Ask about services, pricing, or booking</text>
 
               {/* User bubble */}
-              <rect x="180" y="108" width="224" height="34" rx="12" className="fill-emerald-500">
+              <rect x="180" y="108" width="224" height="34" rx="12" className="fill-blue-400">
                 <animate attributeName="opacity" values="0;1" dur="0.4s" fill="freeze" begin="0.8s" />
               </rect>
               <text x="196" y="129" className="fill-white text-[10px]">Do you do balayage? Price?</text>
@@ -148,11 +148,11 @@ export default function Services() {
               <line x1="0" y1="32" x2="340" y2="32" className="stroke-black/[0.06]" strokeWidth="1" />
               <circle cx="16" cy="16" r="4" className="fill-red-400/50" />
               <circle cx="28" cy="16" r="4" className="fill-yellow-400/50" />
-              <circle cx="40" cy="16" r="4" className="fill-emerald-400/50" />
+              <circle cx="40" cy="16" r="4" className="fill-blue-300/50" />
               <rect x="80" y="10" width="120" height="12" rx="6" className="fill-black/[0.04]" />
 
               {/* Hero section of the website */}
-              <rect x="16" y="44" width="308" height="80" rx="8" className="fill-emerald-500/[0.05]" />
+              <rect x="16" y="44" width="308" height="80" rx="8" className="fill-blue-400/[0.05]" />
               <rect x="32" y="58" width="140" height="8" rx="4" className="fill-zinc-900/70" />
               <rect x="32" y="72" width="100" height="6" rx="3" className="fill-zinc-400/40" />
               <rect x="32" y="84" width="120" height="6" rx="3" className="fill-zinc-400/30" />
@@ -160,37 +160,37 @@ export default function Services() {
               <text x="47" y="112" className="fill-white text-[7px] font-medium">Get Started</text>
               {/* Phone mockup */}
               <rect x="230" y="52" width="60" height="65" rx="6" className="fill-white stroke-black/[0.08]" strokeWidth="1" />
-              <rect x="234" y="60" width="52" height="32" rx="3" className="fill-emerald-500/10" />
+              <rect x="234" y="60" width="52" height="32" rx="3" className="fill-blue-400/10" />
               <rect x="238" y="96" width="30" height="4" rx="2" className="fill-black/[0.06]" />
               <rect x="238" y="104" width="44" height="4" rx="2" className="fill-black/[0.04]" />
 
               {/* Cards row */}
               <rect x="16" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="24" y="144" width="20" height="20" rx="4" className="fill-emerald-500/10" />
+              <rect x="24" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
               <rect x="24" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
               <rect x="24" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
 
               <rect x="122" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="130" y="144" width="20" height="20" rx="4" className="fill-emerald-500/10" />
+              <rect x="130" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
               <rect x="130" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
               <rect x="130" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
 
               <rect x="228" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="236" y="144" width="20" height="20" rx="4" className="fill-emerald-500/10" />
+              <rect x="236" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
               <rect x="236" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
               <rect x="236" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
 
               {/* Stats bar */}
               <rect x="16" y="208" width="308" height="36" rx="6" className="fill-[#fafaf9]" />
-              <rect x="32" y="218" width="40" height="14" rx="4" className="fill-emerald-500/15" />
-              <text x="39" y="228" className="fill-emerald-700 text-[7px] font-bold">98%</text>
+              <rect x="32" y="218" width="40" height="14" rx="4" className="fill-blue-400/15" />
+              <text x="39" y="228" className="fill-blue-600 text-[7px] font-bold">98%</text>
               <rect x="82" y="222" width="50" height="5" rx="2.5" className="fill-zinc-300/40" />
-              <rect x="200" y="218" width="40" height="14" rx="4" className="fill-emerald-500/15" />
-              <text x="207" y="228" className="fill-emerald-700 text-[7px] font-bold">4.9★</text>
+              <rect x="200" y="218" width="40" height="14" rx="4" className="fill-blue-400/15" />
+              <text x="207" y="228" className="fill-blue-600 text-[7px] font-bold">4.9★</text>
               <rect x="250" y="222" width="50" height="5" rx="2.5" className="fill-zinc-300/40" />
 
               {/* Pulse animation on the CTA */}
-              <rect x="30" y="98" width="64" height="20" rx="7" className="stroke-emerald-500/30 fill-none" strokeWidth="1">
+              <rect x="30" y="98" width="64" height="20" rx="7" className="stroke-blue-400/30 fill-none" strokeWidth="1">
                 <animate attributeName="opacity" values="0;0.6;0" dur="2.5s" repeatCount="indefinite" />
                 <animate attributeName="width" values="64;72;64" dur="2.5s" repeatCount="indefinite" />
                 <animate attributeName="x" values="30;26;30" dur="2.5s" repeatCount="indefinite" />
@@ -226,18 +226,18 @@ export default function Services() {
             <div className="absolute inset-0 [background:radial-gradient(50%_80%_at_80%_50%,transparent,white_100%)] pointer-events-none z-10 max-sm:hidden" />
             <svg className="w-full max-w-[400px] h-[140px]" viewBox="0 0 400 140">
               {/* Flow lines */}
-              <path d="M 60 70 Q 130 30, 200 70" fill="none" className="stroke-emerald-500/25" strokeWidth="2" strokeDasharray="6 4">
+              <path d="M 60 70 Q 130 30, 200 70" fill="none" className="stroke-blue-400/25" strokeWidth="2" strokeDasharray="6 4">
                 <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
               </path>
-              <path d="M 200 70 Q 270 110, 340 70" fill="none" className="stroke-emerald-500/25" strokeWidth="2" strokeDasharray="6 4">
+              <path d="M 200 70 Q 270 110, 340 70" fill="none" className="stroke-blue-400/25" strokeWidth="2" strokeDasharray="6 4">
                 <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
               </path>
 
               {/* Nodes */}
               <g>
-                <rect x="20" y="45" width="80" height="50" rx="12" className="fill-emerald-500/[0.08] stroke-emerald-500/25" strokeWidth="1.5" />
-                <text x="60" y="65" textAnchor="middle" className="fill-emerald-700 text-[11px] font-semibold">Trigger</text>
-                <text x="60" y="82" textAnchor="middle" className="fill-emerald-600/60 text-[9px]">Form / Chat</text>
+                <rect x="20" y="45" width="80" height="50" rx="12" className="fill-blue-400/[0.08] stroke-blue-400/25" strokeWidth="1.5" />
+                <text x="60" y="65" textAnchor="middle" className="fill-blue-600 text-[11px] font-semibold">Trigger</text>
+                <text x="60" y="82" textAnchor="middle" className="fill-blue-500/60 text-[9px]">Form / Chat</text>
               </g>
               <g>
                 <rect x="160" y="45" width="80" height="50" rx="12" className="fill-zinc-900 stroke-zinc-700" strokeWidth="1.5">
@@ -247,16 +247,16 @@ export default function Services() {
                 <text x="200" y="82" textAnchor="middle" className="fill-zinc-400 text-[9px]">Classify + Act</text>
               </g>
               <g>
-                <rect x="300" y="45" width="80" height="50" rx="12" className="fill-emerald-500/[0.08] stroke-emerald-500/25" strokeWidth="1.5" />
-                <text x="340" y="65" textAnchor="middle" className="fill-emerald-700 text-[11px] font-semibold">Output</text>
-                <text x="340" y="82" textAnchor="middle" className="fill-emerald-600/60 text-[9px]">CRM / Email</text>
+                <rect x="300" y="45" width="80" height="50" rx="12" className="fill-blue-400/[0.08] stroke-blue-400/25" strokeWidth="1.5" />
+                <text x="340" y="65" textAnchor="middle" className="fill-blue-600 text-[11px] font-semibold">Output</text>
+                <text x="340" y="82" textAnchor="middle" className="fill-blue-500/60 text-[9px]">CRM / Email</text>
               </g>
 
               {/* Animated dots on paths */}
-              <circle r="3" className="fill-emerald-500">
+              <circle r="3" className="fill-blue-400">
                 <animateMotion dur="2s" repeatCount="indefinite" path="M 60 70 Q 130 30, 200 70" />
               </circle>
-              <circle r="3" className="fill-emerald-500">
+              <circle r="3" className="fill-blue-400">
                 <animateMotion dur="2s" repeatCount="indefinite" path="M 200 70 Q 270 110, 340 70" />
               </circle>
             </svg>
