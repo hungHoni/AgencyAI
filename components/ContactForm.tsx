@@ -54,7 +54,7 @@ export default function ContactForm() {
         <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
           Contact
         </div>
-        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[400px]">
+        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[400px] text-wrap-balance">
           Tell us about your business.
         </h2>
         <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7]">

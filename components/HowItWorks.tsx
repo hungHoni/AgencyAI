@@ -25,7 +25,7 @@ export default function HowItWorks() {
       <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
         Process
       </div>
-      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px]">
+      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px] text-wrap-balance">
         Three steps. That&apos;s it.
       </h2>
       <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7]">
@@ -33,21 +33,25 @@ export default function HowItWorks() {
         finish.
       </p>
 
-      <div className="grid grid-cols-3 gap-12 mt-14 relative max-sm:grid-cols-1 max-sm:gap-8">
-        {/* Connecting line — hidden on tablet/mobile */}
-        <div className="absolute top-7 left-[15%] right-[15%] h-px bg-black/10 max-lg:hidden" />
-
-        {steps.map((step) => (
-          <div key={step.num} className="text-left relative">
-            <div className="w-14 h-14 bg-white border border-black/10 rounded-full flex items-center justify-center text-xl font-bold mb-5 relative z-[1] tracking-[-0.5px]">
+      {/* Staggered 2-column layout instead of banned 3-column equal grid */}
+      <div className="mt-14 flex flex-col gap-5 max-w-[720px]">
+        {steps.map((step, i) => (
+          <div
+            key={step.num}
+            className="grid grid-cols-[56px_1fr] gap-5 items-start"
+            style={{ marginLeft: `${i * 40}px` }}
+          >
+            <div className="w-14 h-14 bg-white border border-black/10 rounded-full flex items-center justify-center text-xl font-bold tracking-[-0.5px] shrink-0 shadow-card">
               {step.num}
             </div>
-            <h4 className="text-[17px] font-bold tracking-[-0.3px] mb-1.5">
-              {step.title}
-            </h4>
-            <p className="text-sm text-zinc-600 leading-[1.6] max-w-[280px]">
-              {step.description}
-            </p>
+            <div className="pt-1">
+              <h4 className="text-[17px] font-bold tracking-[-0.3px] mb-1.5">
+                {step.title}
+              </h4>
+              <p className="text-sm text-zinc-600 leading-[1.6] max-w-[320px]">
+                {step.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>

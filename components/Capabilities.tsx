@@ -49,36 +49,41 @@ const capabilities = [
 export default function Capabilities() {
   return (
     <section id="capabilities" className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
-      <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
-        Capabilities
-      </div>
-      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px]">
-        Everything your customers need, instantly.
-      </h2>
-      <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mb-14">
-        Your chatbot is trained on your business. It knows your services, prices,
-        hours, and policies. No scripts, no decision trees.
-      </p>
-
-      <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1">
-        {capabilities.map((cap) => (
-          <div
-            key={cap.title}
-            className="grid grid-cols-[52px_1fr] gap-4 p-7 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-white hover:border-black/[0.06] hover:shadow-card hover:-translate-y-0.5"
-          >
-            <div className="w-[52px] h-[52px] bg-[rgba(16,185,129,0.06)] border border-[rgba(16,185,129,0.15)] rounded-btn flex items-center justify-center">
-              {cap.icon}
-            </div>
-            <div>
-              <h4 className="text-base font-bold tracking-[-0.3px] mb-1">
-                {cap.title}
-              </h4>
-              <p className="text-sm text-zinc-600 leading-[1.6]">
-                {cap.description}
-              </p>
-            </div>
+      {/* Side-by-side: header left, grid right — breaks the stacked rhythm */}
+      <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
+        <div className="max-lg:max-w-[520px]">
+          <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
+            Capabilities
           </div>
-        ))}
+          <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance">
+            Everything your customers need, instantly.
+          </h2>
+          <p className="text-base text-zinc-600 leading-[1.7]">
+            Your chatbot is trained on your business. It knows your services, prices,
+            hours, and policies. No scripts, no decision trees.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-3">
+          {capabilities.map((cap) => (
+            <div
+              key={cap.title}
+              className="grid grid-cols-[44px_1fr] gap-4 p-5 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-white hover:border-black/[0.06] hover:shadow-card hover:-translate-y-0.5"
+            >
+              <div className="w-11 h-11 bg-[rgba(16,185,129,0.06)] rounded-btn flex items-center justify-center">
+                {cap.icon}
+              </div>
+              <div>
+                <h4 className="text-base font-bold tracking-[-0.3px] mb-1">
+                  {cap.title}
+                </h4>
+                <p className="text-sm text-zinc-600 leading-[1.6]">
+                  {cap.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

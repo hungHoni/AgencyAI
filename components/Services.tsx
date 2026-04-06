@@ -84,7 +84,7 @@ export default function Services() {
       <div className="text-xs font-semibold text-emerald-600 tracking-[1.2px] uppercase mb-3">
         Services
       </div>
-      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px]">
+      <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[520px] text-wrap-balance">
         How we help you grow.
       </h2>
       <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mb-14">
@@ -95,7 +95,7 @@ export default function Services() {
         {services.map((service) => (
           <div
             key={service.title}
-            className={`rounded-card p-10 px-9 relative transition-all duration-400 ease-smooth ${
+            className={`rounded-card p-10 px-9 relative transition-all duration-400 ease-smooth flex flex-col ${
               service.isHero
                 ? "row-span-2 bg-zinc-900 text-zinc-300 border border-transparent hover:border-white/[0.08] max-lg:row-span-1"
                 : "bg-white border border-black/[0.06] hover:shadow-elevated hover:-translate-y-[3px] hover:border-black/10"
@@ -112,9 +112,10 @@ export default function Services() {
                 {service.tag}
               </div>
             )}
+            {!service.tag && <div className="mb-6" />}
 
             <div
-              className={`w-11 h-11 rounded-btn flex items-center justify-center mb-6 ${
+              className={`w-11 h-11 rounded-btn flex items-center justify-center mb-5 ${
                 service.isHero
                   ? "bg-[rgba(16,185,129,0.15)]"
                   : "bg-[rgba(16,185,129,0.06)]"
@@ -134,12 +135,12 @@ export default function Services() {
             <p
               className={`text-[15px] leading-[1.65] mb-6 max-w-[65ch] ${
                 service.isHero ? "text-zinc-400" : "text-zinc-600"
-              }`}
+              } ${!service.isHero ? "min-h-[52px]" : ""}`}
             >
               {service.description}
             </p>
 
-            <ul className="list-none">
+            <ul className="list-none mt-auto">
               {service.features.map((feature) => (
                 <li
                   key={feature}
