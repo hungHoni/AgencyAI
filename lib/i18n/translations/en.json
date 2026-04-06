@@ -1,0 +1,165 @@
+{
+  "skipToContent": "Skip to content",
+  "nav": {
+    "capabilities": "Capabilities",
+    "services": "Services",
+    "process": "Process",
+    "contact": "Contact",
+    "bookCall": "Book a Free Call",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "tag": "AI-Powered for Local Businesses",
+    "headline": "An AI employee that never\u00a0sleeps.",
+    "subtext": "Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support around the clock. Built for businesses that can't afford to miss a single customer.",
+    "getStarted": "Get Started",
+    "bookCall": "Book a Free Call"
+  },
+  "metrics": [
+    { "value": "24/7", "label": "Always available", "isText": true },
+    { "value": "~80%", "label": "Questions handled instantly", "prefix": "~", "number": 80, "suffix": "%" },
+    { "value": "Zero", "label": "Missed customer inquiries", "isText": true },
+    { "value": "No code", "label": "Required to get started", "isText": true }
+  ],
+  "capabilities": {
+    "sectionTag": "Capabilities",
+    "headline": "Everything your customers need, instantly.",
+    "subtext": "Your chatbot is trained on your business. It knows your services, prices, hours, and policies. No scripts, no decision trees.",
+    "items": [
+      { "title": "Answer questions", "description": "Services, pricing, hours, policies, directions. Anything a customer would normally call about." },
+      { "title": "Book appointments", "description": "Checks availability, books slots, sends confirmations. Syncs directly with your calendar." },
+      { "title": "Capture leads", "description": "Collects name, email, phone from interested visitors. Sends them to you the moment they come in." },
+      { "title": "Handle support", "description": "Returns, complaints, status checks. Resolves simple issues on the spot, escalates when needed." }
+    ]
+  },
+  "services": {
+    "sectionTag": "Services",
+    "headline": "How we help you grow.",
+    "subtext": "Start with a chatbot. Add a website or automations when you're ready.",
+    "items": [
+      {
+        "tag": "Most requested",
+        "title": "AI Chatbot",
+        "description": "A custom AI assistant embedded on your website. Trained specifically on your business. Handles everything from answering questions to booking appointments to capturing leads after hours.",
+        "features": [
+          "Custom trained on your business data",
+          "Answers any customer question accurately",
+          "Books appointments directly",
+          "Captures leads around the clock",
+          "Works on any existing website",
+          "Learns and improves over time"
+        ]
+      },
+      {
+        "tag": "",
+        "title": "Website Design",
+        "description": "Professional sites that turn visitors into customers. Fast, mobile-first, built for local search.",
+        "features": [
+          "Custom design",
+          "Mobile responsive",
+          "SEO optimized",
+          "Google Business ready"
+        ]
+      },
+      {
+        "tag": "",
+        "title": "Automation Flows",
+        "description": "Connect your tools. Automate follow-ups, reminders, review requests, and reporting.",
+        "features": [
+          "Appointment reminders",
+          "Review requests",
+          "Email sequences",
+          "Custom workflows"
+        ]
+      }
+    ]
+  },
+  "howItWorks": {
+    "sectionTag": "Process",
+    "headline": "Three steps. That's it.",
+    "subtext": "No technical knowledge required. We handle everything from start to finish.",
+    "steps": [
+      { "title": "Book a free call", "description": "Tell us about your business, your customers, and what you need help with." },
+      { "title": "We build it", "description": "Custom chatbot trained on your business data, ready in days, not weeks." },
+      { "title": "Go live", "description": "One line of code on your site. We handle deployment, monitoring, and updates." }
+    ]
+  },
+  "ctaBanner": {
+    "headline": "Ready to stop missing customers?",
+    "subtext": "Book a free 15-minute call. We'll show you exactly what your AI chatbot could do for your business.",
+    "buttonLabel": "Book a Free Call"
+  },
+  "contact": {
+    "sectionTag": "Contact",
+    "headline": "Tell us about your business.",
+    "subtext": "We'll show you exactly what your AI chatbot could handle, with a custom demo for your industry.",
+    "trustSignals": [
+      { "title": "Quick response", "description": "We respond within 2 hours during business days" },
+      { "title": "Free consultation", "description": "15-minute call to understand your needs" },
+      { "title": "No commitment", "description": "No contracts, no obligations. See the value first." }
+    ],
+    "formLabels": {
+      "name": "Your Name",
+      "business": "Business Name",
+      "email": "Email",
+      "message": "What would you want your AI chatbot to do?"
+    },
+    "formPlaceholders": {
+      "name": "Priya Ramirez",
+      "business": "Rosewood Hair Studio",
+      "email": "priya@rosewoodhair.com",
+      "message": "Answer questions about services, book appointments, handle after-hours inquiries..."
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "businessRequired": "Business name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email"
+    },
+    "successTitle": "Thanks! We'll be in touch within 24 hours.",
+    "successSubtext": "We'll review your info and reach out with a custom demo plan.",
+    "submitButton": "Send Message",
+    "submittingButton": "Sending...",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "tagline": "AI chatbots for local businesses.",
+    "services": "Services",
+    "process": "Process",
+    "contact": "Contact",
+    "copyright": "AgencyAI. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "chat": {
+    "greeting": "Hi! I'm the AgencyAI assistant. Ask me anything about our AI chatbot services, pricing, or process. How can I help?",
+    "onlineNow": "Online now",
+    "inputPlaceholder": "Ask anything about our services...",
+    "tryAsking": "Try asking a question...",
+    "leadPrompt": "Enjoying the chat? Leave your info and we'll follow up with a custom demo.",
+    "leadNamePlaceholder": "Your name",
+    "leadEmailPlaceholder": "Your email",
+    "leadSend": "Send",
+    "leadSending": "Sending...",
+    "leadNoThanks": "No thanks",
+    "leadSuccess": "Thanks! We'll be in touch soon.",
+    "demoPrompt": "This is what your customers will experience",
+    "demoCta": "Try the real chatbot \u2192",
+    "errorFallback": "Use the contact form",
+    "demoTitle": "Rosewood Hair Studio"
+  },
+  "chatDemo": [
+    { "role": "assistant", "content": "Hi there! Welcome to Rosewood Hair Studio. I can help you book appointments, check pricing, or answer any questions. What can I do for you?" },
+    { "role": "user", "content": "Do you do balayage? How much is it?" },
+    { "role": "assistant", "content": "Yes! Balayage starts at $165 for medium-length hair, including consultation, color, and blowout. Our colorist Priya specializes in balayage and has openings this Thursday and Friday. Want me to book you in?" },
+    { "role": "user", "content": "Thursday works. Do you have anything around 2pm?" },
+    { "role": "assistant", "content": "Priya has a 2:15 PM slot open on Thursday. I'll book that for you. Can I get your name and phone number to confirm?" }
+  ],
+  "notFound": {
+    "code": "404",
+    "heading": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

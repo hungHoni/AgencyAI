@@ -1,13 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-
-const metrics = [
-  { value: "24/7", label: "Always available", isText: true },
-  { value: "~80%", label: "Questions handled instantly", prefix: "~", number: 80, suffix: "%" },
-  { value: "Zero", label: "Missed customer inquiries", isText: true },
-  { value: "No code", label: "Required to get started", isText: true },
-];
+import { useTranslationData } from "@/lib/i18n/context";
 
 function AnimatedNumber({ prefix = "", number, suffix = "" }: { prefix?: string; number: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -58,6 +52,7 @@ function AnimatedNumber({ prefix = "", number, suffix = "" }: { prefix?: string;
 export default function Metrics() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const data = useTranslationData();
 
   useEffect(() => {
     const el = ref.current;
@@ -78,9 +73,9 @@ export default function Metrics() {
   return (
     <div ref={ref} className="px-12 py-14 max-w-site mx-auto border-t border-black/[0.06] max-sm:px-5 max-sm:py-10">
       <div className="flex justify-start max-sm:flex-wrap">
-        {metrics.map((m, i) => (
+        {data.metrics.map((m, i) => (
           <div
-            key={m.value}
+            key={i}
             className={`text-left flex-1 ${
               i > 0 ? "pl-10 border-l border-black/[0.06] max-sm:border-l-0 max-sm:pl-0" : ""
             } max-sm:w-1/2 max-sm:py-4`}

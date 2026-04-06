@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { LocaleProvider } from "@/lib/i18n/context";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -46,10 +47,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.variable}>
       <body className="font-[family-name:var(--font-outfit)] antialiased">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-zinc-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-btn focus:text-sm focus:font-semibold">
-          Skip to content
-        </a>
-        {children}
+        <LocaleProvider>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-zinc-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-btn focus:text-sm focus:font-semibold">
+            Skip to content
+          </a>
+          {children}
+        </LocaleProvider>
         <Analytics />
       </body>
     </html>

@@ -2,20 +2,22 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTranslation } from "@/lib/i18n/context";
 
-const NAV_LINKS = [
-  { href: "#capabilities", label: "Capabilities" },
-  { href: "#services", label: "Services" },
-  { href: "#how-it-works", label: "Process" },
-  { href: "#contact", label: "Contact" },
+const NAV_KEYS = [
+  { href: "#capabilities", key: "nav.capabilities" },
+  { href: "#services", key: "nav.services" },
+  { href: "#how-it-works", key: "nav.process" },
+  { href: "#contact", key: "nav.contact" },
 ];
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { locale, setLocale, t } = useTranslation();
 
   useEffect(() => {
-    const sections = NAV_LINKS.map((l) => l.href.slice(1));
+    const sections = NAV_KEYS.map((l) => l.href.slice(1));
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -34,11 +36,34 @@ export default function Nav() {
     return () => observer.disconnect();
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  function LanguageToggle({ className = "" }: { className?: string }) {
+    return (
+      <div className={`flex items-center gap-1 text-xs font-medium ${className}`}>
+        <button
+          onClick={() => setLocale("en")}
+          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
+            locale === "en" ? "text-zinc-900 font-semibold" : "text-zinc-400 hover:text-zinc-600"
+          }`}
+        >
+          EN
+        </button>
+        <span className="text-zinc-300">|</span>
+        <button
+          onClick={() => setLocale("vi")}
+          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
+            locale === "vi" ? "text-zinc-900 font-semibold" : "text-zinc-400 hover:text-zinc-600"
+          }`}
+        >
+          VI
+        </button>
+      </div>
+    );
+  }
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-12 py-4 bg-[#fafaf9]/85 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-black/[0.06] max-sm:py-3.5 max-sm:px-5">
@@ -48,7 +73,7 @@ export default function Nav() {
 
       {/* Desktop nav links */}
       <div className="hidden lg:flex gap-8">
-        {NAV_LINKS.map((link) => (
+        {NAV_KEYS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -58,7 +83,7 @@ export default function Nav() {
                 : "text-zinc-400 hover:text-zinc-900"
             }`}
           >
-            {link.label}
+            {t(link.key)}
             {activeSection === link.href.slice(1) && (
               <span className="block h-[2px] bg-emerald-500 rounded-full mt-0.5 animate-[fade-in_0.2s_ease-smooth]" />
             )}
@@ -67,18 +92,19 @@ export default function Nav() {
       </div>
 
       <div className="flex items-center gap-3">
+        <LanguageToggle className="hidden lg:flex" />
         <Link
           href="#contact"
           className="bg-zinc-900 text-[#fafaf9] px-[22px] py-2.5 rounded-btn text-sm font-semibold tracking-tight hover:bg-zinc-700 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth max-sm:hidden"
         >
-          Book a Free Call
+          {t("nav.bookCall")}
         </Link>
 
-        {/* Hamburger button — visible below lg */}
+        {/* Hamburger button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="lg:hidden w-10 h-10 flex items-center justify-center rounded-btn hover:bg-black/[0.04] transition-all duration-400 ease-smooth"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           aria-expanded={mobileOpen}
         >
           <div className="w-5 flex flex-col gap-[5px]">
@@ -98,11 +124,9 @@ export default function Nav() {
 
       {/* Mobile menu overlay */}
       {mobileOpen && (
-        <div
-          className="fixed inset-0 top-[57px] bg-[#fafaf9]/98 backdrop-blur-[20px] z-40 lg:hidden animate-[fade-in_0.2s_ease-smooth]"
-        >
+        <div className="fixed inset-0 top-[57px] bg-[#fafaf9]/98 backdrop-blur-[20px] z-40 lg:hidden animate-[fade-in_0.2s_ease-smooth]">
           <div className="flex flex-col gap-1 px-6 py-8">
-            {NAV_LINKS.map((link) => (
+            {NAV_KEYS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -113,16 +137,17 @@ export default function Nav() {
                     : "text-zinc-500 hover:text-zinc-900 hover:bg-black/[0.02]"
                 }`}
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
-            <div className="mt-4 px-4">
+            <div className="mt-4 px-4 flex flex-col gap-4">
+              <LanguageToggle />
               <Link
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
                 className="block bg-zinc-900 text-[#fafaf9] px-7 py-3.5 rounded-btn text-[15px] font-semibold tracking-[-0.2px] text-center hover:bg-zinc-700 transition-all duration-400 ease-smooth"
               >
-                Book a Free Call
+                {t("nav.bookCall")}
               </Link>
             </div>
           </div>

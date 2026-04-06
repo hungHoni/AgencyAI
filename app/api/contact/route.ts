@@ -2,10 +2,26 @@ import { Resend } from "resend";
 
 const clean = (s: string) => s.replace(/<[^>]*>/g, "");
 
+const VALIDATION_ERRORS = {
+  en: {
+    nameRequired: "Name is required",
+    businessRequired: "Business name is required",
+    emailRequired: "Email is required",
+    emailInvalid: "Invalid email format",
+  },
+  vi: {
+    nameRequired: "Vui lòng nhập họ tên",
+    businessRequired: "Vui lòng nhập tên doanh nghiệp",
+    emailRequired: "Vui lòng nhập email",
+    emailInvalid: "Email không hợp lệ",
+  },
+};
+
 export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await request.json();
+    const locale = body.locale === "vi" ? "vi" : "en";
 
     const name =
       typeof body.name === "string" ? body.name.trim().slice(0, 200) : "";
@@ -20,14 +36,14 @@ export async function POST(request: Request) {
         ? body.message.trim().slice(0, 2000)
         : "";
 
-    // Server-side validation
+    const msgs = VALIDATION_ERRORS[locale];
     const errors: string[] = [];
-    if (!name) errors.push("Name is required");
-    if (!business) errors.push("Business name is required");
+    if (!name) errors.push(msgs.nameRequired);
+    if (!business) errors.push(msgs.businessRequired);
     if (!email) {
-      errors.push("Email is required");
+      errors.push(msgs.emailRequired);
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.push("Invalid email format");
+      errors.push(msgs.emailInvalid);
     }
 
     if (errors.length > 0) {
@@ -46,6 +62,7 @@ export async function POST(request: Request) {
         <p><strong>Email:</strong> ${clean(email)}</p>
         <p><strong>Message:</strong></p>
         <p>${clean(message) || "<em>No message provided</em>"}</p>
+        <p><strong>Locale:</strong> ${locale}</p>
         <hr>
         <p style="color: #888; font-size: 12px;">Sent from the AgencyAI contact form</p>
       `,
