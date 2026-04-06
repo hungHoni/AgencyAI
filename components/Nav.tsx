@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "@/lib/i18n/context";
 
 const NAV_KEYS = [
@@ -14,7 +15,10 @@ const NAV_KEYS = [
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [mounted, setMounted] = useState(false);
   const { locale, setLocale, t } = useTranslation();
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     const sections = NAV_KEYS.map((l) => l.href.slice(1));
@@ -66,66 +70,89 @@ export default function Nav() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-12 py-4 bg-[#fafaf9]/85 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-black/[0.06] max-sm:py-3.5 max-sm:px-5">
-      <div className="text-xl font-bold tracking-tight text-zinc-900">
-        agency<span className="text-blue-400">AI</span>
-      </div>
+    <>
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-12 py-4 bg-[#fafaf9]/85 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-black/[0.06] max-sm:py-3.5 max-sm:px-5">
+        <div className="text-xl font-bold tracking-tight text-zinc-900">
+          agency<span className="text-blue-400">AI</span>
+        </div>
 
-      {/* Desktop nav links */}
-      <div className="hidden lg:flex gap-8">
-        {NAV_KEYS.map((link) => (
+        {/* Desktop nav links */}
+        <div className="hidden lg:flex gap-8">
+          {NAV_KEYS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-medium transition-all duration-400 ease-smooth ${
+                activeSection === link.href.slice(1)
+                  ? "text-zinc-900"
+                  : "text-zinc-400 hover:text-zinc-900"
+              }`}
+            >
+              {t(link.key)}
+              {activeSection === link.href.slice(1) && (
+                <span className="block h-[2px] bg-blue-400 rounded-full mt-0.5 animate-[fade-in_0.2s_ease-smooth]" />
+              )}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <LanguageToggle className="hidden lg:flex" />
           <Link
-            key={link.href}
-            href={link.href}
-            className={`text-sm font-medium transition-all duration-400 ease-smooth ${
-              activeSection === link.href.slice(1)
-                ? "text-zinc-900"
-                : "text-zinc-400 hover:text-zinc-900"
-            }`}
+            href="#contact"
+            className="bg-zinc-900 text-[#fafaf9] px-[22px] py-2.5 rounded-btn text-sm font-semibold tracking-tight hover:bg-zinc-700 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth max-sm:hidden"
           >
-            {t(link.key)}
-            {activeSection === link.href.slice(1) && (
-              <span className="block h-[2px] bg-blue-400 rounded-full mt-0.5 animate-[fade-in_0.2s_ease-smooth]" />
-            )}
+            {t("nav.bookCall")}
           </Link>
-        ))}
-      </div>
 
-      <div className="flex items-center gap-3">
-        <LanguageToggle className="hidden lg:flex" />
-        <Link
-          href="#contact"
-          className="bg-zinc-900 text-[#fafaf9] px-[22px] py-2.5 rounded-btn text-sm font-semibold tracking-tight hover:bg-zinc-700 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth max-sm:hidden"
-        >
-          {t("nav.bookCall")}
-        </Link>
+          {/* Hamburger button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-btn hover:bg-black/[0.04] transition-all duration-400 ease-smooth relative z-[70]"
+            aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
+            aria-expanded={mobileOpen}
+          >
+            <div className="w-5 flex flex-col gap-[5px]">
+              <span
+                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
+                  mobileOpen ? "rotate-45 translate-y-[3.25px]" : ""
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
+                  mobileOpen ? "-rotate-45 -translate-y-[3.25px]" : ""
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+      </nav>
 
-        {/* Hamburger button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-btn hover:bg-black/[0.04] transition-all duration-400 ease-smooth"
-          aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
-          aria-expanded={mobileOpen}
-        >
-          <div className="w-5 flex flex-col gap-[5px]">
-            <span
-              className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
-                mobileOpen ? "rotate-45 translate-y-[3.25px]" : ""
-              }`}
-            />
-            <span
-              className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
-                mobileOpen ? "-rotate-45 -translate-y-[3.25px]" : ""
-              }`}
-            />
+      {/* Mobile menu — portaled to body to escape stacking context */}
+      {mobileOpen && mounted && createPortal(
+        <div className="fixed inset-0 z-[60] lg:hidden animate-[fade-in_0.15s_ease-smooth]">
+          {/* Full opaque background */}
+          <div className="absolute inset-0 bg-[#fafaf9]" />
+
+          {/* Nav bar replica at top */}
+          <div className="relative z-10 flex items-center justify-between px-12 py-4 border-b border-black/[0.06] max-sm:py-3.5 max-sm:px-5">
+            <div className="text-xl font-bold tracking-tight text-zinc-900">
+              agency<span className="text-blue-400">AI</span>
+            </div>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="w-10 h-10 flex items-center justify-center rounded-btn hover:bg-black/[0.04] transition-all duration-400 ease-smooth"
+              aria-label={t("nav.closeMenu")}
+            >
+              <div className="w-5 flex flex-col gap-[5px]">
+                <span className="block h-[1.5px] bg-zinc-900 rounded-full rotate-45 translate-y-[3.25px] transition-all duration-300 ease-smooth" />
+                <span className="block h-[1.5px] bg-zinc-900 rounded-full -rotate-45 -translate-y-[3.25px] transition-all duration-300 ease-smooth" />
+              </div>
+            </button>
           </div>
-        </button>
-      </div>
 
-      {/* Mobile menu overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 top-[57px] bg-[#fafaf9]/98 backdrop-blur-[20px] z-40 lg:hidden animate-[fade-in_0.2s_ease-smooth]">
-          <div className="flex flex-col gap-1 px-6 py-8">
+          {/* Menu content */}
+          <div className="relative z-10 flex flex-col gap-1 px-6 py-8">
             {NAV_KEYS.map((link) => (
               <Link
                 key={link.href}
@@ -151,8 +178,9 @@ export default function Nav() {
               </Link>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </nav>
+    </>
   );
 }

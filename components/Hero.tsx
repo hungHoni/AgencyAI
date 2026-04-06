@@ -31,14 +31,14 @@ export default function Hero() {
       {/* 3D Spline scene — full hero background, centered, hidden on mobile */}
       {showSpline && (
         <div
-          className="absolute inset-0 z-0 max-lg:hidden flex items-center justify-center overflow-hidden"
+          className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "scale(1)" : "scale(0.92)",
             transition: "opacity 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s",
           }}
         >
-          <div className="w-[900px] h-[900px] translate-x-[10%]">
+          <div className="w-[900px] h-[900px] translate-x-[10%] max-lg:w-[700px] max-lg:h-[700px] max-lg:translate-x-0 max-lg:opacity-30 max-sm:w-[500px] max-sm:h-[500px] max-sm:translate-y-[15%]">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
