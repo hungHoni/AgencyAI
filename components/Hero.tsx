@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n/context";
 import ChatWidget from "@/components/ChatWidget";
+import SplineScene from "@/components/SplineScene";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [showSpline, setShowSpline] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -14,11 +16,30 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Delay Spline loading so text + chat load first
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpline(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-24 pb-20 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-16 max-sm:px-5 max-sm:py-12">
+    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-24 pb-20 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-16 max-sm:px-5 max-sm:py-12 overflow-hidden">
+      {/* Ambient gradients */}
       <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(16,185,129,0.04)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(16,185,129,0.03)_0%,transparent_70%)] pointer-events-none" />
-      <div>
+
+      {/* 3D Spline scene — background layer, hidden on mobile */}
+      {showSpline && (
+        <div className="absolute right-[-5%] top-[-10%] bottom-[-10%] w-[55%] pointer-events-none z-0 max-lg:hidden spline-mask">
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full"
+          />
+        </div>
+      )}
+
+      {/* Left column — text content */}
+      <div className="relative z-10">
         <div
           className="inline-flex items-center gap-2 bg-[rgba(16,185,129,0.06)] border border-[rgba(16,185,129,0.15)] px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-600 mb-7 tracking-[0.3px] uppercase"
           style={{
@@ -76,7 +97,9 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Right column — ChatWidget */}
       <div
+        className="relative z-10"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateX(0)" : "translateX(40px)",

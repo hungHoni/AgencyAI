@@ -74,6 +74,12 @@ input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visib
   outline-offset: 2px;
 }
 
+/* Spline scene edge fade — smoothly blends 3D into the page */
+.spline-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 25%, black 85%, transparent 100%);
+}
+
 @keyframes breathe {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }

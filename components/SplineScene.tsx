@@ -1,0 +1,47 @@
+"use client";
+
+import React, { Suspense, useState, useCallback, Component, type ReactNode } from "react";
+
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
+
+class SplineErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
+
+export default function SplineScene({
+  scene,
+  className = "",
+}: {
+  scene: string;
+  className?: string;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const onLoad = useCallback(() => setLoaded(true), []);
+
+  return (
+    <SplineErrorBoundary>
+      <div
+        className={`${className} transition-opacity duration-[1.5s] ease-smooth ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Suspense fallback={null}>
+          <Spline scene={scene} onLoad={onLoad} />
+        </Suspense>
+      </div>
+    </SplineErrorBoundary>
+  );
+}
