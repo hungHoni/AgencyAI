@@ -30,7 +30,7 @@ export default function Hero() {
 
       {/* 3D Spline scene — background layer, hidden on mobile */}
       {showSpline && (
-        <div className="absolute right-[-5%] top-[-10%] bottom-[-10%] w-[55%] pointer-events-none z-0 max-lg:hidden spline-mask">
+        <div className="absolute right-[-5%] top-[-10%] bottom-[-10%] w-[55%] z-0 max-lg:hidden spline-mask">
           <SplineScene
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
             className="w-full h-full"
