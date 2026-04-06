@@ -28,13 +28,22 @@ export default function Hero() {
       <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(16,185,129,0.04)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(16,185,129,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* 3D Spline scene — background layer, hidden on mobile */}
+      {/* 3D Spline scene — full hero background, centered, hidden on mobile */}
       {showSpline && (
-        <div className="absolute right-[-5%] top-[-10%] bottom-[-10%] w-[55%] z-0 max-lg:hidden spline-mask">
-          <SplineScene
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full"
-          />
+        <div
+          className="absolute inset-0 z-0 max-lg:hidden flex items-center justify-center overflow-hidden"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "scale(1)" : "scale(0.92)",
+            transition: "opacity 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s",
+          }}
+        >
+          <div className="w-[900px] h-[900px] translate-x-[10%]">
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full"
+            />
+          </div>
         </div>
       )}
 
