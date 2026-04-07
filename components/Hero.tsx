@@ -51,7 +51,7 @@ export default function Hero() {
       )}
 
       {/* Left column — text content */}
-      <div className="relative z-10">
+      <div className="relative z-50 pointer-events-auto">
         <div
           className="inline-flex items-center gap-2 bg-[rgba(96,165,250,0.06)] border border-[rgba(96,165,250,0.15)] px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-500 mb-7 tracking-[0.3px] uppercase"
           style={{
@@ -94,18 +94,18 @@ export default function Hero() {
             transition: "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s",
           }}
         >
-          <Link
+          <a
             href="#contact"
             className="bg-zinc-900 text-[#fafaf9] px-7 py-3.5 rounded-btn text-[15px] font-semibold tracking-[-0.2px] hover:bg-zinc-700 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth"
           >
             {t("hero.getStarted")}
-          </Link>
-          <Link
+          </a>
+          <a
             href="#contact"
             className="bg-transparent text-zinc-600 px-6 py-3.5 rounded-btn text-[15px] font-medium tracking-[-0.2px] border border-black/10 hover:border-zinc-400 hover:text-zinc-900 hover:-translate-y-0.5 transition-all duration-400 ease-smooth"
           >
             {t("hero.bookCall")}
-          </Link>
+          </a>
         </div>
       </div>
 
