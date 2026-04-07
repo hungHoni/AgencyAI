@@ -19,8 +19,8 @@ function getCookieLocale(): Locale {
   if (typeof document === "undefined") return DEFAULT_LOCALE;
   const match = document.cookie.match(/(?:^|; )locale=([^;]*)/);
   const val = match?.[1];
-  if (val === "vi") return "vi";
-  return "en";
+  if (val === "en") return "en";
+  return "vi";
 }
 
 function setCookieLocale(locale: Locale) {
