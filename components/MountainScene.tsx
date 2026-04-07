@@ -139,21 +139,11 @@ export default function MountainScene() {
       renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      const pos = new THREE.Vector3(x * 5, 2, 2 - y * 2);
-      pointLight.position.copy(pos);
-      material.uniforms.pointLightPosition.value = pos;
-    };
-
     window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mousemove", handleMouseMove);
       if (currentMount && renderer.domElement.parentNode === currentMount) {
         currentMount.removeChild(renderer.domElement);
       }

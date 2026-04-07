@@ -49,7 +49,7 @@ export default function Capabilities() {
           <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance">
             {t("capabilities.headline")}
           </h2>
-          <p className="text-base text-zinc-600 leading-[1.7]">
+          <p className="text-base text-zinc-700 leading-[1.7]">
             {t("capabilities.subtext")}
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function Capabilities() {
               </div>
               <div>
                 <h4 className="text-base font-bold tracking-[-0.3px] mb-1">{cap.title}</h4>
-                <p className="text-sm text-zinc-600 leading-[1.6]">{cap.description}</p>
+                <p className="text-sm text-zinc-700 leading-[1.6]">{cap.description}</p>
               </div>
             </div>
           ))}

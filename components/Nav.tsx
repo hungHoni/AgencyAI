@@ -51,7 +51,7 @@ export default function Nav() {
         <button
           onClick={() => setLocale("en")}
           className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
-            locale === "en" ? "text-zinc-900 font-semibold" : "text-zinc-400 hover:text-zinc-600"
+            locale === "en" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
           }`}
         >
           EN
@@ -60,7 +60,7 @@ export default function Nav() {
         <button
           onClick={() => setLocale("vi")}
           className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
-            locale === "vi" ? "text-zinc-900 font-semibold" : "text-zinc-400 hover:text-zinc-600"
+            locale === "vi" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
           }`}
         >
           VI

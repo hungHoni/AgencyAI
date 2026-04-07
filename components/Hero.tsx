@@ -18,12 +18,12 @@ export default function Hero() {
 
   // Delay Spline loading so text + chat load first
   useEffect(() => {
-    const timer = setTimeout(() => setShowSpline(true), 500);
+    const timer = setTimeout(() => setShowSpline(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-24 pb-20 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-16 max-sm:px-5 max-sm:py-12 overflow-hidden">
+    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-24 pb-20 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-16 max-sm:px-5 max-sm:py-12">
       {/* Ambient gradients */}
       <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.04)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.03)_0%,transparent_70%)] pointer-events-none" />
@@ -31,14 +31,17 @@ export default function Hero() {
       {/* 3D Spline scene — full hero background, centered, hidden on mobile */}
       {showSpline && (
         <div
-          className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden"
+          className="absolute inset-0 z-0 flex items-center justify-center"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "scale(1)" : "scale(0.92)",
             transition: "opacity 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s",
           }}
         >
-          <div className="w-[900px] h-[900px] translate-x-[10%] max-lg:w-[700px] max-lg:h-[700px] max-lg:translate-x-0 max-lg:opacity-30 max-sm:w-[500px] max-sm:h-[500px] max-sm:translate-y-[15%]">
+          <div
+            className="w-[900px] h-[900px] translate-x-[10%] max-lg:w-[700px] max-lg:h-[700px] max-lg:translate-x-0 max-lg:opacity-30 max-sm:w-[500px] max-sm:h-[500px] max-sm:translate-y-[15%]"
+            style={{ WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 95%)", maskImage: "linear-gradient(to bottom, black 75%, transparent 95%)" }}
+          >
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
@@ -66,18 +69,18 @@ export default function Hero() {
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(24px)",
-            transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s",
+            transition: "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s",
           }}
         >
           {t("hero.headline")}
         </h1>
 
         <p
-          className="text-[17px] text-zinc-600 mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
+          className="text-[17px] text-zinc-700 mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s",
+            transition: "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s",
           }}
         >
           {t("hero.subtext")}
@@ -88,7 +91,7 @@ export default function Hero() {
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(16px)",
-            transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.36s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.36s",
+            transition: "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s",
           }}
         >
           <Link
@@ -112,7 +115,7 @@ export default function Hero() {
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateX(0)" : "translateX(40px)",
-          transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s",
+          transition: "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s",
         }}
       >
         <ChatWidget />

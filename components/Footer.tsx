@@ -7,7 +7,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="max-w-site mx-auto px-12 border-t border-black/[0.06] max-sm:px-5">
+    <footer className="max-w-site mx-auto px-12 max-sm:px-5">
       <div className="flex items-center justify-between py-10 max-sm:flex-col max-sm:gap-6 max-sm:py-8">
         <div>
           <div className="text-base font-bold tracking-tight text-zinc-900 mb-1">

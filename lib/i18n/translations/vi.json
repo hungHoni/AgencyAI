@@ -1,165 +1,165 @@
 {
   "skipToContent": "Chuyển đến nội dung",
   "nav": {
-    "capabilities": "Khả năng",
+    "capabilities": "Tính năng",
     "services": "Dịch vụ",
     "process": "Quy trình",
     "contact": "Liên hệ",
-    "bookCall": "Đặt Cuộc Gọi Miễn Phí",
+    "bookCall": "Đặt Lịch Gọi",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu"
   },
   "hero": {
-    "tag": "AI Hỗ Trợ Doanh Nghiệp Địa Phương",
-    "headline": "Một nhân viên AI không bao giờ\u00a0ngủ.",
-    "subtext": "Chatbot AI tùy chỉnh trả lời câu hỏi khách hàng, thu thập thông tin liên hệ, đặt lịch hẹn và hỗ trợ khách hàng suốt ngày đêm. Được xây dựng cho doanh nghiệp không thể bỏ lỡ bất kỳ khách hàng nào.",
-    "getStarted": "Bắt Đầu",
-    "bookCall": "Đặt Cuộc Gọi Miễn Phí"
+    "tag": "AI Dành Riêng Cho Doanh Nghiệp Của Bạn",
+    "headline": "Một nhân viên mẫn cán không bao giờ ngủ.",
+    "subtext": "Chatbot AI thông minh giúp bạn tư vấn khách hàng, thu thập thông tin, đặt lịch hẹn và hỗ trợ 24/7. Giải pháp tối ưu để bạn không bao giờ bỏ lỡ bất kỳ vị khách nào.",
+    "getStarted": "Bắt Đầu Ngay",
+    "bookCall": "Đặt Lịch Demo"
   },
   "metrics": [
-    { "value": "24/7", "label": "Luôn sẵn sàng", "isText": true },
-    { "value": "~80%", "label": "Câu hỏi được trả lời ngay", "prefix": "~", "number": 80, "suffix": "%" },
-    { "value": "Không", "label": "Bỏ lỡ yêu cầu khách hàng", "isText": true },
-    { "value": "Không cần code", "label": "Để bắt đầu sử dụng", "isText": true }
+    { "value": "24/7", "label": "Luôn sẵn sàng hỗ trợ", "isText": true },
+    { "value": "~80%", "label": "Tỷ lệ phản hồi cực nhanh", "prefix": "~", "number": 80, "suffix": "%" },
+    { "value": "0", "label": "Bỏ lỡ khách hàng tiềm năng", "isText": true },
+    { "value": "Không", "label": "Cần am hiểu công nghệ", "isText": true }
   ],
   "capabilities": {
-    "sectionTag": "Khả năng",
-    "headline": "Mọi thứ khách hàng cần, tức thì.",
-    "subtext": "Chatbot được đào tạo trên dữ liệu doanh nghiệp của bạn. Nó biết dịch vụ, giá cả, giờ làm việc và chính sách của bạn. Không kịch bản, không cây quyết định.",
+    "sectionTag": "Tính năng",
+    "headline": "Đáp ứng mọi nhu cầu của khách hàng. Tức thì.",
+    "subtext": "Chatbot được huấn luyện trên chính thông tin doanh nghiệp của bạn. Nó nắm rõ mọi dịch vụ, báo giá, giờ mở cửa và chính sách. Tư vấn lưu loát, tự nhiên như người thật.",
     "items": [
-      { "title": "Trả lời câu hỏi", "description": "Dịch vụ, giá cả, giờ mở cửa, chính sách, chỉ đường. Bất cứ điều gì khách hàng thường gọi để hỏi." },
-      { "title": "Đặt lịch hẹn", "description": "Kiểm tra lịch trống, đặt chỗ, gửi xác nhận. Đồng bộ trực tiếp với lịch của bạn." },
-      { "title": "Thu thập khách hàng tiềm năng", "description": "Thu thập tên, email, số điện thoại từ khách truy cập quan tâm. Gửi cho bạn ngay khi có." },
-      { "title": "Hỗ trợ khách hàng", "description": "Đổi trả, khiếu nại, kiểm tra trạng thái. Giải quyết vấn đề đơn giản ngay, chuyển tiếp khi cần." }
+      { "title": "Giải đáp thắc mắc", "description": "Tư vấn dịch vụ, báo giá, hoạt động, chính sách và trả lời mọi câu hỏi khách hàng thường xuyên thắc mắc." },
+      { "title": "Đặt lịch tự động", "description": "Kiểm tra lịch rảnh, hỗ trợ đặt chỗ và gửi thông báo xác nhận. Tự động đồng bộ với hệ thống quản lý của bạn." },
+      { "title": "Thu thập khách hàng tiềm năng", "description": "Chủ động xin tên, số điện thoại và email của những khách truy cập quan tâm. Gửi thông báo trực tiếp cho bạn." },
+      { "title": "Chăm sóc và hỗ trợ", "description": "Hỗ trợ đổi trả, giải quyết khiếu nại hoặc kiểm tra đơn hàng. Xử lý tức thì các vấn đề đơn giản để giảm tải cho bạn." }
     ]
   },
   "services": {
     "sectionTag": "Dịch vụ",
-    "headline": "Cách chúng tôi giúp bạn phát triển.",
-    "subtext": "Bắt đầu với chatbot. Thêm website hoặc tự động hóa khi bạn sẵn sàng.",
+    "headline": "Giải pháp AI giúp bạn đột phá doanh thu.",
+    "subtext": "Hãy bắt đầu với một trợ lý AI thông minh, và tự động hoá quy trình làm việc khi doanh nghiệp của bạn sẵn sàng.",
     "items": [
       {
-        "tag": "Được yêu cầu nhiều nhất",
-        "title": "Chatbot AI",
-        "description": "Trợ lý AI tùy chỉnh được nhúng vào website của bạn. Được đào tạo riêng cho doanh nghiệp của bạn. Xử lý mọi thứ từ trả lời câu hỏi đến đặt lịch hẹn và thu thập khách hàng tiềm năng ngoài giờ.",
+        "tag": "Được quan tâm nhất",
+        "title": "Chatbot Trợ Lý AI",
+        "description": "Trợ lý AI tuỳ chỉnh nhúng ngay vào website. Được huấn luyện chuyên biệt và chỉ dành cho doanh nghiệp của bạn. Xử lý triệt để từ tư vấn, đặt lịch cho đến chăm sóc ngoài giờ.",
         "features": [
-          "Đào tạo riêng trên dữ liệu doanh nghiệp",
-          "Trả lời mọi câu hỏi khách hàng chính xác",
-          "Đặt lịch hẹn trực tiếp",
-          "Thu thập khách hàng tiềm năng 24/7",
-          "Hoạt động trên mọi website hiện có",
-          "Học hỏi và cải thiện theo thời gian"
+          "Huấn luyện độc quyền trên dữ liệu của bạn",
+          "Tư vấn chính xác không sai sót",
+          "Thực hiện đặt lịch trực tiếp",
+          "Tìm kiếm khách hàng liên tục 24/7",
+          "Hoạt động tương thích với mọi website",
+          "Càng dùng nhiều, AI càng thông minh"
         ]
       },
       {
         "tag": "",
-        "title": "Thiết kế Website",
-        "description": "Website chuyên nghiệp biến khách truy cập thành khách hàng. Nhanh, ưu tiên di động, tối ưu cho tìm kiếm địa phương.",
+        "title": "Thiết Kế Website Chuẩn SEO",
+        "description": "Giao diện website chuyên nghiệp giúp tối đa hoá tỷ lệ chốt sale. Tốc độ siêu tốc, chuyển đổi mượt mà và thân thiện với SEO.",
         "features": [
-          "Thiết kế tùy chỉnh",
-          "Tương thích di động",
-          "Tối ưu SEO",
-          "Sẵn sàng Google Business"
+          "Giao diện hiện đại, tinh tế",
+          "Tối ưu hoàn hảo trên điện thoại",
+          "Gia tăng tỷ lệ chuyển đổi Web",
+          "Tích hợp chuẩn Google Business"
         ]
       },
       {
         "tag": "",
-        "title": "Quy Trình Tự Động",
-        "description": "Kết nối các công cụ. Tự động hóa theo dõi, nhắc nhở, yêu cầu đánh giá và báo cáo.",
+        "title": "Tự Động Hóa Vận Hành",
+        "description": "Kết nối các công cụ làm việc rời rạc, tự động hóa quy trình theo dõi khách hàng và gửi báo cáo thông minh.",
         "features": [
-          "Nhắc lịch hẹn",
-          "Yêu cầu đánh giá",
-          "Chuỗi email",
-          "Quy trình tùy chỉnh"
+          "Tự động nhắc nhở lịch hẹn",
+          "Chủ động xin đánh giá 5 sao",
+          "Chiến dịch email chăm sóc tự động",
+          "Tùy biến quy trình cực kì nhanh gọn"
         ]
       }
     ]
   },
   "howItWorks": {
     "sectionTag": "Quy trình",
-    "headline": "Ba bước. Chỉ vậy thôi.",
-    "subtext": "Không cần kiến thức kỹ thuật. Chúng tôi xử lý mọi thứ từ đầu đến cuối.",
+    "headline": "Ba bước đơn giản. Vậy là xong.",
+    "subtext": "Bạn không cần am hiểu kỹ thuật. Chúng tôi sẽ lo liệu mọi thứ từ đầu đến cuối.",
     "steps": [
-      { "title": "Đặt cuộc gọi miễn phí", "description": "Cho chúng tôi biết về doanh nghiệp, khách hàng và những gì bạn cần hỗ trợ." },
-      { "title": "Chúng tôi xây dựng", "description": "Chatbot tùy chỉnh được đào tạo trên dữ liệu doanh nghiệp, sẵn sàng trong vài ngày, không phải vài tuần." },
-      { "title": "Đi vào hoạt động", "description": "Một dòng code trên website. Chúng tôi xử lý triển khai, giám sát và cập nhật." }
+      { "title": "Tham vấn miễn phí", "description": "Chia sẻ cho chúng tôi về mô hình kinh doanh, tệp khách hàng và những điều bạn đang trăn trở." },
+      { "title": "Triển khai lắp đặt", "description": "Hệ thống Chatbot được thiết kế dành riêng cho bạn sẽ được đưa vào hoạt động chỉ trong một vài ngày." },
+      { "title": "Kích hoạt sử dụng", "description": "Chỉ mất đúng một dòng code cực ngắn là quá trình tích hợp sẽ hoàn tất. Mọi thứ trở nên trơn tru ngay." }
     ]
   },
   "ctaBanner": {
-    "headline": "Sẵn sàng ngừng bỏ lỡ khách hàng?",
-    "subtext": "Đặt cuộc gọi miễn phí 15 phút. Chúng tôi sẽ cho bạn thấy chính xác chatbot AI có thể làm gì cho doanh nghiệp của bạn.",
-    "buttonLabel": "Đặt Cuộc Gọi Miễn Phí"
+    "headline": "Bạn đã sẵn sàng để bứt phá?",
+    "subtext": "Sắp xếp một cuộc gọi khoảng 15 phút. Chúng tôi sẽ cho bạn thấy chính xác cách AI có thể nâng cao hiệu suất công ty bạn.",
+    "buttonLabel": "Đặt Lịch Demo"
   },
   "contact": {
     "sectionTag": "Liên hệ",
-    "headline": "Cho chúng tôi biết về doanh nghiệp của bạn.",
-    "subtext": "Chúng tôi sẽ cho bạn thấy chatbot AI có thể xử lý gì, với bản demo tùy chỉnh cho ngành của bạn.",
+    "headline": "Viết cho chúng tôi điều bạn đang mong muốn.",
+    "subtext": "Chúng tôi sẽ tạo ra một bản dùng thử trực quan mang đặc thù ngành nghề của bạn để bạn trải nghiệm.",
     "trustSignals": [
-      { "title": "Phản hồi nhanh", "description": "Chúng tôi phản hồi trong vòng 2 giờ vào ngày làm việc" },
-      { "title": "Tư vấn miễn phí", "description": "Cuộc gọi 15 phút để hiểu nhu cầu của bạn" },
-      { "title": "Không ràng buộc", "description": "Không hợp đồng, không nghĩa vụ. Xem giá trị trước." }
+      { "title": "Hỗ trợ thần tốc", "description": "Phản hồi chỉ trong vỏn vẹn 2 giờ đồng hồ" },
+      { "title": "Bàn bạc chiến lược", "description": "Dành 15 phút tìm ra hướng đi đúng cho bài toán của bạn" },
+      { "title": "Hoàn toàn an tâm", "description": "Không cần cam kết, đo lường giá trị thực tế trước." }
     ],
     "formLabels": {
       "name": "Họ và tên",
       "business": "Tên doanh nghiệp",
-      "email": "Email",
-      "message": "Bạn muốn chatbot AI làm gì?"
+      "email": "Email liên hệ",
+      "message": "Nêu mong muốn lớn nhất của bạn về giải pháp AI?"
     },
     "formPlaceholders": {
-      "name": "Nguyễn Minh Anh",
-      "business": "Thẩm Mỹ Viện Hoa Sen",
+      "name": "Vd. Nguyễn Minh Anh",
+      "business": "Vd. Thẩm Mỹ Viện Hoa Sen",
       "email": "minhanh@hoasen.vn",
-      "message": "Trả lời câu hỏi về dịch vụ, đặt lịch hẹn, xử lý yêu cầu ngoài giờ..."
+      "message": "Vd. Trả lời câu hỏi về dịch vụ, đặt lịch hẹn, xử lý yêu cầu ngoài giờ..."
     },
     "validation": {
-      "nameRequired": "Vui lòng nhập họ tên",
-      "businessRequired": "Vui lòng nhập tên doanh nghiệp",
-      "emailRequired": "Vui lòng nhập email",
-      "emailInvalid": "Vui lòng nhập email hợp lệ"
+      "nameRequired": "Vui lòng nhập họ tên của bạn",
+      "businessRequired": "Vui lòng nhập tên công ty",
+      "emailRequired": "Vui lòng cung cấp email",
+      "emailInvalid": "Vui lòng nhập email chính xác"
     },
-    "successTitle": "Cảm ơn! Chúng tôi sẽ liên hệ trong vòng 24 giờ.",
-    "successSubtext": "Chúng tôi sẽ xem xét thông tin và liên hệ với bạn về kế hoạch demo tùy chỉnh.",
-    "submitButton": "Gửi tin nhắn",
+    "successTitle": "Cảm ơn bạn! Chúng tôi đã tiếp nhận thông tin.",
+    "successSubtext": "Chuyên viên của chúng tôi sẽ liên hệ chậm nhất trong 24 giờ tới qua email.",
+    "submitButton": "Gửi thông tin",
     "submittingButton": "Đang gửi...",
-    "errorMessage": "Đã có lỗi xảy ra. Vui lòng thử lại."
+    "errorMessage": "Rất tiếc vì sự cố kỹ thuật. Vui lòng gửi lại."
   },
   "footer": {
-    "tagline": "Chatbot AI cho doanh nghiệp địa phương.",
+    "tagline": "Nâng tầm tự động hóa cho doanh nghiệp địa phương.",
     "services": "Dịch vụ",
     "process": "Quy trình",
     "contact": "Liên hệ",
     "copyright": "AgencyAI. Bảo lưu mọi quyền.",
-    "privacyPolicy": "Chính sách bảo mật",
-    "termsOfService": "Điều khoản dịch vụ"
+    "privacyPolicy": "Chính sách bảo vệ quyền Riêng Tư",
+    "termsOfService": "Điều Khoản Sử Dụng Dịch Vụ"
   },
   "chat": {
-    "greeting": "Xin chào! Tôi là trợ lý AgencyAI. Hãy hỏi tôi bất cứ điều gì về dịch vụ chatbot AI, giá cả hoặc quy trình. Tôi có thể giúp gì?",
-    "onlineNow": "Đang trực tuyến",
-    "inputPlaceholder": "Hỏi bất cứ điều gì về dịch vụ...",
-    "tryAsking": "Thử đặt một câu hỏi...",
-    "leadPrompt": "Thích cuộc trò chuyện? Để lại thông tin và chúng tôi sẽ liên hệ với bản demo tùy chỉnh.",
-    "leadNamePlaceholder": "Tên của bạn",
-    "leadEmailPlaceholder": "Email của bạn",
-    "leadSend": "Gửi",
-    "leadSending": "Đang gửi...",
-    "leadNoThanks": "Không, cảm ơn",
-    "leadSuccess": "Cảm ơn! Chúng tôi sẽ liên hệ sớm.",
-    "demoPrompt": "Đây là trải nghiệm khách hàng của bạn sẽ có",
-    "demoCta": "Thử chatbot thật \u2192",
-    "errorFallback": "Sử dụng form liên hệ",
-    "demoTitle": "Thẩm Mỹ Viện Hoa Sen"
+    "greeting": "Xin chào! Tôi là quản gia của AgencyAI. Để tôi giúp bạn giải đáp mọi thắc mắc nhé?",
+    "onlineNow": "Sẵn sàng hỗ trợ",
+    "inputPlaceholder": "Nhắn tại đây để tôi hỗ trợ bạn...",
+    "tryAsking": "Gợi ý cho bạn:",
+    "leadPrompt": "Cảm ơn sự quan tâm của bạn. Để lại phương thức liên lạc bên dưới, đội ngũ sẽ mang đến bản Demo dành riêng cho bạn.",
+    "leadNamePlaceholder": "Họ tên của bạn",
+    "leadEmailPlaceholder": "Email liên hệ",
+    "leadSend": "Gửi cho chúng tôi",
+    "leadSending": "Hệ thống đang lưu...",
+    "leadNoThanks": "Để sau nhé",
+    "leadSuccess": "Tuyệt vời, thông tin của bạn đã được ghi nhận an toàn.",
+    "demoPrompt": "Hãy thử dùng một Demo dành cho Khách hàng",
+    "demoCta": "Dùng chatbot thật \u2192",
+    "errorFallback": "Bạn vui lòng dùng form ở cuối trang giúp mình nhé",
+    "demoTitle": "Thẩm Mỹ Viện Hoa Sen (Bản Dùng Thử)"
   },
   "chatDemo": [
-    { "role": "assistant", "content": "Xin chào! Chào mừng đến Thẩm Mỹ Viện Hoa Sen. Tôi có thể giúp bạn đặt lịch, xem giá hoặc trả lời bất kỳ câu hỏi nào. Tôi có thể giúp gì?" },
-    { "role": "user", "content": "Cho mình hỏi nhuộm balayage bao nhiêu tiền?" },
-    { "role": "assistant", "content": "Dạ có ạ! Nhuộm balayage giá từ 1.500.000đ cho tóc dài trung bình, bao gồm tư vấn, nhuộm và sấy tạo kiểu. Chuyên gia nhuộm Thuý của chúng tôi chuyên về balayage và còn lịch trống thứ Năm và thứ Sáu tuần này. Bạn muốn đặt lịch không?" },
-    { "role": "user", "content": "Thứ Năm được. Có lịch khoảng 2 giờ chiều không?" },
-    { "role": "assistant", "content": "Thuý có lịch trống lúc 2:15 chiều thứ Năm. Mình sẽ đặt cho bạn nhé. Cho mình xin tên và số điện thoại để xác nhận?" }
+    { "role": "assistant", "content": "Xin chào! Bạn quan tâm đến dịch vụ nào tại nha khoa chúng tôi? Tôi có thể tư vấn chi phí hoặc đặt lịch hẹn ngay cho bạn." },
+    { "role": "user", "content": "Dạ tẩy trắng răng giá bao nhiêu?" },
+    { "role": "assistant", "content": "Chào bạn, liệu trình tẩy trắng răng chuyên nghiệp tại phòng khám hiện đang có giá 2.500.000₫. Quá trình làm sẽ diễn ra 1 lần, tuyệt đối êm ái. Chiều thứ Bảy này bác sĩ chính của chúng tôi còn vài khung giờ trống, tôi hỗ trợ lấy lịch cho bạn nhé?" },
+    { "role": "user", "content": "Khoảng 3h chiều có được không bạn?" },
+    { "role": "assistant", "content": "Dạ 3:00 - 3:30 thì bên mình còn lịch ạ. Bạn cho mình xin Tên và số Điện Thoại liên hệ để phòng khám chốt lịch hẹn nhé?" }
   ],
   "notFound": {
     "code": "404",
-    "heading": "Không tìm thấy trang",
-    "description": "Trang bạn đang tìm không tồn tại hoặc đã được di chuyển.",
-    "backHome": "Về trang chủ"
+    "heading": "Đường dẫn không có thật",
+    "description": "Chúng tôi không thể tìm thấy trang mà bạn yêu cầu.",
+    "backHome": "Quay về trang chủ"
   }
 }

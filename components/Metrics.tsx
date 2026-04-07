@@ -71,14 +71,12 @@ export default function Metrics() {
   }, []);
 
   return (
-    <div ref={ref} className="px-12 py-14 max-w-site mx-auto border-t border-black/[0.06] max-sm:px-5 max-sm:py-10">
+    <div ref={ref} className="px-12 py-14 max-w-site mx-auto max-sm:px-5 max-sm:py-10">
       <div className="flex justify-start max-sm:flex-wrap">
         {data.metrics.map((m, i) => (
           <div
             key={i}
-            className={`text-left flex-1 ${
-              i > 0 ? "pl-10 border-l border-black/[0.06] max-sm:border-l-0 max-sm:pl-0" : ""
-            } max-sm:w-1/2 max-sm:py-4`}
+            className="text-center flex-1 max-sm:w-1/2 max-sm:py-4"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(16px)",

@@ -44,7 +44,7 @@ export default function Services() {
       >
         <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">{t("services.headline")}</h2>
-        <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
+        <p className="text-base text-zinc-700 max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
       </div>
 
       {/* Bento grid — 5 columns, asymmetric */}
@@ -69,56 +69,46 @@ export default function Services() {
             <p className="text-[14px] text-zinc-400 leading-[1.6] max-w-[400px] mb-6">{items[0].description}</p>
           </div>
 
-          {/* Chat illustration — polished SVG */}
-          <div className="relative pl-8 max-sm:pl-6 pb-2">
-            <div className="absolute -inset-6 top-0 [background:radial-gradient(75%_95%_at_50%_0%,transparent,rgb(24,24,27)_100%)] z-10 pointer-events-none" />
-            <svg className="w-full max-w-[420px]" viewBox="0 0 420 220" fill="none">
-              {/* Chat window frame */}
-              <rect x="0" y="0" width="420" height="220" rx="16" className="fill-zinc-800/80 stroke-white/[0.06]" strokeWidth="1" />
+          {/* Stunning Chat UI Mockup */}
+          <div className="relative h-[240px] ml-8 mt-2 max-sm:ml-4 max-sm:mt-0 rounded-tl-2xl border-t border-l border-white/[0.08] bg-[#1e1e24] shadow-2xl overflow-hidden flex flex-col pointer-events-none group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-700 ease-smooth">
+            {/* Header */}
+            <div className="h-14 border-b border-white/[0.06] bg-[#1a1a1f] px-5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                  <div className="w-2.5 h-2.5 bg-blue-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+                </div>
+                <div>
+                  <div className="text-[13px] font-semibold text-white tracking-wide leading-tight">AgencyAI</div>
+                  <div className="text-[10px] text-blue-400 font-medium">Trợ lý trực tuyến</div>
+                </div>
+              </div>
+            </div>
+            {/* Body */}
+            <div className="flex-1 p-5 pb-0 flex flex-col gap-4 relative">
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1e1e24] to-transparent z-10" />
+              
+              <div className="self-start relative z-0 flex items-end gap-2 animate-[chat-slide-up_0.5s_ease-out_both] delay-100">
+                <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/20 shrink-0" />
+                <div className="bg-[#2a2a32] border border-white/[0.04] rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[90%] shadow-sm">
+                  <div className="text-[12px] text-zinc-300 leading-relaxed">Xin chào! Chào mừng bạn đến với Thẩm Mỹ Viện Hoa Sen.</div>
+                </div>
+              </div>
 
-              {/* Header bar */}
-              <rect x="0" y="0" width="420" height="44" rx="16" className="fill-zinc-800" />
-              <rect x="0" y="28" width="420" height="16" className="fill-zinc-800" />
-              <line x1="0" y1="44" x2="420" y2="44" className="stroke-white/[0.06]" strokeWidth="1" />
-              <circle cx="28" cy="22" r="12" className="fill-blue-400" />
-              <path d="M24 22a1 1 0 011-1h6l-3 4V21a1 1 0 01-1-1H25a1 1 0 01-1 1z" className="fill-white" transform="translate(0, 1) scale(0.7)" style={{ transformOrigin: "28px 22px" }} />
-              <text x="48" y="19" className="fill-zinc-200 text-[11px] font-semibold">AgencyAI</text>
-              <circle cx="48" cy="28" r="2.5" className="fill-blue-400">
-                <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite" />
-              </circle>
-              <text x="56" y="31" className="fill-blue-400 text-[8px]">Online</text>
+              <div className="self-end relative z-0 animate-[chat-slide-up_0.5s_ease-out_both] delay-500">
+                <div className="bg-blue-500 rounded-2xl rounded-br-sm px-4 py-2.5 max-w-[90%] shadow-md">
+                  <div className="text-[12px] text-white font-medium shadow-sm">Mình muốn hỏi chi phí nhuộm Balayage?</div>
+                </div>
+              </div>
 
-              {/* Assistant bubble 1 */}
-              <rect x="16" y="56" width="240" height="42" rx="12" className="fill-white/[0.05] stroke-white/[0.06]" strokeWidth="1">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" fill="freeze" begin="0.3s" />
-              </rect>
-              <text x="28" y="73" className="fill-zinc-400 text-[10px]">Hi! How can I help you today?</text>
-              <text x="28" y="88" className="fill-zinc-500 text-[9px]">Ask about services, pricing, or booking</text>
-
-              {/* User bubble */}
-              <rect x="180" y="108" width="224" height="34" rx="12" className="fill-blue-400">
-                <animate attributeName="opacity" values="0;1" dur="0.4s" fill="freeze" begin="0.8s" />
-              </rect>
-              <text x="196" y="129" className="fill-white text-[10px]">Do you do balayage? Price?</text>
-
-              {/* Assistant bubble 2 */}
-              <rect x="16" y="152" width="280" height="52" rx="12" className="fill-white/[0.05] stroke-white/[0.06]" strokeWidth="1">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" fill="freeze" begin="1.3s" />
-              </rect>
-              <text x="28" y="172" className="fill-zinc-400 text-[10px]">Balayage starts at $165. Priya has</text>
-              <text x="28" y="192" className="fill-zinc-400 text-[10px]">openings Thu &amp; Fri. Want to book?</text>
-
-              {/* Typing indicator dots */}
-              <circle cx="28" cy="215" r="3" className="fill-zinc-600">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="38" cy="215" r="3" className="fill-zinc-600">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.2s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="48" cy="215" r="3" className="fill-zinc-600">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.4s" repeatCount="indefinite" />
-              </circle>
-            </svg>
+              <div className="self-start relative z-0 flex items-end gap-2 animate-[chat-slide-up_0.5s_ease-out_both] delay-700">
+                <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/20 shrink-0" />
+                <div className="bg-[#2a2a32] border border-white/[0.04] rounded-2xl rounded-bl-sm px-4 py-2.5 shadow-sm flex items-center gap-1.5 h-[36px]">
+                   <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-[typing-dot_1.4s_infinite]" />
+                   <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-[typing-dot_1.4s_infinite_0.2s]" />
+                   <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-[typing-dot_1.4s_infinite_0.4s]" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -133,69 +123,42 @@ export default function Services() {
         >
           <div className="p-8 max-sm:p-6">
             <h3 className="text-[20px] font-bold tracking-[-0.4px] text-zinc-900 mb-2">{items[1].title}</h3>
-            <p className="text-[14px] text-zinc-500 leading-[1.6]">{items[1].description}</p>
+            <p className="text-[14px] text-zinc-600 leading-[1.6]">{items[1].description}</p>
           </div>
 
-          {/* Website illustration — polished SVG */}
-          <div className="relative px-6 pb-6 max-sm:px-4 max-sm:pb-4">
-            <svg className="w-full transition-transform duration-500 ease-smooth group-hover:-translate-y-1" viewBox="0 0 340 260" fill="none">
-              {/* Browser frame */}
-              <rect x="0" y="0" width="340" height="260" rx="12" className="fill-white stroke-black/[0.08]" strokeWidth="1" />
-
-              {/* Title bar */}
-              <rect x="0" y="0" width="340" height="32" rx="12" className="fill-[#fafaf9]" />
-              <rect x="0" y="16" width="340" height="16" className="fill-[#fafaf9]" />
-              <line x1="0" y1="32" x2="340" y2="32" className="stroke-black/[0.06]" strokeWidth="1" />
-              <circle cx="16" cy="16" r="4" className="fill-red-400/50" />
-              <circle cx="28" cy="16" r="4" className="fill-yellow-400/50" />
-              <circle cx="40" cy="16" r="4" className="fill-blue-300/50" />
-              <rect x="80" y="10" width="120" height="12" rx="6" className="fill-black/[0.04]" />
-
-              {/* Hero section of the website */}
-              <rect x="16" y="44" width="308" height="80" rx="8" className="fill-blue-400/[0.05]" />
-              <rect x="32" y="58" width="140" height="8" rx="4" className="fill-zinc-900/70" />
-              <rect x="32" y="72" width="100" height="6" rx="3" className="fill-zinc-400/40" />
-              <rect x="32" y="84" width="120" height="6" rx="3" className="fill-zinc-400/30" />
-              <rect x="32" y="100" width="60" height="16" rx="6" className="fill-zinc-900" />
-              <text x="47" y="112" className="fill-white text-[7px] font-medium">Get Started</text>
-              {/* Phone mockup */}
-              <rect x="230" y="52" width="60" height="65" rx="6" className="fill-white stroke-black/[0.08]" strokeWidth="1" />
-              <rect x="234" y="60" width="52" height="32" rx="3" className="fill-blue-400/10" />
-              <rect x="238" y="96" width="30" height="4" rx="2" className="fill-black/[0.06]" />
-              <rect x="238" y="104" width="44" height="4" rx="2" className="fill-black/[0.04]" />
-
-              {/* Cards row */}
-              <rect x="16" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="24" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
-              <rect x="24" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
-              <rect x="24" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
-
-              <rect x="122" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="130" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
-              <rect x="130" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
-              <rect x="130" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
-
-              <rect x="228" y="136" width="96" height="60" rx="6" className="fill-[#fafaf9] stroke-black/[0.06]" strokeWidth="0.5" />
-              <rect x="236" y="144" width="20" height="20" rx="4" className="fill-blue-400/10" />
-              <rect x="236" y="172" width="60" height="5" rx="2.5" className="fill-zinc-300/60" />
-              <rect x="236" y="182" width="40" height="4" rx="2" className="fill-zinc-200/60" />
-
-              {/* Stats bar */}
-              <rect x="16" y="208" width="308" height="36" rx="6" className="fill-[#fafaf9]" />
-              <rect x="32" y="218" width="40" height="14" rx="4" className="fill-blue-400/15" />
-              <text x="39" y="228" className="fill-blue-600 text-[7px] font-bold">98%</text>
-              <rect x="82" y="222" width="50" height="5" rx="2.5" className="fill-zinc-300/40" />
-              <rect x="200" y="218" width="40" height="14" rx="4" className="fill-blue-400/15" />
-              <text x="207" y="228" className="fill-blue-600 text-[7px] font-bold">4.9★</text>
-              <rect x="250" y="222" width="50" height="5" rx="2.5" className="fill-zinc-300/40" />
-
-              {/* Pulse animation on the CTA */}
-              <rect x="30" y="98" width="64" height="20" rx="7" className="stroke-blue-400/30 fill-none" strokeWidth="1">
-                <animate attributeName="opacity" values="0;0.6;0" dur="2.5s" repeatCount="indefinite" />
-                <animate attributeName="width" values="64;72;64" dur="2.5s" repeatCount="indefinite" />
-                <animate attributeName="x" values="30;26;30" dur="2.5s" repeatCount="indefinite" />
-              </rect>
-            </svg>
+          {/* Abstract Floating UI components */}
+          <div className="relative h-[240px] w-full overflow-hidden flex justify-center items-end bg-gradient-to-b from-transparent to-black/[0.01]">
+            <div className="w-[85%] h-[190px] bg-white rounded-t-[24px] border border-black/[0.08] shadow-[0_-8px_30px_rgba(0,0,0,0.06)] relative flex flex-col items-center pt-8 px-6 transition-transform duration-700 ease-smooth group-hover:translate-y-[-8px]">
+              
+              {/* Header skeleton */}
+              <div className="w-[45%] h-3.5 bg-zinc-200/80 rounded-full mb-3" />
+              <div className="w-[25%] h-2.5 bg-zinc-100 rounded-full mb-8" />
+              
+              {/* Bento inside bento */}
+              <div className="w-full grid grid-cols-2 gap-3 relative z-10">
+                 <div className="h-24 bg-zinc-50 rounded-xl border border-black/[0.04] p-4 flex flex-col justify-between shadow-sm">
+                   <div className="w-8 h-8 bg-blue-100/60 rounded-lg flex items-center justify-center">
+                     <div className="w-4 h-4 bg-blue-500 rounded-md shadow-sm" />
+                   </div>
+                   <div className="space-y-2">
+                     <div className="w-full h-2 bg-zinc-200/80 rounded-full" />
+                     <div className="w-2/3 h-2 bg-zinc-200/80 rounded-full" />
+                   </div>
+                 </div>
+                 <div className="h-24 bg-zinc-50 rounded-xl border border-black/[0.04] p-4 flex flex-col justify-between shadow-sm">
+                   <div className="w-8 h-8 bg-amber-100/60 rounded-lg flex items-center justify-center">
+                     <div className="w-4 h-4 bg-amber-500 rounded-md shadow-sm" />
+                   </div>
+                   <div className="space-y-2">
+                     <div className="w-full h-2 bg-zinc-200/80 rounded-full" />
+                     <div className="w-1/2 h-2 bg-zinc-200/80 rounded-full" />
+                   </div>
+                 </div>
+              </div>
+              
+              <div className="absolute -top-10 -right-10 w-48 h-48 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />
+            </div>
           </div>
         </div>
 
@@ -210,10 +173,10 @@ export default function Services() {
         >
           <div className="p-8 flex flex-col justify-center max-sm:p-6">
             <h3 className="text-[20px] font-bold tracking-[-0.4px] text-zinc-900 mb-2">{items[2].title}</h3>
-            <p className="text-[14px] text-zinc-500 leading-[1.6] mb-5 max-w-[360px]">{items[2].description}</p>
+            <p className="text-[14px] text-zinc-600 leading-[1.6] mb-5 max-w-[360px]">{items[2].description}</p>
             <div className="flex flex-wrap gap-2">
               {items[2].features.map((f, fi) => (
-                <span key={fi} className="flex items-center gap-1.5 text-[13px] text-zinc-600 bg-black/[0.03] px-3 py-1.5 rounded-full">
+                <span key={fi} className="flex items-center gap-1.5 text-[13px] text-zinc-700 bg-black/[0.03] px-3 py-1.5 rounded-full">
                   <CheckIcon />
                   {f}
                 </span>
@@ -221,45 +184,60 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Animated flow diagram */}
-          <div className="relative flex items-center justify-center p-8 max-sm:p-6 max-sm:pt-0 overflow-hidden">
-            <div className="absolute inset-0 [background:radial-gradient(50%_80%_at_80%_50%,transparent,white_100%)] pointer-events-none z-10 max-sm:hidden" />
-            <svg className="w-full max-w-[400px] h-[140px]" viewBox="0 0 400 140">
-              {/* Flow lines */}
-              <path d="M 60 70 Q 130 30, 200 70" fill="none" className="stroke-blue-400/25" strokeWidth="2" strokeDasharray="6 4">
-                <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
-              </path>
-              <path d="M 200 70 Q 270 110, 340 70" fill="none" className="stroke-blue-400/25" strokeWidth="2" strokeDasharray="6 4">
-                <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
-              </path>
+          {/* Crystal Clear Pipeline Animation */}
+          <div className="relative flex items-center justify-center p-8 max-sm:p-4 w-full h-[200px] max-lg:h-[220px]">
+             {/* Pipeline Container */}
+             <div className="flex items-center justify-center w-full max-w-[500px]">
+                
+                {/* Step 1: Input (e.g. Lead) */}
+                <div className="relative group/node flex flex-col items-center">
+                  <div className="w-14 h-14 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                    <svg className="w-6 h-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                  </div>
+                  <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Khách truy cập</div>
+                </div>
 
-              {/* Nodes */}
-              <g>
-                <rect x="20" y="45" width="80" height="50" rx="12" className="fill-blue-400/[0.08] stroke-blue-400/25" strokeWidth="1.5" />
-                <text x="60" y="65" textAnchor="middle" className="fill-blue-600 text-[11px] font-semibold">Trigger</text>
-                <text x="60" y="82" textAnchor="middle" className="fill-blue-500/60 text-[9px]">Form / Chat</text>
-              </g>
-              <g>
-                <rect x="160" y="45" width="80" height="50" rx="12" className="fill-zinc-900 stroke-zinc-700" strokeWidth="1.5">
-                  <animate attributeName="opacity" values="1;0.85;1" dur="2.5s" repeatCount="indefinite" />
-                </rect>
-                <text x="200" y="65" textAnchor="middle" className="fill-white text-[11px] font-semibold">AI Process</text>
-                <text x="200" y="82" textAnchor="middle" className="fill-zinc-400 text-[9px]">Classify + Act</text>
-              </g>
-              <g>
-                <rect x="300" y="45" width="80" height="50" rx="12" className="fill-blue-400/[0.08] stroke-blue-400/25" strokeWidth="1.5" />
-                <text x="340" y="65" textAnchor="middle" className="fill-blue-600 text-[11px] font-semibold">Output</text>
-                <text x="340" y="82" textAnchor="middle" className="fill-blue-500/60 text-[9px]">CRM / Email</text>
-              </g>
+                {/* Connecting Line 1 */}
+                <div className="flex-1 h-[3px] bg-zinc-100 rounded-full relative overflow-hidden mx-3">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite]" />
+                </div>
 
-              {/* Animated dots on paths */}
-              <circle r="3" className="fill-blue-400">
-                <animateMotion dur="2s" repeatCount="indefinite" path="M 60 70 Q 130 30, 200 70" />
-              </circle>
-              <circle r="3" className="fill-blue-400">
-                <animateMotion dur="2s" repeatCount="indefinite" path="M 200 70 Q 270 110, 340 70" />
-              </circle>
-            </svg>
+                {/* Step 2: AI brain */}
+                <div className="relative group/node flex flex-col items-center scale-[1.15] mx-[-4px] z-20">
+                  <div className="absolute inset-0 bg-blue-500/30 blur-2xl rounded-full" />
+                  <div className="w-16 h-16 bg-zinc-900 rounded-[20px] shadow-2xl border border-zinc-800 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:scale-110">
+                    <svg className="w-7 h-7 text-blue-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                  </div>
+                  <div className="absolute -bottom-9 text-[12px] font-bold text-zinc-900 whitespace-nowrap bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">AI Xử Lý</div>
+                </div>
+
+                {/* Connecting Line 2 */}
+                <div className="flex-1 h-[3px] bg-zinc-100 rounded-full relative overflow-hidden mx-3">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite_0.4s]" />
+                </div>
+
+                {/* Step 3: Automation Action 1 (Calendar) */}
+                <div className="relative group/node flex flex-col items-center">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Chốt hẹn</div>
+                </div>
+                
+                {/* Split line */}
+                <div className="w-5 h-[3px] bg-zinc-100 rounded-full relative mx-3 hidden sm:block">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite_0.6s]" />
+                </div>
+
+                {/* Step 4: Automation Action 2 (Mail) */}
+                <div className="relative group/node flex flex-col items-center hidden sm:flex">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Gửi Email</div>
+                </div>
+
+             </div>
           </div>
         </div>
       </div>
@@ -277,7 +255,7 @@ export default function Services() {
           <div key={si} className="bg-white border border-black/[0.06] rounded-card px-7 py-5 max-sm:px-5">
             <div className="flex flex-wrap gap-2">
               {items[si].features.map((f, fi) => (
-                <span key={fi} className="flex items-center gap-1.5 text-[13px] text-zinc-600">
+                <span key={fi} className="flex items-center gap-1.5 text-[13px] text-zinc-700">
                   <CheckIcon />
                   {f}
                 </span>

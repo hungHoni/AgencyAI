@@ -73,7 +73,7 @@ export default function ContactForm() {
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}>
         <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("contact.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[400px] text-wrap-balance">{t("contact.headline")}</h2>
-        <p className="text-base text-zinc-600 max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
+        <p className="text-base text-zinc-700 max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
 
         <div className="mt-10 flex flex-col gap-5">
           {data.contact.trustSignals.map((signal, i) => (
@@ -81,7 +81,7 @@ export default function ContactForm() {
               <div className="w-10 h-10 bg-[rgba(96,165,250,0.06)] rounded-btn flex items-center justify-center shrink-0">{trustIcons[i]}</div>
               <div>
                 <h5 className="text-sm font-semibold tracking-[-0.2px]">{signal.title}</h5>
-                <p className="text-[13px] text-zinc-600 mt-px">{signal.description}</p>
+                <p className="text-[13px] text-zinc-700 mt-px">{signal.description}</p>
               </div>
             </div>
           ))}
@@ -95,7 +95,7 @@ export default function ContactForm() {
               <svg viewBox="0 0 20 20" fill="white" className="w-6 h-6"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
             </div>
             <h3 className="text-xl font-bold tracking-[-0.4px] mb-2">{t("contact.successTitle")}</h3>
-            <p className="text-sm text-zinc-600">{t("contact.successSubtext")}</p>
+            <p className="text-sm text-zinc-700">{t("contact.successSubtext")}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>

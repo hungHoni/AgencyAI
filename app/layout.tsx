@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LocaleProvider } from "@/lib/i18n/context";
 import MountainScene from "@/components/MountainScene";
 import "./globals.css";
 
-const outfit = Outfit({
-  subsets: ["latin"],
+const mainFont = Plus_Jakarta_Sans({
+  subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-outfit",
+  variable: "--font-main",
   display: "swap",
 });
 
@@ -46,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={outfit.variable}>
-      <body className="font-[family-name:var(--font-outfit)] antialiased">
+    <html lang="en" className={mainFont.variable}>
+      <body className="font-[family-name:var(--font-main)] antialiased">
         <LocaleProvider>
           <div className="fixed inset-0 pointer-events-none z-[-1] opacity-20">
             <MountainScene />
