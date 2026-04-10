@@ -33,7 +33,7 @@ export default function CtaBanner() {
 
         <div className="relative z-10">
           <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] font-extrabold text-zinc-100 tracking-[-1px] leading-[1.1] mb-2 text-wrap-balance">{t("ctaBanner.headline")}</h2>
-          <p className="text-[15px] text-zinc-500 max-w-[420px] leading-[1.6] max-lg:mx-auto">{t("ctaBanner.subtext")}</p>
+          <p className="text-base text-zinc-500 max-w-[420px] leading-[1.6] max-lg:mx-auto">{t("ctaBanner.subtext")}</p>
         </div>
 
         <Link href="#contact" className="relative z-10 bg-blue-400 text-white px-9 py-4 rounded-btn text-[15px] font-semibold tracking-[-0.2px] whitespace-nowrap shrink-0 hover:bg-blue-500 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth animate-[cta-glow_3s_ease-in-out_infinite]">

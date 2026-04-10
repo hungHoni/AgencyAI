@@ -69,19 +69,19 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="contact" ref={sectionRef} className="max-w-site mx-auto px-12 py-24 grid grid-cols-2 gap-20 items-start max-lg:grid-cols-1 max-lg:gap-12 max-sm:px-5 max-sm:py-16">
+    <section id="contact" ref={sectionRef} className="max-w-site mx-auto px-12 py-16 grid grid-cols-2 gap-20 items-start max-lg:grid-cols-1 max-lg:gap-12 max-sm:px-5 max-sm:py-12">
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}>
         <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("contact.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[400px] text-wrap-balance">{t("contact.headline")}</h2>
-        <p className="text-base text-zinc-700 max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
+        <p className="text-[17px] text-zinc-700 max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
 
         <div className="mt-10 flex flex-col gap-5">
           {data.contact.trustSignals.map((signal, i) => (
             <div key={i} className="flex items-start gap-3.5">
               <div className="w-10 h-10 bg-[rgba(96,165,250,0.06)] rounded-btn flex items-center justify-center shrink-0">{trustIcons[i]}</div>
               <div>
-                <h5 className="text-sm font-semibold tracking-[-0.2px]">{signal.title}</h5>
-                <p className="text-[13px] text-zinc-700 mt-px">{signal.description}</p>
+                <h5 className="text-[15px] font-semibold tracking-[-0.2px]">{signal.title}</h5>
+                <p className="text-sm text-zinc-700 mt-px">{signal.description}</p>
               </div>
             </div>
           ))}

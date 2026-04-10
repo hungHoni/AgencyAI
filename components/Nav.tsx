@@ -50,18 +50,16 @@ export default function Nav() {
       <div className={`flex items-center gap-1 text-xs font-medium ${className}`}>
         <button
           onClick={() => setLocale("en")}
-          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
-            locale === "en" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
-          }`}
+          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${locale === "en" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
+            }`}
         >
           EN
         </button>
         <span className="text-zinc-300">|</span>
         <button
           onClick={() => setLocale("vi")}
-          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${
-            locale === "vi" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
-          }`}
+          className={`px-1.5 py-0.5 rounded transition-all duration-400 ease-smooth ${locale === "vi" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-700"
+            }`}
         >
           VI
         </button>
@@ -82,11 +80,10 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-400 ease-smooth ${
-                activeSection === link.href.slice(1)
+              className={`text-sm font-medium transition-all duration-400 ease-smooth ${activeSection === link.href.slice(1)
                   ? "text-zinc-900"
                   : "text-zinc-400 hover:text-zinc-900"
-              }`}
+                }`}
             >
               {t(link.key)}
               {activeSection === link.href.slice(1) && (
@@ -114,14 +111,12 @@ export default function Nav() {
           >
             <div className="w-5 flex flex-col gap-[5px]">
               <span
-                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
-                  mobileOpen ? "rotate-45 translate-y-[3.25px]" : ""
-                }`}
+                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${mobileOpen ? "rotate-45 translate-y-[3.25px]" : ""
+                  }`}
               />
               <span
-                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${
-                  mobileOpen ? "-rotate-45 -translate-y-[3.25px]" : ""
-                }`}
+                className={`block h-[1.5px] bg-zinc-900 rounded-full transition-all duration-300 ease-smooth ${mobileOpen ? "-rotate-45 -translate-y-[3.25px]" : ""
+                  }`}
               />
             </div>
           </button>
@@ -158,11 +153,10 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-[17px] font-medium py-3.5 px-4 rounded-btn transition-all duration-400 ease-smooth ${
-                  activeSection === link.href.slice(1)
+                className={`text-[17px] font-medium py-3.5 px-4 rounded-btn transition-all duration-400 ease-smooth ${activeSection === link.href.slice(1)
                     ? "text-zinc-900 bg-black/[0.04]"
                     : "text-zinc-500 hover:text-zinc-900 hover:bg-black/[0.02]"
-                }`}
+                  }`}
               >
                 {t(link.key)}
               </Link>

@@ -33,7 +33,7 @@ export default function Capabilities() {
   }, []);
 
   return (
-    <section id="capabilities" ref={ref} className="max-w-site mx-auto px-12 py-24 max-sm:px-5 max-sm:py-16">
+    <section id="capabilities" ref={ref} className="max-w-site mx-auto px-12 py-16 max-sm:px-5 max-sm:py-12">
       <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
         <div
           className="max-lg:max-w-[520px]"
@@ -49,7 +49,7 @@ export default function Capabilities() {
           <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance">
             {t("capabilities.headline")}
           </h2>
-          <p className="text-base text-zinc-700 leading-[1.7]">
+          <p className="text-[17px] text-zinc-700 leading-[1.7]">
             {t("capabilities.subtext")}
           </p>
         </div>
@@ -69,8 +69,8 @@ export default function Capabilities() {
                 {icons[i]}
               </div>
               <div>
-                <h4 className="text-base font-bold tracking-[-0.3px] mb-1">{cap.title}</h4>
-                <p className="text-sm text-zinc-700 leading-[1.6]">{cap.description}</p>
+                <h4 className="text-[17px] font-bold tracking-[-0.3px] mb-1">{cap.title}</h4>
+                <p className="text-[15px] text-zinc-700 leading-[1.6]">{cap.description}</p>
               </div>
             </div>
           ))}

@@ -5,17 +5,17 @@
   --bg-card: #ffffff;
   --bg-dark: #18181b;
   --bg-dark-card: #27272a;
-  --border: rgba(0,0,0,0.06);
-  --border-strong: rgba(0,0,0,0.10);
+  --border: rgba(0, 0, 0, 0.06);
+  --border-strong: rgba(0, 0, 0, 0.10);
   --text-primary: #18181b;
   --text-secondary: #52525b;
   --text-muted: #a1a1aa;
   --accent: #60a5fa;
   --accent-muted: #3b82f6;
-  --accent-bg: rgba(96,165,250,0.06);
-  --accent-border: rgba(96,165,250,0.15);
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.04);
+  --accent-bg: rgba(96, 165, 250, 0.06);
+  --accent-border: rgba(96, 165, 250, 0.15);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.06), 0 20px 40px rgba(0, 0, 0, 0.04);
   --radius: 1.25rem;
   --radius-sm: 0.625rem;
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -25,18 +25,21 @@
   --font-outfit: var(--font-outfit);
   --color-accent: #60a5fa;
   --color-accent-muted: #3b82f6;
-  --color-accent-bg: rgba(96,165,250,0.06);
-  --color-accent-border: rgba(96,165,250,0.15);
+  --color-accent-bg: rgba(96, 165, 250, 0.06);
+  --color-accent-border: rgba(96, 165, 250, 0.15);
   --radius-card: 1.25rem;
   --radius-btn: 0.625rem;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.04);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.06), 0 20px 40px rgba(0, 0, 0, 0.04);
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
   --max-width-site: 1400px;
   --duration-400: 400ms;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--bg);
   color: var(--text-primary);
@@ -65,17 +68,31 @@ body::before {
   border-radius: var(--radius-sm);
 }
 
-input:focus, textarea:focus, button:focus, a:focus {
+input:focus,
+textarea:focus,
+button:focus,
+a:focus {
   outline: none;
 }
-input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 @keyframes breathe {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .overflow-wrap-anywhere {
@@ -84,54 +101,123 @@ input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visib
 
 /* ─── Chat animations ─── */
 @keyframes chat-slide-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes chat-panel-in {
-  from { opacity: 0; transform: translateY(16px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
+
 @keyframes typing-dot {
-  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-  30% { opacity: 1; transform: translateY(-4px); }
+
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
 }
+
 .animate-chat-bubble {
   animation: chat-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
 .animate-chat-panel {
   animation: chat-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.typing-dot:nth-child(1) { animation: typing-dot 1.4s ease-in-out infinite; }
-.typing-dot:nth-child(2) { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
-.typing-dot:nth-child(3) { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
+
+.typing-dot:nth-child(1) {
+  animation: typing-dot 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation: typing-dot 1.4s ease-in-out 0.2s infinite;
+}
+
+.typing-dot:nth-child(3) {
+  animation: typing-dot 1.4s ease-in-out 0.4s infinite;
+}
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* CTA button subtle glow pulse */
 @keyframes cta-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
-  50% { box-shadow: 0 0 20px 4px rgba(96, 165, 250, 0.15); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 4px rgba(96, 165, 250, 0.15);
+  }
 }
 
 /* Floating chat bubble entrance — bouncy spring */
 @keyframes bubble-in {
-  from { opacity: 0; transform: scale(0) translateY(16px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* ─── Section reveal on scroll ─── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-section {
   animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }

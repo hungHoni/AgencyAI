@@ -71,7 +71,7 @@ export default function Metrics() {
   }, []);
 
   return (
-    <div ref={ref} className="px-12 py-14 max-w-site mx-auto max-sm:px-5 max-sm:py-10">
+    <div ref={ref} className="px-12 py-10 max-w-site mx-auto max-sm:px-5 max-sm:py-8">
       <div className="flex justify-start max-sm:flex-wrap">
         {data.metrics.map((m, i) => (
           <div
@@ -88,7 +88,7 @@ export default function Metrics() {
             ) : (
               <AnimatedNumber prefix={m.prefix} number={m.number!} suffix={m.suffix} />
             )}
-            <div className="text-[13px] text-zinc-400 font-medium mt-0.5">
+            <div className="text-sm text-zinc-400 font-medium mt-0.5">
               {m.label}
             </div>
           </div>

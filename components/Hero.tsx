@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-24 pb-20 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-16 max-sm:px-5 max-sm:py-12">
+    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-20 pb-16 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-14 max-sm:px-5 max-sm:py-10">
       {/* Ambient gradients */}
       <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.04)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.03)_0%,transparent_70%)] pointer-events-none" />
@@ -76,7 +76,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="text-[17px] text-zinc-700 mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
+          className="text-lg text-zinc-700 mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
