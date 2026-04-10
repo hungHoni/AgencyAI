@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n/context";
 import ChatWidget from "@/components/ChatWidget";
@@ -53,7 +52,7 @@ export default function Hero() {
       {/* Left column — text content */}
       <div className="relative z-50 pointer-events-auto">
         <div
-          className="inline-flex items-center gap-2 bg-[rgba(96,165,250,0.06)] border border-[rgba(96,165,250,0.15)] px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-500 mb-7 tracking-[0.3px] uppercase"
+          className="inline-flex items-center gap-2 bg-[var(--accent-bg)] border border-[var(--accent-border)] px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-500 dark:text-blue-400 mb-7 tracking-[0.3px] uppercase"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
@@ -76,7 +75,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="text-lg text-zinc-700 mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
+          className="text-lg text-[var(--text-secondary)] mb-10 max-w-[480px] leading-[1.7] tracking-[-0.1px]"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
@@ -96,13 +95,13 @@ export default function Hero() {
         >
           <a
             href="#contact"
-            className="bg-zinc-900 text-[#fafaf9] px-7 py-3.5 rounded-btn text-[15px] font-semibold tracking-[-0.2px] hover:bg-zinc-700 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth"
+            className="bg-[var(--text-primary)] text-[var(--bg)] px-7 py-3.5 rounded-btn text-[15px] font-semibold tracking-[-0.2px] hover:opacity-85 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth"
           >
             {t("hero.getStarted")}
           </a>
           <a
             href="#contact"
-            className="bg-transparent text-zinc-600 px-6 py-3.5 rounded-btn text-[15px] font-medium tracking-[-0.2px] border border-black/10 hover:border-zinc-400 hover:text-zinc-900 hover:-translate-y-0.5 transition-all duration-400 ease-smooth"
+            className="bg-transparent text-[var(--text-secondary)] px-6 py-3.5 rounded-btn text-[15px] font-medium tracking-[-0.2px] border border-[var(--border-strong)] hover:border-[var(--text-muted)] hover:text-[var(--text-primary)] hover:-translate-y-0.5 transition-all duration-400 ease-smooth"
           >
             {t("hero.bookCall")}
           </a>

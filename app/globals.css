@@ -21,6 +21,24 @@
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+:root.dark {
+  --bg: #111114;
+  --bg-card: #1a1a1f;
+  --bg-dark: #0d0d10;
+  --bg-dark-card: #1a1a1f;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.10);
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent: #60a5fa;
+  --accent-muted: #3b82f6;
+  --accent-bg: rgba(96, 165, 250, 0.08);
+  --accent-border: rgba(96, 165, 250, 0.20);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
 @theme inline {
   --font-outfit: var(--font-outfit);
   --color-accent: #60a5fa;
@@ -46,6 +64,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Subtle noise grain overlay for visual depth */

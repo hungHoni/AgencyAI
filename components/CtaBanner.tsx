@@ -25,7 +25,7 @@ export default function CtaBanner() {
   return (
     <section ref={ref} className="px-12 max-sm:px-5">
       <div
-        className="max-w-site mx-auto bg-zinc-900/80 backdrop-blur-xl rounded-card p-16 grid grid-cols-[1fr_auto] gap-12 items-center relative overflow-hidden max-lg:grid-cols-1 max-lg:text-center max-lg:p-12 max-lg:px-8 max-sm:p-10 max-sm:px-6"
+        className="max-w-site mx-auto bg-zinc-900/80 dark:bg-[#151518]/90 backdrop-blur-xl rounded-card p-16 grid grid-cols-[1fr_auto] gap-12 items-center relative overflow-hidden max-lg:grid-cols-1 max-lg:text-center max-lg:p-12 max-lg:px-8 max-sm:p-10 max-sm:px-6"
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0) scale(1)" : "translateY(24px) scale(0.97)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}
       >
         <div className="absolute top-0 right-0 w-[40%] h-full bg-[radial-gradient(ellipse_at_top_right,rgba(96,165,250,0.08)_0%,transparent_60%)] pointer-events-none" />

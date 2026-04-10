@@ -42,9 +42,9 @@ export default function Services() {
           transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
-        <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
+        <div className="text-xs font-semibold text-blue-500 dark:text-blue-400 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">{t("services.headline")}</h2>
-        <p className="text-[17px] text-zinc-700 max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
+        <p className="text-[17px] text-[var(--text-secondary)] max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
       </div>
 
       {/* Bento grid — 5 columns, asymmetric */}
@@ -52,7 +52,7 @@ export default function Services() {
 
         {/* Card 1: AI Chatbot — spans 3 columns, top-left */}
         <div
-          className="group sm:col-span-3 max-lg:col-span-1 bg-zinc-900/80 backdrop-blur-xl overflow-hidden rounded-tl-[20px] max-lg:rounded-card relative"
+          className="group sm:col-span-3 max-lg:col-span-1 bg-zinc-900/80 dark:bg-[#151518] backdrop-blur-xl overflow-hidden rounded-tl-[20px] max-lg:rounded-card relative"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -114,7 +114,7 @@ export default function Services() {
 
         {/* Card 2: Website Design — spans 2 columns, top-right */}
         <div
-          className="group sm:col-span-2 max-lg:col-span-1 bg-white border border-black/[0.06] overflow-hidden rounded-tr-[20px] max-lg:rounded-card"
+          className="group sm:col-span-2 max-lg:col-span-1 bg-[var(--bg-card)] border border-[var(--border)] overflow-hidden rounded-tr-[20px] max-lg:rounded-card"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -122,36 +122,36 @@ export default function Services() {
           }}
         >
           <div className="p-8 max-sm:p-6">
-            <h3 className="text-[20px] font-bold tracking-[-0.4px] text-zinc-900 mb-2">{items[1].title}</h3>
-            <p className="text-[15px] text-zinc-600 leading-[1.6]">{items[1].description}</p>
+            <h3 className="text-[20px] font-bold tracking-[-0.4px] mb-2">{items[1].title}</h3>
+            <p className="text-[15px] text-[var(--text-secondary)] leading-[1.6]">{items[1].description}</p>
           </div>
 
           {/* Abstract Floating UI components */}
-          <div className="relative h-[240px] w-full overflow-hidden flex justify-center items-end bg-gradient-to-b from-transparent to-black/[0.01]">
-            <div className="w-[85%] h-[190px] bg-white rounded-t-[24px] border border-black/[0.08] shadow-[0_-8px_30px_rgba(0,0,0,0.06)] relative flex flex-col items-center pt-8 px-6 transition-transform duration-700 ease-smooth group-hover:translate-y-[-8px]">
+          <div className="relative h-[240px] w-full overflow-hidden flex justify-center items-end bg-gradient-to-b from-transparent to-[var(--border)]">
+            <div className="w-[85%] h-[190px] bg-[var(--bg-card)] rounded-t-[24px] border border-[var(--border)] shadow-[var(--shadow-card)] relative flex flex-col items-center pt-8 px-6 transition-transform duration-700 ease-smooth group-hover:translate-y-[-8px]">
 
               {/* Header skeleton */}
-              <div className="w-[45%] h-3.5 bg-zinc-200/80 rounded-full mb-3" />
-              <div className="w-[25%] h-2.5 bg-zinc-100 rounded-full mb-8" />
+              <div className="w-[45%] h-3.5 bg-[var(--text-muted)]/20 rounded-full mb-3" />
+              <div className="w-[25%] h-2.5 bg-[var(--text-muted)]/10 rounded-full mb-8" />
 
               {/* Bento inside bento */}
               <div className="w-full grid grid-cols-2 gap-3 relative z-10">
-                <div className="h-24 bg-zinc-50 rounded-xl border border-black/[0.04] p-4 flex flex-col justify-between shadow-sm">
-                  <div className="w-8 h-8 bg-blue-100/60 rounded-lg flex items-center justify-center">
+                <div className="h-24 bg-[var(--bg)] rounded-xl border border-[var(--border)] p-4 flex flex-col justify-between shadow-sm">
+                  <div className="w-8 h-8 bg-blue-100/60 dark:bg-blue-500/10 rounded-lg flex items-center justify-center">
                     <div className="w-4 h-4 bg-blue-500 rounded-md shadow-sm" />
                   </div>
                   <div className="space-y-2">
-                    <div className="w-full h-2 bg-zinc-200/80 rounded-full" />
-                    <div className="w-2/3 h-2 bg-zinc-200/80 rounded-full" />
+                    <div className="w-full h-2 bg-[var(--text-muted)]/20 rounded-full" />
+                    <div className="w-2/3 h-2 bg-[var(--text-muted)]/20 rounded-full" />
                   </div>
                 </div>
-                <div className="h-24 bg-zinc-50 rounded-xl border border-black/[0.04] p-4 flex flex-col justify-between shadow-sm">
-                  <div className="w-8 h-8 bg-amber-100/60 rounded-lg flex items-center justify-center">
+                <div className="h-24 bg-[var(--bg)] rounded-xl border border-[var(--border)] p-4 flex flex-col justify-between shadow-sm">
+                  <div className="w-8 h-8 bg-amber-100/60 dark:bg-amber-500/10 rounded-lg flex items-center justify-center">
                     <div className="w-4 h-4 bg-amber-500 rounded-md shadow-sm" />
                   </div>
                   <div className="space-y-2">
-                    <div className="w-full h-2 bg-zinc-200/80 rounded-full" />
-                    <div className="w-1/2 h-2 bg-zinc-200/80 rounded-full" />
+                    <div className="w-full h-2 bg-[var(--text-muted)]/20 rounded-full" />
+                    <div className="w-1/2 h-2 bg-[var(--text-muted)]/20 rounded-full" />
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function Services() {
 
         {/* Card 3: Automation — spans full 5 columns, bottom */}
         <div
-          className="sm:col-span-5 max-lg:col-span-1 bg-white border border-black/[0.06] overflow-hidden rounded-b-[20px] max-lg:rounded-card grid grid-cols-[1fr_1.2fr] gap-0 max-sm:grid-cols-1"
+          className="sm:col-span-5 max-lg:col-span-1 bg-[var(--bg-card)] border border-[var(--border)] overflow-hidden rounded-b-[20px] max-lg:rounded-card grid grid-cols-[1fr_1.2fr] gap-0 max-sm:grid-cols-1"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -172,11 +172,11 @@ export default function Services() {
           }}
         >
           <div className="p-8 flex flex-col justify-center max-sm:p-6">
-            <h3 className="text-[20px] font-bold tracking-[-0.4px] text-zinc-900 mb-2">{items[2].title}</h3>
-            <p className="text-[15px] text-zinc-600 leading-[1.6] mb-5 max-w-[360px]">{items[2].description}</p>
+            <h3 className="text-[20px] font-bold tracking-[-0.4px] mb-2">{items[2].title}</h3>
+            <p className="text-[15px] text-[var(--text-secondary)] leading-[1.6] mb-5 max-w-[360px]">{items[2].description}</p>
             <div className="flex flex-wrap gap-2">
               {items[2].features.map((f, fi) => (
-                <span key={fi} className="flex items-center gap-1.5 text-sm text-zinc-700 bg-black/[0.03] px-3 py-1.5 rounded-full">
+                <span key={fi} className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] bg-[var(--border)] px-3 py-1.5 rounded-full">
                   <CheckIcon />
                   {f}
                 </span>
@@ -191,50 +191,50 @@ export default function Services() {
 
               {/* Step 1: Input (e.g. Lead) */}
               <div className="relative group/node flex flex-col items-center">
-                <div className="w-14 h-14 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
-                  <svg className="w-6 h-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                <div className="w-14 h-14 bg-[var(--bg-card)] rounded-2xl shadow-[var(--shadow-card)] border border-[var(--border-strong)] flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                  <svg className="w-6 h-6 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                 </div>
-                <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Khách truy cập</div>
+                <div className="absolute -bottom-8 text-[11px] font-semibold text-[var(--text-secondary)] whitespace-nowrap bg-[var(--bg-card)]/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-[var(--border)]">Khách truy cập</div>
               </div>
 
               {/* Connecting Line 1 */}
-              <div className="flex-1 h-[3px] bg-zinc-100 rounded-full relative overflow-hidden mx-3">
+              <div className="flex-1 h-[3px] bg-[var(--border-strong)] rounded-full relative overflow-hidden mx-3">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite]" />
               </div>
 
               {/* Step 2: AI brain */}
               <div className="relative group/node flex flex-col items-center scale-[1.15] mx-[-4px] z-20">
                 <div className="absolute inset-0 bg-blue-500/30 blur-2xl rounded-full" />
-                <div className="w-16 h-16 bg-zinc-900 rounded-[20px] shadow-2xl border border-zinc-800 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:scale-110">
+                <div className="w-16 h-16 bg-zinc-900 dark:bg-[#151518] rounded-[20px] shadow-2xl border border-zinc-800 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:scale-110">
                   <svg className="w-7 h-7 text-blue-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
-                <div className="absolute -bottom-9 text-[12px] font-bold text-zinc-900 whitespace-nowrap bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">AI Xử Lý</div>
+                <div className="absolute -bottom-9 text-[12px] font-bold whitespace-nowrap bg-blue-400/10 text-blue-500 dark:text-blue-400 px-3 py-1 rounded-full border border-blue-400/20">AI Xử Lý</div>
               </div>
 
               {/* Connecting Line 2 */}
-              <div className="flex-1 h-[3px] bg-zinc-100 rounded-full relative overflow-hidden mx-3">
+              <div className="flex-1 h-[3px] bg-[var(--border-strong)] rounded-full relative overflow-hidden mx-3">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite_0.4s]" />
               </div>
 
               {/* Step 3: Automation Action 1 (Calendar) */}
               <div className="relative group/node flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                <div className="w-12 h-12 bg-[var(--bg-card)] rounded-2xl shadow-[var(--shadow-card)] border border-[var(--border-strong)] flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
                   <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 </div>
-                <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Chốt hẹn</div>
+                <div className="absolute -bottom-8 text-[11px] font-semibold text-[var(--text-secondary)] whitespace-nowrap bg-[var(--bg-card)]/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-[var(--border)]">Chốt hẹn</div>
               </div>
 
               {/* Split line */}
-              <div className="w-5 h-[3px] bg-zinc-100 rounded-full relative mx-3 hidden sm:block">
+              <div className="w-5 h-[3px] bg-[var(--border-strong)] rounded-full relative mx-3 hidden sm:block">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-[shimmer_1.5s_infinite_0.6s]" />
               </div>
 
               {/* Step 4: Automation Action 2 (Mail) */}
               <div className="relative group/node flex flex-col items-center hidden sm:flex">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200 flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
+                <div className="w-12 h-12 bg-[var(--bg-card)] rounded-2xl shadow-[var(--shadow-card)] border border-[var(--border-strong)] flex items-center justify-center relative z-10 transition-transform duration-500 group-hover/node:translate-y-[-4px]">
                   <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 </div>
-                <div className="absolute -bottom-8 text-[11px] font-semibold text-zinc-600 whitespace-nowrap bg-white/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-black/[0.03]">Gửi Email</div>
+                <div className="absolute -bottom-8 text-[11px] font-semibold text-[var(--text-secondary)] whitespace-nowrap bg-[var(--bg-card)]/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-[var(--border)]">Gửi Email</div>
               </div>
 
             </div>
@@ -252,10 +252,10 @@ export default function Services() {
         }}
       >
         {[0, 1].map((si) => (
-          <div key={si} className="bg-white border border-black/[0.06] rounded-card px-7 py-5 max-sm:px-5">
+          <div key={si} className="bg-[var(--bg-card)] border border-[var(--border)] rounded-card px-7 py-5 max-sm:px-5">
             <div className="flex flex-wrap gap-2">
               {items[si].features.map((f, fi) => (
-                <span key={fi} className="flex items-center gap-1.5 text-sm text-zinc-700">
+                <span key={fi} className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)]">
                   <CheckIcon />
                   {f}
                 </span>

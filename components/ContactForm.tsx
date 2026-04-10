@@ -71,56 +71,56 @@ export default function ContactForm() {
   return (
     <section id="contact" ref={sectionRef} className="max-w-site mx-auto px-12 py-16 grid grid-cols-2 gap-20 items-start max-lg:grid-cols-1 max-lg:gap-12 max-sm:px-5 max-sm:py-12">
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}>
-        <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">{t("contact.sectionTag")}</div>
+        <div className="text-xs font-semibold text-blue-500 dark:text-blue-400 tracking-[1.2px] uppercase mb-3">{t("contact.sectionTag")}</div>
         <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 max-w-[400px] text-wrap-balance">{t("contact.headline")}</h2>
-        <p className="text-[17px] text-zinc-700 max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
+        <p className="text-[17px] text-[var(--text-secondary)] max-w-[480px] leading-[1.7]">{t("contact.subtext")}</p>
 
         <div className="mt-10 flex flex-col gap-5">
           {data.contact.trustSignals.map((signal, i) => (
             <div key={i} className="flex items-start gap-3.5">
-              <div className="w-10 h-10 bg-[rgba(96,165,250,0.06)] rounded-btn flex items-center justify-center shrink-0">{trustIcons[i]}</div>
+              <div className="w-10 h-10 bg-[var(--accent-bg)] rounded-btn flex items-center justify-center shrink-0">{trustIcons[i]}</div>
               <div>
                 <h5 className="text-[15px] font-semibold tracking-[-0.2px]">{signal.title}</h5>
-                <p className="text-sm text-zinc-700 mt-px">{signal.description}</p>
+                <p className="text-sm text-[var(--text-secondary)] mt-px">{signal.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-white border border-black/[0.06] rounded-card p-10 shadow-card" style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s" }}>
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-card p-10 shadow-[var(--shadow-card)]" style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s" }}>
         {status === "success" ? (
           <div className="text-center py-12">
             <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg viewBox="0 0 20 20" fill="white" className="w-6 h-6"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
             </div>
             <h3 className="text-xl font-bold tracking-[-0.4px] mb-2">{t("contact.successTitle")}</h3>
-            <p className="text-sm text-zinc-700">{t("contact.successSubtext")}</p>
+            <p className="text-sm text-[var(--text-secondary)]">{t("contact.successSubtext")}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3.5 max-sm:grid-cols-1">
               <div className="mb-4">
                 <label className="block text-[13px] font-semibold mb-1.5 tracking-[-0.1px]">{t("contact.formLabels.name")}</label>
-                <input type="text" placeholder={t("contact.formPlaceholders.name")} value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-[#fafaf9] border border-black/10 rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(96,165,250,0.06)] placeholder:text-zinc-400" />
+                <input type="text" placeholder={t("contact.formPlaceholders.name")} value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-[var(--bg)] border border-[var(--border-strong)] rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_var(--accent-bg)] placeholder:text-[var(--text-muted)]" />
                 {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
               </div>
               <div className="mb-4">
                 <label className="block text-[13px] font-semibold mb-1.5 tracking-[-0.1px]">{t("contact.formLabels.business")}</label>
-                <input type="text" placeholder={t("contact.formPlaceholders.business")} value={business} onChange={(e) => setBusiness(e.target.value)} className="w-full bg-[#fafaf9] border border-black/10 rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(96,165,250,0.06)] placeholder:text-zinc-400" />
+                <input type="text" placeholder={t("contact.formPlaceholders.business")} value={business} onChange={(e) => setBusiness(e.target.value)} className="w-full bg-[var(--bg)] border border-[var(--border-strong)] rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_var(--accent-bg)] placeholder:text-[var(--text-muted)]" />
                 {errors.business && <p className="text-red-500 text-xs mt-1">{errors.business}</p>}
               </div>
             </div>
             <div className="mb-4">
               <label className="block text-[13px] font-semibold mb-1.5 tracking-[-0.1px]">{t("contact.formLabels.email")}</label>
-              <input type="email" placeholder={t("contact.formPlaceholders.email")} value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-[#fafaf9] border border-black/10 rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(96,165,250,0.06)] placeholder:text-zinc-400" />
+              <input type="email" placeholder={t("contact.formPlaceholders.email")} value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-[var(--bg)] border border-[var(--border-strong)] rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_var(--accent-bg)] placeholder:text-[var(--text-muted)]" />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
             <div className="mb-4">
               <label className="block text-[13px] font-semibold mb-1.5 tracking-[-0.1px]">{t("contact.formLabels.message")}</label>
-              <textarea placeholder={t("contact.formPlaceholders.message")} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full bg-[#fafaf9] border border-black/10 rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(96,165,250,0.06)] placeholder:text-zinc-400 h-[100px] resize-y" />
+              <textarea placeholder={t("contact.formPlaceholders.message")} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full bg-[var(--bg)] border border-[var(--border-strong)] rounded-btn py-[13px] px-3.5 text-sm outline-none transition-all duration-400 ease-smooth focus:border-blue-400 focus:shadow-[0_0_0_3px_var(--accent-bg)] placeholder:text-[var(--text-muted)] h-[100px] resize-y" />
             </div>
-            <button type="submit" disabled={status === "submitting"} className="bg-zinc-900 text-[#fafaf9] py-3.5 px-7 rounded-btn text-[15px] font-semibold w-full mt-1 tracking-[-0.2px] hover:bg-zinc-700 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth disabled:opacity-60 disabled:cursor-not-allowed">
+            <button type="submit" disabled={status === "submitting"} className="bg-[var(--text-primary)] text-[var(--bg)] py-3.5 px-7 rounded-btn text-[15px] font-semibold w-full mt-1 tracking-[-0.2px] hover:opacity-85 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] transition-all duration-400 ease-smooth disabled:opacity-60 disabled:cursor-not-allowed">
               {status === "submitting" ? t("contact.submittingButton") : t("contact.submitButton")}
             </button>
             {status === "error" && <p className="text-red-500 text-sm mt-3 text-center">{t("contact.errorMessage")}</p>}

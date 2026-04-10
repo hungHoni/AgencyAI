@@ -88,7 +88,7 @@ export default function Metrics() {
             ) : (
               <AnimatedNumber prefix={m.prefix} number={m.number!} suffix={m.suffix} />
             )}
-            <div className="text-sm text-zinc-400 font-medium mt-0.5">
+            <div className="text-sm text-[var(--text-muted)] font-medium mt-0.5">
               {m.label}
             </div>
           </div>

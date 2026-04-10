@@ -43,13 +43,13 @@ export default function Capabilities() {
             transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
-          <div className="text-xs font-semibold text-blue-500 tracking-[1.2px] uppercase mb-3">
+          <div className="text-xs font-semibold text-blue-500 dark:text-blue-400 tracking-[1.2px] uppercase mb-3">
             {t("capabilities.sectionTag")}
           </div>
           <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance">
             {t("capabilities.headline")}
           </h2>
-          <p className="text-[17px] text-zinc-700 leading-[1.7]">
+          <p className="text-[17px] text-[var(--text-secondary)] leading-[1.7]">
             {t("capabilities.subtext")}
           </p>
         </div>
@@ -58,19 +58,19 @@ export default function Capabilities() {
           {data.capabilities.items.map((cap, i) => (
             <div
               key={i}
-              className="group grid grid-cols-[44px_1fr] gap-4 p-5 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-white hover:border-black/[0.06] hover:shadow-card hover:-translate-y-0.5"
+              className="group grid grid-cols-[44px_1fr] gap-4 p-5 rounded-card border border-transparent items-start transition-all duration-400 ease-smooth hover:bg-[var(--bg-card)] hover:border-[var(--border)] hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateX(0)" : "translateX(24px)",
                 transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.1}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.1}s, background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
               }}
             >
-              <div className="w-11 h-11 bg-[rgba(96,165,250,0.06)] rounded-btn flex items-center justify-center transition-transform duration-400 ease-smooth group-hover:scale-110">
+              <div className="w-11 h-11 bg-[var(--accent-bg)] rounded-btn flex items-center justify-center transition-transform duration-400 ease-smooth group-hover:scale-110">
                 {icons[i]}
               </div>
               <div>
                 <h4 className="text-[17px] font-bold tracking-[-0.3px] mb-1">{cap.title}</h4>
-                <p className="text-[15px] text-zinc-700 leading-[1.6]">{cap.description}</p>
+                <p className="text-[15px] text-[var(--text-secondary)] leading-[1.6]">{cap.description}</p>
               </div>
             </div>
           ))}
