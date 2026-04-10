@@ -24,7 +24,8 @@
   ],
   "capabilities": {
     "sectionTag": "Tính năng",
-    "headline": "Đáp ứng mọi nhu cầu của khách hàng. Tức thì.",
+    "headline": "Đáp ứng mọi nhu cầu khách hàng.",
+    "flipWords": ["Tức thì.", "Giải đáp.", "Đặt lịch.", "Thu thập.", "Hỗ trợ."],
     "subtext": "Chatbot được huấn luyện trên chính thông tin doanh nghiệp của bạn. Nó nắm rõ mọi dịch vụ, báo giá, giờ mở cửa và chính sách. Tư vấn lưu loát, tự nhiên như người thật.",
     "items": [
       { "title": "Giải đáp thắc mắc", "description": "Tư vấn dịch vụ, báo giá, hoạt động, chính sách và trả lời mọi câu hỏi khách hàng thường xuyên thắc mắc." },

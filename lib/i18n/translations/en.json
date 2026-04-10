@@ -24,7 +24,8 @@
   ],
   "capabilities": {
     "sectionTag": "Capabilities",
-    "headline": "Everything your customers need, instantly.",
+    "headline": "Everything your customers need,",
+    "flipWords": ["instantly.", "answered.", "booked.", "captured.", "handled."],
     "subtext": "Your chatbot is trained on your business. It knows your services, prices, hours, and policies. No scripts, no decision trees.",
     "items": [
       { "title": "Answer questions", "description": "Services, pricing, hours, policies, directions. Anything a customer would normally call about." },

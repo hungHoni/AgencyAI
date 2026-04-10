@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTranslation, useTranslationData } from "@/lib/i18n/context";
+import FlipWords from "@/components/FlipWords";
 
 const icons = [
   <svg key="chat" viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-blue-400 fill-none" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>,
@@ -32,6 +33,8 @@ export default function Capabilities() {
     return () => observer.disconnect();
   }, []);
 
+  const flipWords: string[] = data.capabilities.flipWords ?? [];
+
   return (
     <section id="capabilities" ref={ref} className="max-w-site mx-auto px-12 py-16 max-sm:px-5 max-sm:py-12">
       <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1 max-lg:gap-10">
@@ -48,6 +51,12 @@ export default function Capabilities() {
           </div>
           <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance">
             {t("capabilities.headline")}
+            {flipWords.length > 0 && (
+              <>
+                <br />
+                <FlipWords words={flipWords} duration={2800} />
+              </>
+            )}
           </h2>
           <p className="text-[17px] text-[var(--text-secondary)] leading-[1.7]">
             {t("capabilities.subtext")}
