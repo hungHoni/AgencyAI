@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LocaleProvider } from "@/lib/i18n/context";
 import { ThemeProvider } from "@/lib/theme/context";
+import { BackgroundGlow } from "@/components/ui/background-glow";
 import "./globals.css";
 
 const mainFont = Plus_Jakarta_Sans({
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className="font-[family-name:var(--font-main)] antialiased bg-[var(--bg)] text-[var(--text-primary)] transition-colors duration-300">
         <ThemeProvider>
           <LocaleProvider>
+            <BackgroundGlow />
             <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-zinc-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-btn focus:text-sm focus:font-semibold">
               Skip to content
             </a>
