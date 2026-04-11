@@ -1,6 +1,6 @@
 # AgencyAI
 
-AI chatbot service agency website for local businesses.
+AI agent service agency website for local businesses.
 
 ## Skill routing
 

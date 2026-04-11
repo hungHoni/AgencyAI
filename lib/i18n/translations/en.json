@@ -12,7 +12,7 @@
   "hero": {
     "tag": "AI-Powered for Local Businesses",
     "headline": "An AI employee that never\u00a0sleeps.",
-    "subtext": "Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support around the clock. Built for businesses that can't afford to miss a single customer.",
+    "subtext": "Custom AI agents that answer customer questions, capture leads, book appointments, and handle support around the clock. Built for businesses that can't afford to miss a single customer.",
     "getStarted": "Get Started",
     "bookCall": "Book a Free Call"
   },
@@ -26,7 +26,7 @@
     "sectionTag": "Capabilities",
     "headline": "Everything your customers need,",
     "flipWords": ["instantly.", "answered.", "booked.", "captured.", "handled."],
-    "subtext": "Your chatbot is trained on your business. It knows your services, prices, hours, and policies. No scripts, no decision trees.",
+    "subtext": "Your AI agent is trained on your business. It knows your services, prices, hours, and policies. No scripts, no decision trees.",
     "items": [
       { "title": "Answer questions", "description": "Services, pricing, hours, policies, directions. Anything a customer would normally call about." },
       { "title": "Book appointments", "description": "Checks availability, books slots, sends confirmations. Syncs directly with your calendar." },
@@ -37,12 +37,12 @@
   "services": {
     "sectionTag": "Services",
     "headline": "How we help you grow.",
-    "subtext": "Start with a chatbot. Add a website or automations when you're ready.",
+    "subtext": "Start with an AI agent. Add a website or automations when you're ready.",
     "items": [
       {
         "tag": "Most requested",
-        "title": "AI Chatbot",
-        "description": "A custom AI assistant embedded on your website. Trained specifically on your business. Handles everything from answering questions to booking appointments to capturing leads after hours.",
+        "title": "AI Agent",
+        "description": "A custom AI agent embedded on your website. Trained specifically on your business. Handles everything from answering questions to booking appointments to capturing leads after hours.",
         "features": [
           "Custom trained on your business data",
           "Answers any customer question accurately",
@@ -82,19 +82,19 @@
     "subtext": "No technical knowledge required. We handle everything from start to finish.",
     "steps": [
       { "title": "Book a free call", "description": "Tell us about your business, your customers, and what you need help with." },
-      { "title": "We build it", "description": "Custom chatbot trained on your business data, ready in days, not weeks." },
+      { "title": "We build it", "description": "Custom AI agent trained on your business data, ready in days, not weeks." },
       { "title": "Go live", "description": "One line of code on your site. We handle deployment, monitoring, and updates." }
     ]
   },
   "ctaBanner": {
     "headline": "Ready to stop missing customers?",
-    "subtext": "Book a free 15-minute call. We'll show you exactly what your AI chatbot could do for your business.",
+    "subtext": "Book a free 15-minute call. We'll show you exactly what your AI agent could do for your business.",
     "buttonLabel": "Book a Free Call"
   },
   "contact": {
     "sectionTag": "Contact",
     "headline": "Tell us about your business.",
-    "subtext": "We'll show you exactly what your AI chatbot could handle, with a custom demo for your industry.",
+    "subtext": "We'll show you exactly what your AI agent could handle, with a custom demo for your industry.",
     "trustSignals": [
       { "title": "Quick response", "description": "We respond within 2 hours during business days" },
       { "title": "Free consultation", "description": "15-minute call to understand your needs" },
@@ -104,7 +104,7 @@
       "name": "Your Name",
       "business": "Business Name",
       "email": "Email",
-      "message": "What would you want your AI chatbot to do?"
+      "message": "What would you want your AI agent to do?"
     },
     "formPlaceholders": {
       "name": "Priya Ramirez",
@@ -125,7 +125,7 @@
     "errorMessage": "Something went wrong. Please try again."
   },
   "footer": {
-    "tagline": "AI chatbots for local businesses.",
+    "tagline": "AI agents for local businesses.",
     "services": "Services",
     "process": "Process",
     "contact": "Contact",
@@ -134,7 +134,7 @@
     "termsOfService": "Terms of Service"
   },
   "chat": {
-    "greeting": "Hi! I'm the AgencyAI assistant. Ask me anything about our AI chatbot services, pricing, or process. How can I help?",
+    "greeting": "Hi! I'm the AgencyAI assistant. Ask me anything about our AI agent services, pricing, or process. How can I help?",
     "onlineNow": "Online now",
     "inputPlaceholder": "Ask anything about our services...",
     "tryAsking": "Try asking a question...",
@@ -146,7 +146,7 @@
     "leadNoThanks": "No thanks",
     "leadSuccess": "Thanks! We'll be in touch soon.",
     "demoPrompt": "This is what your customers will experience",
-    "demoCta": "Try the real chatbot \u2192",
+    "demoCta": "Try the real agent \u2192",
     "errorFallback": "Use the contact form",
     "demoTitle": "Rosewood Hair Studio"
   },

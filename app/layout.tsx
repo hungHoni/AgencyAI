@@ -15,28 +15,28 @@ const mainFont = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://agencyai.com"),
-  title: "AgencyAI — AI Chatbots for Local Businesses",
+  title: "AgencyAI — AI Agents for Local Businesses",
   description:
-    "Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support 24/7. Built for dentists, salons, restaurants, and local businesses.",
+    "Custom AI agents that answer customer questions, capture leads, book appointments, and handle support 24/7. Built for dentists, salons, restaurants, and local businesses.",
   openGraph: {
-    title: "AgencyAI — AI Chatbots for Local Businesses",
+    title: "AgencyAI — AI Agents for Local Businesses",
     description:
-      "Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support 24/7.",
+      "Custom AI agents that answer customer questions, capture leads, book appointments, and handle support 24/7.",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AgencyAI — AI Chatbots for Local Businesses",
+        alt: "AgencyAI — AI Agents for Local Businesses",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AgencyAI — AI Chatbots for Local Businesses",
+    title: "AgencyAI — AI Agents for Local Businesses",
     description:
-      "Custom AI chatbots that answer customer questions, capture leads, book appointments, and handle support 24/7.",
+      "Custom AI agents that answer customer questions, capture leads, book appointments, and handle support 24/7.",
     images: ["/og-image.png"],
   },
 };

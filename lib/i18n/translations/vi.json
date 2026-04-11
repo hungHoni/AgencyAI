@@ -12,7 +12,7 @@
   "hero": {
     "tag": "AI Dành Riêng Cho Doanh Nghiệp Của Bạn",
     "headline": "Một nhân viên mẫn cán không bao giờ ngủ.",
-    "subtext": "Chatbot AI thông minh giúp bạn tư vấn khách hàng, thu thập thông tin, đặt lịch hẹn và hỗ trợ 24/7. Giải pháp tối ưu để bạn không bao giờ bỏ lỡ bất kỳ vị khách nào.",
+    "subtext": "AI Agent thông minh giúp bạn tư vấn khách hàng, thu thập thông tin, đặt lịch hẹn và hỗ trợ 24/7. Giải pháp tối ưu để bạn không bao giờ bỏ lỡ bất kỳ vị khách nào.",
     "getStarted": "Bắt Đầu Ngay",
     "bookCall": "Đặt Lịch Demo"
   },
@@ -26,7 +26,7 @@
     "sectionTag": "Tính năng",
     "headline": "Đáp ứng mọi nhu cầu khách hàng.",
     "flipWords": ["Tức thì.", "Giải đáp.", "Đặt lịch.", "Thu thập.", "Hỗ trợ."],
-    "subtext": "Chatbot được huấn luyện trên chính thông tin doanh nghiệp của bạn. Nó nắm rõ mọi dịch vụ, báo giá, giờ mở cửa và chính sách. Tư vấn lưu loát, tự nhiên như người thật.",
+    "subtext": "AI Agent được huấn luyện trên chính thông tin doanh nghiệp của bạn. Nó nắm rõ mọi dịch vụ, báo giá, giờ mở cửa và chính sách. Tư vấn lưu loát, tự nhiên như người thật.",
     "items": [
       { "title": "Giải đáp thắc mắc", "description": "Tư vấn dịch vụ, báo giá, hoạt động, chính sách và trả lời mọi câu hỏi khách hàng thường xuyên thắc mắc." },
       { "title": "Đặt lịch tự động", "description": "Kiểm tra lịch rảnh, hỗ trợ đặt chỗ và gửi thông báo xác nhận. Tự động đồng bộ với hệ thống quản lý của bạn." },
@@ -37,11 +37,11 @@
   "services": {
     "sectionTag": "Dịch vụ",
     "headline": "Giải pháp AI giúp bạn đột phá doanh thu.",
-    "subtext": "Hãy bắt đầu với một trợ lý AI thông minh, và tự động hoá quy trình làm việc khi doanh nghiệp của bạn sẵn sàng.",
+    "subtext": "Hãy bắt đầu với một AI Agent thông minh, và tự động hoá quy trình làm việc khi doanh nghiệp của bạn sẵn sàng.",
     "items": [
       {
         "tag": "Được quan tâm nhất",
-        "title": "Chatbot Trợ Lý AI",
+        "title": "AI Agent Trợ Lý",
         "description": "Trợ lý AI tuỳ chỉnh nhúng ngay vào website. Được huấn luyện chuyên biệt và chỉ dành cho doanh nghiệp của bạn. Xử lý triệt để từ tư vấn, đặt lịch cho đến chăm sóc ngoài giờ.",
         "features": [
           "Huấn luyện độc quyền trên dữ liệu của bạn",
@@ -82,7 +82,7 @@
     "subtext": "Bạn không cần am hiểu kỹ thuật. Chúng tôi sẽ lo liệu mọi thứ từ đầu đến cuối.",
     "steps": [
       { "title": "Tham vấn miễn phí", "description": "Chia sẻ cho chúng tôi về mô hình kinh doanh, tệp khách hàng và những điều bạn đang trăn trở." },
-      { "title": "Triển khai lắp đặt", "description": "Hệ thống Chatbot được thiết kế dành riêng cho bạn sẽ được đưa vào hoạt động chỉ trong một vài ngày." },
+      { "title": "Triển khai lắp đặt", "description": "Hệ thống AI Agent được thiết kế dành riêng cho bạn sẽ được đưa vào hoạt động chỉ trong một vài ngày." },
       { "title": "Kích hoạt sử dụng", "description": "Chỉ mất đúng một dòng code cực ngắn là quá trình tích hợp sẽ hoàn tất. Mọi thứ trở nên trơn tru ngay." }
     ]
   },
@@ -146,7 +146,7 @@
     "leadNoThanks": "Để sau nhé",
     "leadSuccess": "Tuyệt vời, thông tin của bạn đã được ghi nhận an toàn.",
     "demoPrompt": "Hãy thử dùng một Demo dành cho Khách hàng",
-    "demoCta": "Dùng chatbot thật \u2192",
+    "demoCta": "Dùng thử AI Agent \u2192",
     "errorFallback": "Bạn vui lòng dùng form ở cuối trang giúp mình nhé",
     "demoTitle": "Thẩm Mỹ Viện Hoa Sen (Bản Dùng Thử)"
   },
