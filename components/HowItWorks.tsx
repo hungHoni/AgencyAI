@@ -6,7 +6,7 @@ import { useTranslation, useTranslationData } from "@/lib/i18n/context";
 const stepImages = [
   "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=870&auto=format&fit=crop&sat=-100",
   "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=870&auto=format&fit=crop&sat=-100",
-  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=870&auto=format&fit=crop&sat=-100",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=870&auto=format&fit=crop&sat=-100",
 ];
 
 export default function HowItWorks() {
