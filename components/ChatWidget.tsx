@@ -44,7 +44,7 @@ function ChatShell({
       className={`text-zinc-300 relative flex flex-col ${
         compact
           ? "bg-zinc-900/85 backdrop-blur-xl rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-32px)] max-sm:h-[min(70vh,560px)] animate-chat-panel"
-          : "bg-zinc-900/80 max-lg:bg-zinc-900/45 backdrop-blur-xl rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px] max-sm:h-[440px]"
+          : "bg-zinc-900/80 max-lg:bg-zinc-900/70 backdrop-blur-xl rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px] max-sm:h-[440px]"
       }`}
     >
       <div className="absolute top-3 left-3 right-3 bottom-3 border border-white/[0.04] rounded-card pointer-events-none z-0" />
@@ -251,14 +251,14 @@ export default function ChatWidget() {
     return (
       <div ref={demoScrollRef} className="flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 px-6 py-5">
         {demoMessages.map((msg, i) => (
-          <div key={`demo-${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
+          <div key={`demo-${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 max-lg:bg-zinc-800/60 border border-white/[0.06] max-lg:border-white/10 px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 max-lg:text-zinc-200 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
             {msg.content || <span className="inline-block w-1.5 h-4 bg-zinc-500 animate-pulse" />}
           </div>
         ))}
         {demoTyping && <TypingIndicator />}
         {demoStep >= demoConversation.length && !demoTyping && (
           <div className="text-center py-3 animate-chat-bubble">
-            <p className="text-[11px] text-zinc-600 mb-2">{t("chat.demoPrompt")}</p>
+            <p className="text-[11px] text-zinc-600 max-lg:text-zinc-300 mb-2">{t("chat.demoPrompt")}</p>
             <button onClick={() => { setDemoActive(false); setTimeout(() => heroInputRef.current?.focus(), 100); }} className="text-[12px] text-blue-400 font-semibold hover:text-blue-300 transition-all duration-400 ease-smooth">
               {t("chat.demoCta")}
             </button>
@@ -272,7 +272,7 @@ export default function ChatWidget() {
     return (
       <div ref={scrollRef} className={`flex-1 overflow-y-auto flex flex-col gap-3 relative z-10 min-h-0 ${compact ? "px-5 py-4" : "px-6 py-5"}`}>
         {messages.map((msg, i) => (
-          <div key={`${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 border border-white/[0.06] px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
+          <div key={`${i}-${msg.role}`} className={`break-words overflow-wrap-anywhere animate-chat-bubble ${msg.role === "assistant" ? "bg-white/5 max-lg:bg-zinc-800/60 border border-white/[0.06] max-lg:border-white/10 px-4 py-[13px] rounded-[14px_14px_14px_4px] text-[13px] text-zinc-400 max-lg:text-zinc-200 leading-[1.65] max-w-[85%] shrink-0" : "bg-blue-400 px-4 py-[13px] rounded-[14px_14px_4px_14px] text-[13px] text-white leading-[1.65] max-w-[85%] ml-auto shrink-0"}`}>
             {msg.content || <span className="inline-block w-1.5 h-4 bg-zinc-500 animate-pulse" />}
           </div>
         ))}
