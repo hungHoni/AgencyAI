@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTranslation, useTranslationData } from "@/lib/i18n/context";
-import { AccentText } from "@/components/ui/accent-text";
 
 const stepImages = [
   "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=870&auto=format&fit=crop&sat=-100",
@@ -51,9 +50,7 @@ export default function HowItWorks() {
         }}
       >
         <div className="text-xs font-semibold text-blue-500 dark:text-blue-400 tracking-[1.2px] uppercase mb-3">{t("howItWorks.sectionTag")}</div>
-        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">
-          <AccentText text={t("howItWorks.headline")} />
-        </h2>
+        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">{t("howItWorks.headline")}</h2>
         <p className="text-lg text-[var(--text-secondary)] leading-[1.7] max-w-[520px] mx-auto">{t("howItWorks.subtext")}</p>
       </div>
 

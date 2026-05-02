@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n/context";
-import { AccentText } from "@/components/ui/accent-text";
 
 export default function CtaBanner() {
   const ref = useRef<HTMLElement>(null);
@@ -33,9 +32,7 @@ export default function CtaBanner() {
         <div className="absolute bottom-0 left-0 w-[30%] h-[60%] bg-[radial-gradient(ellipse_at_bottom_left,rgba(96,165,250,0.05)_0%,transparent_60%)] pointer-events-none" />
 
         <div className="relative z-10">
-          <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] font-extrabold text-zinc-100 tracking-[-1px] leading-[1.1] mb-2 text-wrap-balance">
-            <AccentText text={t("ctaBanner.headline")} />
-          </h2>
+          <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] font-extrabold text-zinc-100 tracking-[-1px] leading-[1.1] mb-2 text-wrap-balance">{t("ctaBanner.headline")}</h2>
           <p className="text-base text-zinc-500 max-w-[420px] leading-[1.6] max-lg:mx-auto">{t("ctaBanner.subtext")}</p>
         </div>
 

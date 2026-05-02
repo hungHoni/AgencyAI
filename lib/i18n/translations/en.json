@@ -11,7 +11,7 @@
   },
   "hero": {
     "tag": "AI-Powered for Local Businesses",
-    "headline": "An AI employee that *never\u00a0sleeps.*",
+    "headline": "An AI employee that never\u00a0sleeps.",
     "subtext": "Custom AI agents that answer customer questions, capture leads, book appointments, and handle support around the clock. Built for businesses that can't afford to miss a single customer.",
     "getStarted": "Get Started",
     "bookCall": "Book a Free Call"
@@ -36,7 +36,7 @@
   },
   "services": {
     "sectionTag": "Services",
-    "headline": "How we help you *grow.*",
+    "headline": "How we help you grow.",
     "subtext": "Start with an AI agent. Add a website or automations when you're ready.",
     "items": [
       {
@@ -78,7 +78,7 @@
   },
   "howItWorks": {
     "sectionTag": "Process",
-    "headline": "Three steps. *That's it.*",
+    "headline": "Three steps. That's it.",
     "subtext": "No technical knowledge required. We handle everything from start to finish.",
     "steps": [
       { "title": "Book a free call", "description": "Tell us about your business, your customers, and what you need help with." },
@@ -87,13 +87,13 @@
     ]
   },
   "ctaBanner": {
-    "headline": "Ready to *stop missing customers?*",
+    "headline": "Ready to stop missing customers?",
     "subtext": "Book a free 15-minute call. We'll show you exactly what your AI agent could do for your business.",
     "buttonLabel": "Book a Free Call"
   },
   "contact": {
     "sectionTag": "Contact",
-    "headline": "Tell us about *your business.*",
+    "headline": "Tell us about your business.",
     "subtext": "We'll show you exactly what your AI agent could handle, with a custom demo for your industry.",
     "trustSignals": [
       { "title": "Quick response", "description": "We respond within 2 hours during business days" },

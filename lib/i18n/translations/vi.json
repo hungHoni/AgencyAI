@@ -11,7 +11,7 @@
   },
   "hero": {
     "tag": "AI Dành Riêng Cho Doanh Nghiệp Của Bạn",
-    "headline": "Một nhân viên mẫn cán *không bao giờ ngủ.*",
+    "headline": "Một nhân viên mẫn cán không bao giờ ngủ.",
     "subtext": "AI Agent thông minh giúp bạn tư vấn khách hàng, thu thập thông tin, đặt lịch hẹn và hỗ trợ 24/7. Giải pháp tối ưu để bạn không bao giờ bỏ lỡ bất kỳ vị khách nào.",
     "getStarted": "Bắt Đầu Ngay",
     "bookCall": "Đặt Lịch Demo"
@@ -36,7 +36,7 @@
   },
   "services": {
     "sectionTag": "Dịch vụ",
-    "headline": "Giải pháp AI giúp bạn *đột phá doanh thu.*",
+    "headline": "Giải pháp AI giúp bạn đột phá doanh thu.",
     "subtext": "Hãy bắt đầu với một AI Agent thông minh, và tự động hoá quy trình làm việc khi doanh nghiệp của bạn sẵn sàng.",
     "items": [
       {
@@ -78,7 +78,7 @@
   },
   "howItWorks": {
     "sectionTag": "Quy trình",
-    "headline": "Ba bước đơn giản. *Vậy là xong.*",
+    "headline": "Ba bước đơn giản. Vậy là xong.",
     "subtext": "Bạn không cần am hiểu kỹ thuật. Chúng tôi sẽ lo liệu mọi thứ từ đầu đến cuối.",
     "steps": [
       { "title": "Tham vấn miễn phí", "description": "Chia sẻ cho chúng tôi về mô hình kinh doanh, tệp khách hàng và những điều bạn đang trăn trở." },
@@ -87,13 +87,13 @@
     ]
   },
   "ctaBanner": {
-    "headline": "Bạn đã *sẵn sàng để bứt phá?*",
+    "headline": "Bạn đã sẵn sàng để bứt phá?",
     "subtext": "Sắp xếp một cuộc gọi khoảng 15 phút. Chúng tôi sẽ cho bạn thấy chính xác cách AI có thể nâng cao hiệu suất công ty bạn.",
     "buttonLabel": "Đặt Lịch Demo"
   },
   "contact": {
     "sectionTag": "Liên hệ",
-    "headline": "Viết cho chúng tôi *điều bạn đang mong muốn.*",
+    "headline": "Viết cho chúng tôi điều bạn đang mong muốn.",
     "subtext": "Chúng tôi sẽ tạo ra một bản dùng thử trực quan mang đặc thù ngành nghề của bạn để bạn trải nghiệm.",
     "trustSignals": [
       { "title": "Hỗ trợ thần tốc", "description": "Phản hồi chỉ trong vỏn vẹn 2 giờ đồng hồ" },

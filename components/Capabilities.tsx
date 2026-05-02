@@ -54,7 +54,7 @@ export default function Capabilities() {
             {flipWords.length > 0 && (
               <>
                 <br />
-                <FlipWords words={flipWords} duration={2800} className="font-[family-name:var(--font-serif)] italic font-normal tracking-[-0.5px]" />
+                <FlipWords words={flipWords} duration={2800} />
               </>
             )}
           </h2>

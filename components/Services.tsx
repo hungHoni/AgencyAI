@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTranslation, useTranslationData } from "@/lib/i18n/context";
-import { AccentText } from "@/components/ui/accent-text";
 
 function CheckIcon() {
   return (
@@ -44,9 +43,7 @@ export default function Services() {
         }}
       >
         <div className="text-xs font-semibold text-blue-500 dark:text-blue-400 tracking-[1.2px] uppercase mb-3">{t("services.sectionTag")}</div>
-        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">
-          <AccentText text={t("services.headline")} />
-        </h2>
+        <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold tracking-[-1.2px] leading-[1.08] mb-4 text-wrap-balance mx-auto">{t("services.headline")}</h2>
         <p className="text-[17px] text-[var(--text-secondary)] max-w-[480px] leading-[1.7] mx-auto">{t("services.subtext")}</p>
       </div>
 
