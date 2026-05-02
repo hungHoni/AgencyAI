@@ -72,11 +72,11 @@ export default function Metrics() {
 
   return (
     <div ref={ref} className="px-12 py-10 max-w-site mx-auto max-sm:px-5 max-sm:py-8">
-      <div className="flex justify-start max-sm:flex-wrap">
+      <div className="flex justify-start max-sm:grid max-sm:grid-cols-2 max-sm:gap-y-6">
         {data.metrics.map((m, i) => (
           <div
             key={i}
-            className="text-center flex-1 max-sm:w-1/2 max-sm:py-4"
+            className="text-center flex-1 max-sm:flex-none max-sm:w-full"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(16px)",

@@ -8,6 +8,7 @@ import SplineScene from "@/components/SplineScene";
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [showSpline, setShowSpline] = useState(false);
+  const [splineFailed, setSplineFailed] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -22,15 +23,15 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-20 pb-16 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-12 max-lg:min-h-auto max-lg:px-8 max-lg:py-14 max-sm:px-5 max-sm:py-10">
+    <section id="hero" className="relative grid grid-cols-[5fr_4fr] gap-20 px-12 py-20 pb-16 max-w-site mx-auto items-center min-h-[85dvh] max-lg:grid-cols-1 max-lg:gap-8 max-lg:min-h-auto max-lg:px-8 max-lg:py-12 max-sm:px-5 max-sm:py-10 max-sm:gap-6">
       {/* Ambient gradients */}
       <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.04)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-[10%] left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse,rgba(96,165,250,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* 3D Spline scene — full hero background, centered, hidden on mobile */}
-      {showSpline && (
+      {/* 3D Spline scene — absolute background on desktop, inline showcase on mobile/tablet */}
+      {showSpline && !splineFailed && (
         <div
-          className="absolute inset-0 z-0 flex items-center justify-center"
+          className="z-0 flex items-center justify-center lg:absolute lg:inset-0 max-lg:relative max-lg:order-2 max-lg:w-full max-lg:h-[520px] max-sm:h-[460px] max-lg:overflow-hidden max-lg:-mb-32 max-sm:-mb-24"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "scale(1)" : "scale(0.92)",
@@ -38,19 +39,20 @@ export default function Hero() {
           }}
         >
           <div
-            className="w-[900px] h-[900px] translate-x-[10%] max-lg:w-[700px] max-lg:h-[700px] max-lg:translate-x-0 max-lg:opacity-30 max-sm:w-[500px] max-sm:h-[500px] max-sm:translate-y-[15%]"
-            style={{ WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 95%)", maskImage: "linear-gradient(to bottom, black 75%, transparent 95%)" }}
+            className="lg:w-[900px] lg:h-[900px] lg:translate-x-[10%] max-lg:w-full max-lg:h-full max-lg:scale-[1.15] max-lg:origin-top"
+            style={{ WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 92%)", maskImage: "linear-gradient(to bottom, black 60%, transparent 92%)" }}
           >
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
+              onError={() => setSplineFailed(true)}
             />
           </div>
         </div>
       )}
 
       {/* Left column — text content */}
-      <div className="relative z-50 pointer-events-auto">
+      <div className="relative z-50 pointer-events-auto max-lg:order-1">
         <div
           className="inline-flex items-center gap-2 bg-[var(--accent-bg)] border border-[var(--accent-border)] px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-500 dark:text-blue-400 mb-7 tracking-[0.3px] uppercase"
           style={{
@@ -86,7 +88,7 @@ export default function Hero() {
         </p>
 
         <div
-          className="flex gap-3 items-center"
+          className="flex gap-3 items-center max-sm:flex-wrap"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(16px)",
@@ -110,7 +112,7 @@ export default function Hero() {
 
       {/* Right column — ChatWidget */}
       <div
-        className="relative z-10"
+        className="relative z-10 max-lg:order-3"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateX(0)" : "translateX(40px)",

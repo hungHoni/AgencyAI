@@ -43,8 +43,8 @@ function ChatShell({
     <div
       className={`text-zinc-300 relative flex flex-col ${
         compact
-          ? "bg-zinc-900/85 backdrop-blur-xl rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-48px)] max-sm:h-[70vh] animate-chat-panel"
-          : "bg-zinc-900/80 backdrop-blur-xl rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px]"
+          ? "bg-zinc-900/85 backdrop-blur-xl rounded-2xl h-[520px] w-[380px] max-sm:w-[calc(100vw-32px)] max-sm:h-[min(70vh,560px)] animate-chat-panel"
+          : "bg-zinc-900/80 max-lg:bg-zinc-900/45 backdrop-blur-xl rounded-[calc(var(--radius)+4px)] shadow-elevated h-[480px] max-sm:h-[440px]"
       }`}
     >
       <div className="absolute top-3 left-3 right-3 bottom-3 border border-white/[0.04] rounded-card pointer-events-none z-0" />
