@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n/context";
 import ChatWidget from "@/components/ChatWidget";
 import SplineScene from "@/components/SplineScene";
+import { AccentText } from "@/components/ui/accent-text";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -73,7 +74,7 @@ export default function Hero() {
             transition: "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s",
           }}
         >
-          {t("hero.headline")}
+          <AccentText text={t("hero.headline")} />
         </h1>
 
         <p
